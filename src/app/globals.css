@@ -1,26 +1,154 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #050614;
+  --foreground: #ffffff;
+
+  /* Sangrila Quad-Color Theme - Gold, Blue, Orange, Purple */
+  --primary: #f15a24;
+  /* Vibrant Orange */
+  --primary-foreground: #ffffff;
+
+  --secondary: #fdb813;
+  /* Royal Gold */
+  --secondary-foreground: #0a0b1a;
+
+  --accent: #1d355e;
+  /* Elegant Blue */
+  --accent-foreground: #ffffff;
+
+  --purple: #8b5cf6;
+  /* Royal Purple */
+
+  --festive-orange: #f15a24;
+  --festive-gold: #fdb813;
+  --festive-blue: #3b82f6;
+  --festive-purple: #8b5cf6;
+  --festive-navy: #1d355e;
+
+  --gradient-festive: linear-gradient(135deg, #fdb813, #f15a24, #8b5cf6, #3b82f6);
+
+  --muted: #1e1b4b;
+  --muted-foreground: #94a3b8;
+
+  --card: #16182d;
+  --card-foreground: #ffffff;
+
+  --border: rgba(255, 255, 255, 0.1);
+
+  --radius: 1.5rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.dark {
+  --background: #05060f;
+  --foreground: #ffffff;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Custom Scrollbar - Premium Light */
+::-webkit-scrollbar {
+  width: 8px;
 }
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 10px;
+  border: 2px solid var(--background);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Glassmorphism Refined - Party Style */
+.glass {
+  background: rgba(15, 17, 35, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glow-primary {
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
+}
+
+.glow-accent {
+  box-shadow: 0 0 20px rgba(29, 53, 94, 0.2);
+}
+
+.text-glow {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.text-glow-primary {
+  text-shadow: 0 0 15px rgba(241, 90, 36, 0.3);
+}
+
+/* Reduced Animations - Removed Pulsing and Rotating */
 
 body {
-  background: var(--background);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Selection with Festive Color */
+::selection {
+  background: linear-gradient(to right, var(--festive-orange), var(--festive-gold));
+  color: var(--foreground);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Static Gradient Text */
+.gradient-text {
+  background: linear-gradient(135deg,
+      #fdb813,
+      #f15a24,
+      #8b5cf6,
+      #3b82f6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Festive glow effects - Subdued */
+.glow-festive {
+  box-shadow: 0 0 30px rgba(241, 90, 36, 0.2);
+}
+
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(to bottom right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0) 45%,
+      rgba(255, 255, 255, 0.1) 50%,
+      rgba(255, 255, 255, 0) 55%,
+      rgba(255, 255, 255, 0) 100%);
+  transform: rotate(45deg);
 }
