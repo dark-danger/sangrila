@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Users, IndianRupee, Sparkles } from "lucide-react";
 import type { Event } from "@/data/events";
@@ -58,12 +59,12 @@ export function EventCard({ event, _index }: { event: Event; _index: number }) {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                     >
-                        <a
+                        <Link
                             href="/#register"
                             className="px-8 py-3 bg-gradient-to-r from-[#fdb813] to-[#f15a24] text-white font-black rounded-full text-xs uppercase tracking-widest shadow-[0_0_30px_rgba(241,90,36,0.6)]"
                         >
                             Register Now
-                        </a>
+                        </Link>
                     </motion.div>
                     <p className="text-white/60 text-[10px] font-black uppercase tracking-[0.2em]">{event.participants} Participants</p>
                 </div>

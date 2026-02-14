@@ -39,9 +39,18 @@ export function ContactSection() {
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+                    <motion.div
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        variants={{
+                            visible: { transition: { staggerChildren: 0.15 } }
+                        }}
+                        className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4"
+                    >
                         {/* Email Card */}
                         <motion.div
+                            variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0 } }}
                             whileHover={{ y: -8 }}
                             className="group bg-[#11121d]/80 backdrop-blur-2xl p-6 rounded-[2rem] border border-white/5 hover:border-primary/40 transition-all duration-300 flex flex-col items-center text-center space-y-4"
                         >
@@ -56,6 +65,7 @@ export function ContactSection() {
 
                         {/* Phone Card */}
                         <motion.div
+                            variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0 } }}
                             whileHover={{ y: -8 }}
                             className="group bg-[#11121d]/80 backdrop-blur-2xl p-6 rounded-[2rem] border border-white/5 hover:border-primary/40 transition-all duration-300 flex flex-col items-center text-center space-y-4"
                         >
@@ -70,6 +80,7 @@ export function ContactSection() {
 
                         {/* Visit Card */}
                         <motion.div
+                            variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0 } }}
                             whileHover={{ y: -8 }}
                             className="group bg-[#11121d]/80 backdrop-blur-2xl p-6 rounded-[2rem] border border-white/5 hover:border-primary/40 transition-all duration-300 flex flex-col items-center text-center space-y-4 sm:col-span-2"
                         >
@@ -81,7 +92,7 @@ export function ContactSection() {
                                 <p className="text-white font-bold text-sm">Geeta University Campus, Panipat, Haryana</p>
                             </div>
                         </motion.div>
-                    </div>
+                    </motion.div>
 
                     <div className="flex gap-4 pt-4">
                         <motion.a whileHover={{ y: -5, backgroundColor: "var(--primary)", borderColor: "transparent" }} href="#" className="w-12 h-12 flex items-center justify-center bg-white/5 border border-white/10 rounded-2xl text-white/50 hover:text-white transition-all duration-300">

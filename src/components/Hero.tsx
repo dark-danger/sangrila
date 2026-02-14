@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export function Hero() {
     return (
-        <section className="min-h-screen flex items-center justify-center px-6 pt-20 relative overflow-hidden bg-[var(--background)]">
+        <section id="hero" className="min-h-screen flex items-center justify-center px-6 pt-20 relative overflow-hidden bg-transparent">
             <div className="relative z-10 max-w-7xl mx-auto w-full flex flex-col items-center justify-center space-y-12">
                 {/* Background Text Layer - Simple Fade */}
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
@@ -42,17 +42,69 @@ export function Hero() {
                             transition={{ duration: 1 }}
                             className="flex flex-col items-center"
                         >
-                            <div className="flex">
-                                <h1 className="text-7xl md:text-[12rem] font-black tracking-tighter text-white leading-none uppercase drop-shadow-[0_0_30px_rgba(241,90,36,0.2)]">
-                                    SANGRILA
-                                </h1>
-                            </div>
+                            <motion.div
+                                initial="hidden"
+                                animate="visible"
+                                variants={{
+                                    hidden: { opacity: 0 },
+                                    visible: {
+                                        opacity: 1,
+                                        transition: { staggerChildren: 0.05, delayChildren: 0.2 }
+                                    }
+                                }}
+                                className="flex"
+                            >
+                                {Array.from("SANGRILA").map((char, index) => (
+                                    <motion.h1
+                                        key={index}
+                                        variants={{
+                                            hidden: { opacity: 0, scale: 0, y: 50, rotate: -20 },
+                                            visible: {
+                                                opacity: 1,
+                                                scale: 1,
+                                                y: 0,
+                                                rotate: 0,
+                                                transition: { type: "spring", stiffness: 300, damping: 15 }
+                                            }
+                                        }}
+                                        className="text-7xl md:text-[12rem] font-black tracking-tighter text-white leading-none uppercase drop-shadow-[0_0_30px_rgba(241,90,36,0.2)] hover:text-primary transition-colors cursor-default"
+                                    >
+                                        {char}
+                                    </motion.h1>
+                                ))}
+                            </motion.div>
 
-                            <div className="flex mt-2">
-                                <h2 className="text-primary text-5xl md:text-[10rem] italic font-black drop-shadow-[0_0_20px_rgba(253,184,19,0.3)]">
-                                    2K26
-                                </h2>
-                            </div>
+                            <motion.div
+                                initial="hidden"
+                                animate="visible"
+                                variants={{
+                                    hidden: { opacity: 0 },
+                                    visible: {
+                                        opacity: 1,
+                                        transition: { staggerChildren: 0.05, delayChildren: 0.6 }
+                                    }
+                                }}
+                                className="flex mt-2"
+                            >
+                                {Array.from("2K26").map((char, index) => (
+                                    <motion.h2
+                                        key={index}
+                                        variants={{
+                                            hidden: { opacity: 0, scale: 0, y: 50, rotate: 20 },
+                                            visible: {
+                                                opacity: 1,
+                                                scale: 1,
+                                                y: 0,
+                                                rotate: 0,
+                                                transition: { type: "spring", stiffness: 300, damping: 15 }
+                                            }
+                                        }}
+                                        className="text-primary text-5xl md:text-[10rem] italic font-black drop-shadow-[0_0_20px_rgba(253,184,19,0.3)] hover:text-white transition-colors cursor-default"
+                                    >
+                                        {char}
+                                    </motion.h2>
+                                ))}
+                            </motion.div>
 
                             {/* Action Buttons - Moved here to be at the exact bottom of 2K26 */}
                             <motion.div
@@ -61,13 +113,22 @@ export function Hero() {
                                 transition={{ duration: 0.8, delay: 0.5 }}
                                 className="flex flex-wrap items-center justify-center gap-4 mt-4"
                             >
-                                <motion.div whileHover={{ y: -5, scale: 1.02 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}>
+                                <motion.div
+                                    whileHover={{ y: -5, scale: 1.02 }}
+                                    animate={{ scale: [1, 1.05, 1] }}
+                                    transition={{
+                                        type: "spring", stiffness: 400, damping: 10,
+                                        scale: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+                                    }}
+                                >
                                     <Link
                                         href="/#register"
                                         className="px-8 py-4 bg-gradient-to-r from-[#fdb813] via-[#f15a24] to-[#8b5cf6] text-white font-black rounded-full shadow-[0_10px_30px_rgba(241,90,36,0.3)] hover:shadow-[0_15px_40px_rgba(241,90,36,0.5)] transition-all active:scale-95 text-xl border border-white/10 flex items-center gap-2 relative overflow-hidden group"
                                     >
                                         <Sparkles className="w-5 h-5" />
                                         <span className="relative z-10">Register Now</span>
+                                        {/* Shine effect */}
+                                        <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
                                     </Link>
                                 </motion.div>
                                 <motion.div whileHover={{ y: -5, scale: 1.02 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}>

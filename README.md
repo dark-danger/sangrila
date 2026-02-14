@@ -1,3 +1,8 @@
+## when i update code i use this to push chnages 
+<!-- git add .
+git commit -m "update"
+git push -->
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started

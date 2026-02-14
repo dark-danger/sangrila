@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { Menu, X, Sparkles } from "lucide-react";
 
 const navItems = [
+    { name: "Home", href: "/#hero", emoji: "🏠" },
     { name: "Events", href: "/events", emoji: "🎯" },
     { name: "Team", href: "/#team", emoji: "👥" },
     { name: "Contact", href: "/#contact", emoji: "📞" },
@@ -28,17 +29,19 @@ export function Navbar() {
             <motion.nav
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className={`fixed top-0 left-0 right-0 z-50 px-6 lg:px-12 py-4 transition-all duration-300 ${scrolled ? "glass border-b border-white/10 py-3 shadow-2xl" : "bg-transparent py-5"
+                className={`fixed top-0 left-0 right-0 z-50 px-6 lg:px-12 py-3 transition-all duration-300 ${scrolled ? "glass border-b border-white/10 py-2.5 shadow-2xl" : "bg-transparent py-5"
                     }`}
             >
-                <div className="flex justify-between items-center max-w-7xl mx-auto">
+                <div className="flex justify-between items-center w-full">
                     {/* Logo - Premium */}
-                    <Link href="/" className="flex items-center gap-3 group">
-                        <div className="relative">
-                            <Sparkles className="w-8 h-8 text-secondary drop-shadow-[0_0_15px_rgba(253,184,19,0.8)]" />
-                        </div>
-                        <div className="flex flex-col">
-                            <span className="text-xl font-black text-white tracking-tighter uppercase leading-none">
+                    <Link href="/" className="flex items-center gap-1.5 group">
+                        <img
+                            src="/logo.png"
+                            alt="Geeta University Logo"
+                            className="h-12 md:h-16 w-auto object-contain hover:scale-105 transition-transform duration-300"
+                        />
+                        <div className="flex flex-col justify-center">
+                            <span className="text-xl md:text-2xl font-black text-white tracking-tighter uppercase leading-none">
                                 SANGRILA
                             </span>
                             <span className="text-[10px] text-primary font-black uppercase tracking-[0.2em] leading-none mt-1">2K26</span>

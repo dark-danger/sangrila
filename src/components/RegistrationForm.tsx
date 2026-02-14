@@ -54,8 +54,11 @@ export function RegistrationForm() {
                 className="max-w-4xl mx-auto p-8 md:p-12 rounded-[3rem] bg-[#11121d]/80 backdrop-blur-2xl border border-white/5 shadow-2xl relative overflow-hidden"
             >
                 {/* Decorative Elements */}
-                <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[100px] -mr-32 -mt-32" />
-                <div className="absolute bottom-0 left-0 w-64 h-64 bg-accent/10 rounded-full blur-[100px] -ml-32 -mb-32" />
+                <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[100px] -mr-32 -mt-32 animate-pulse" />
+                <div className="absolute bottom-0 left-0 w-64 h-64 bg-accent/10 rounded-full blur-[100px] -ml-32 -mb-32 animate-pulse" />
+
+                {/* Subtle Moving Sheen */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent skew-x-12 translate-x-[-150%] animate-[shimmer_8s_infinite] pointer-events-none" />
 
                 <div className="relative z-10">
                     <div className="text-center mb-12">
@@ -70,7 +73,10 @@ export function RegistrationForm() {
 
                             <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 py-6 border-y border-white/5 my-8">
                                 <div className="flex items-center gap-2">
-                                    <div className="w-2 h-2 rounded-full bg-primary shadow-[0_0_10px_rgba(241,90,36,0.5)]" />
+                                    <div className="relative">
+                                        <div className="w-2 h-2 rounded-full bg-primary shadow-[0_0_10px_rgba(241,90,36,0.5)] relative z-10" />
+                                        <div className="absolute inset-0 bg-primary rounded-full animate-ping opacity-75" />
+                                    </div>
                                     <span>Date: <span className="text-white">13-14 March, 2026</span></span>
                                 </div>
                                 <div className="flex items-center gap-2">

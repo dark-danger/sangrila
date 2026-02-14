@@ -32,8 +32,17 @@ export function EventsSection() {
                 </div>
 
                 {/* Category Tabs */}
-                <div className="flex flex-wrap justify-center gap-3 mb-12">
+                <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={{
+                        visible: { transition: { staggerChildren: 0.1 } }
+                    }}
+                    className="flex flex-wrap justify-center gap-3 mb-12"
+                >
                     <motion.button
+                        variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
                         whileHover={{ scale: 1.05, boxShadow: activeCategory === "All" ? "0 0 20px rgba(139,92,246,0.4)" : "none" }}
                         whileTap={{ scale: 0.95 }}
                         onClick={() => setActiveCategory("All")}
@@ -47,6 +56,7 @@ export function EventsSection() {
                     {categories.map((category) => (
                         <motion.button
                             key={category}
+                            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
                             whileHover={{ scale: 1.05, boxShadow: activeCategory === category ? "0 0 20px rgba(139,92,246,0.4)" : "none" }}
                             whileTap={{ scale: 0.95 }}
                             onClick={() => setActiveCategory(category)}
@@ -58,7 +68,7 @@ export function EventsSection() {
                             {category}
                         </motion.button>
                     ))}
-                </div>
+                </motion.div>
 
                 {/* Events Grid */}
                 <motion.div
@@ -87,7 +97,7 @@ export function EventsSection() {
                                 exit={{ opacity: 0, scale: 0.9 }}
                                 transition={{ duration: 0.3 }}
                             >
-                                <EventCard event={event} index={index} />
+                                <EventCard event={event} _index={index} />
                             </motion.div>
                         ))}
                     </AnimatePresence>
