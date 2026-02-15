@@ -43,29 +43,44 @@ export function EventsSection() {
                 >
                     <motion.button
                         variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-                        whileHover={{ scale: 1.05, boxShadow: activeCategory === "All" ? "0 0 20px rgba(139,92,246,0.4)" : "none" }}
+                        whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={() => setActiveCategory("All")}
-                        className={`px-6 py-2 rounded-full transition-all border font-bold text-sm uppercase tracking-widest ${activeCategory === "All"
-                            ? "bg-primary text-white border-primary shadow-lg shadow-primary/20"
-                            : "bg-white/5 text-muted-foreground border-white/10 hover:border-primary/50 hover:text-primary"
+                        className={`px-6 py-2.5 rounded-full transition-all border font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] flex items-center justify-center relative overflow-hidden group ${activeCategory === "All"
+                            ? "bg-gradient-to-r from-secondary to-primary text-white border-transparent shadow-lg shadow-primary/20"
+                            : "bg-white/5 text-muted-foreground border-white/10 hover:border-primary/50 hover:text-white"
                             }`}
                     >
-                        All Events
+                        <span className="relative z-10">All Events</span>
+                        {activeCategory === "All" && (
+                            <motion.div
+                                layoutId="activeCategory"
+                                className="absolute inset-0 bg-gradient-to-r from-secondary to-primary"
+                            />
+                        )}
+                        <div className="absolute inset-0 bg-white/20 translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-700 pointer-events-none" />
                     </motion.button>
+
                     {categories.map((category) => (
                         <motion.button
                             key={category}
                             variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-                            whileHover={{ scale: 1.05, boxShadow: activeCategory === category ? "0 0 20px rgba(139,92,246,0.4)" : "none" }}
+                            whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             onClick={() => setActiveCategory(category)}
-                            className={`px-6 py-2 rounded-full transition-all border font-bold text-sm uppercase tracking-widest ${activeCategory === category
-                                ? "bg-primary text-white border-primary shadow-lg shadow-primary/20"
-                                : "bg-white/5 text-muted-foreground border-white/10 hover:border-primary/50 hover:text-primary"
+                            className={`px-6 py-2.5 rounded-full transition-all border font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] flex items-center justify-center relative overflow-hidden group ${activeCategory === category
+                                ? "bg-gradient-to-r from-secondary to-primary text-white border-transparent shadow-lg shadow-primary/20"
+                                : "bg-white/5 text-muted-foreground border-white/10 hover:border-primary/50 hover:text-white"
                                 }`}
                         >
-                            {category}
+                            <span className="relative z-10">{category}</span>
+                            {activeCategory === category && (
+                                <motion.div
+                                    layoutId="activeCategory"
+                                    className="absolute inset-0 bg-gradient-to-r from-secondary to-primary"
+                                />
+                            )}
+                            <div className="absolute inset-0 bg-white/20 translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-700 pointer-events-none" />
                         </motion.button>
                     ))}
                 </motion.div>
@@ -88,7 +103,7 @@ export function EventsSection() {
                     className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
                 >
                     <AnimatePresence mode="popLayout">
-                        {filteredEvents.map((event, index) => (
+                        {filteredEvents.map((event) => (
                             <motion.div
                                 key={event.id}
                                 layout
@@ -97,7 +112,7 @@ export function EventsSection() {
                                 exit={{ opacity: 0, scale: 0.9 }}
                                 transition={{ duration: 0.3 }}
                             >
-                                <EventCard event={event} _index={index} />
+                                <EventCard event={event} />
                             </motion.div>
                         ))}
                     </AnimatePresence>

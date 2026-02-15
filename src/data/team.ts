@@ -24,7 +24,7 @@ export const teamMembers: TeamMember[] = [
     {
         id: "3",
         name: "Aaditya Gupta",
-        role: "Cultural Secretary",
+        role: "Vice President",
         image: "/team/aaditya-gupta.jpg",
     },
     {

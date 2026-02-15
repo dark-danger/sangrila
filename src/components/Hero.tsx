@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Sparkles } from "lucide-react";
+import { Sparkles, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 export function Hero() {
@@ -67,7 +67,7 @@ export function Hero() {
                                                 transition: { type: "spring", stiffness: 300, damping: 15 }
                                             }
                                         }}
-                                        className="text-7xl md:text-[12rem] font-black tracking-tighter text-white leading-none uppercase drop-shadow-[0_0_30px_rgba(241,90,36,0.2)] hover:text-primary transition-colors cursor-default"
+                                        className="text-5xl sm:text-7xl md:text-8xl lg:text-[12rem] font-black tracking-tighter text-white leading-none uppercase drop-shadow-[0_0_30px_rgba(241,90,36,0.2)] hover:text-primary transition-colors cursor-default"
                                     >
                                         {char}
                                     </motion.h1>
@@ -99,44 +99,49 @@ export function Hero() {
                                                 transition: { type: "spring", stiffness: 300, damping: 15 }
                                             }
                                         }}
-                                        className="text-primary text-5xl md:text-[10rem] italic font-black drop-shadow-[0_0_20px_rgba(253,184,19,0.3)] hover:text-white transition-colors cursor-default"
+                                        className="text-primary text-3xl sm:text-5xl md:text-7xl lg:text-[10rem] italic font-black drop-shadow-[0_0_20px_rgba(253,184,19,0.3)] hover:text-white transition-colors cursor-default"
                                     >
                                         {char}
                                     </motion.h2>
                                 ))}
                             </motion.div>
 
-                            {/* Action Buttons - Moved here to be at the exact bottom of 2K26 */}
+                            {/* Action Buttons */}
                             <motion.div
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.8, delay: 0.5 }}
-                                className="flex flex-wrap items-center justify-center gap-4 mt-4"
+                                className="flex flex-wrap items-center justify-center gap-3 md:gap-4 mt-8 md:mt-12"
                             >
                                 <motion.div
                                     whileHover={{ y: -5, scale: 1.02 }}
-                                    animate={{ scale: [1, 1.05, 1] }}
+                                    whileTap={{ scale: 0.95 }}
+                                    animate={{ scale: [1, 1.02, 1] }}
                                     transition={{
-                                        type: "spring", stiffness: 400, damping: 10,
-                                        scale: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+                                        scale: { duration: 3, repeat: Infinity, ease: "easeInOut" }
                                     }}
                                 >
                                     <Link
                                         href="/#register"
-                                        className="px-8 py-4 bg-gradient-to-r from-[#fdb813] via-[#f15a24] to-[#8b5cf6] text-white font-black rounded-full shadow-[0_10px_30px_rgba(241,90,36,0.3)] hover:shadow-[0_15px_40px_rgba(241,90,36,0.5)] transition-all active:scale-95 text-xl border border-white/10 flex items-center gap-2 relative overflow-hidden group"
+                                        className="px-8 sm:px-10 py-4 sm:py-5 bg-gradient-to-r from-secondary via-primary to-purple-600 text-white font-black rounded-full shadow-[0_10px_40px_rgba(241,90,36,0.4)] hover:shadow-[0_15px_50px_rgba(241,90,36,0.6)] transition-all text-base sm:text-xl border border-white/20 flex items-center justify-center gap-2 relative overflow-hidden group"
                                     >
-                                        <Sparkles className="w-5 h-5" />
-                                        <span className="relative z-10">Register Now</span>
-                                        {/* Shine effect */}
-                                        <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+                                        <Sparkles className="w-5 h-5 group-hover:animate-bounce" />
+                                        <span className="relative z-10 uppercase tracking-widest">Register Now</span>
+                                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-1000" />
                                     </Link>
                                 </motion.div>
-                                <motion.div whileHover={{ y: -5, scale: 1.02 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}>
+
+                                <motion.div
+                                    whileHover={{ y: -5, scale: 1.02 }}
+                                    whileTap={{ scale: 0.95 }}
+                                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                                >
                                     <Link
                                         href="/events"
-                                        className="px-8 py-4 bg-white/5 text-white border border-white/10 font-black rounded-full hover:bg-white/10 transition-all text-xl backdrop-blur-md"
+                                        className="px-8 sm:px-10 py-4 sm:py-5 bg-white/5 text-white border border-white/10 font-black rounded-full hover:bg-white/10 transition-all text-base sm:text-xl backdrop-blur-md flex items-center justify-center group gap-2"
                                     >
-                                        View All Events
+                                        <span className="uppercase tracking-widest">View All Events</span>
+                                        <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
                                     </Link>
                                 </motion.div>
                             </motion.div>
@@ -148,7 +153,7 @@ export function Hero() {
                             transition={{ duration: 1, delay: 0.8 }}
                             className="relative space-y-6 pt-12"
                         >
-                            <h3 className="text-3xl md:text-5xl font-black tracking-[0.2em] uppercase relative">
+                            <h3 className="text-2xl sm:text-3xl md:text-5xl font-black tracking-[0.1em] md:tracking-[0.2em] uppercase relative">
                                 <span className="gradient-text drop-shadow-[0_0_20px_rgba(139,92,246,0.3)]">
                                     Cultural Fest
                                 </span>

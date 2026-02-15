@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Users, IndianRupee, Sparkles } from "lucide-react";
 import type { Event } from "@/data/events";
@@ -15,7 +16,7 @@ const categoryColors: Record<string, { from: string; to: string; emoji: string; 
     "Health & Wellness": { from: "from-[#fcd34d]", to: "to-[#d97706]", emoji: "🧘", text: "text-[#fbbf24]", bg: "bg-[#fcd34d]/10", glow: "shadow-[#fcd34d]/20" },
 };
 
-export function EventCard({ event, _index }: { event: Event; _index: number }) {
+export function EventCard({ event }: { event: Event }) {
     const colors = categoryColors[event.category] || { from: "from-[#f15a24]", to: "to-[#c2410c]", emoji: "✨", text: "text-[#f15a24]", bg: "bg-[#f15a24]/10", glow: "shadow-[#f15a24]/20" };
 
     return (
@@ -34,10 +35,11 @@ export function EventCard({ event, _index }: { event: Event; _index: number }) {
             <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden mb-6">
                 {/* Event Image or Placeholder */}
                 {event.image ? (
-                    <img
+                    <Image
                         src={event.image}
                         alt={event.name}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                 ) : (
                     <div className={`w-full h-full bg-gradient-to-br ${colors.from} ${colors.to} opacity-20 flex items-center justify-center`}>
@@ -54,19 +56,23 @@ export function EventCard({ event, _index }: { event: Event; _index: number }) {
                 </div>
 
                 {/* Registration Overlay on Hover */}
-                <div className="absolute inset-0 bg-[#05060f]/60 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center gap-4 z-30">
+                <div className="absolute inset-0 bg-[#05060f]/70 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center gap-4 z-30">
                     <motion.div
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                     >
                         <Link
                             href="/#register"
-                            className="px-8 py-3 bg-gradient-to-r from-[#fdb813] to-[#f15a24] text-white font-black rounded-full text-xs uppercase tracking-widest shadow-[0_0_30px_rgba(241,90,36,0.6)]"
+                            className="px-8 py-3 bg-gradient-to-r from-secondary via-primary to-purple-600 text-white font-black rounded-full text-xs uppercase tracking-widest shadow-[0_0_30px_rgba(241,90,36,0.5)] border border-white/20 flex items-center justify-center relative overflow-hidden group/btn"
                         >
-                            Register Now
+                            <span className="relative z-10">Register Now</span>
+                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-150%] group-hover/btn:translate-x-[150%] transition-transform duration-700" />
                         </Link>
                     </motion.div>
-                    <p className="text-white/60 text-[10px] font-black uppercase tracking-[0.2em]">{event.participants} Participants</p>
+                    <p className="text-white/60 text-[10px] font-black uppercase tracking-[0.2em] flex items-center gap-2">
+                        <Users className="w-3 h-3" />
+                        {event.participants} Participants
+                    </p>
                 </div>
 
                 {/* Shadow/Gradient for text readability backup */}

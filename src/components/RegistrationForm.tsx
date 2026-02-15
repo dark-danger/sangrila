@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { User, School, Hash, Trophy, CreditCard, Send, CheckCircle2, AlertCircle, Loader2, QrCode, Upload } from "lucide-react";
+import { User, School, Hash, Trophy, CreditCard, Send, CheckCircle2, AlertCircle, Loader2, Sparkles } from "lucide-react";
 
 import { events } from "@/data/events";
 
@@ -46,123 +47,79 @@ export function RegistrationForm() {
     };
 
     return (
-        <section id="register" className="py-24 px-6 relative z-10">
+        <section id="register" className="py-24 px-4 md:px-6 relative z-10">
             <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="max-w-4xl mx-auto p-8 md:p-12 rounded-[3rem] bg-[#11121d]/80 backdrop-blur-2xl border border-white/5 shadow-2xl relative overflow-hidden"
+                className="max-w-4xl mx-auto p-5 sm:p-8 md:p-12 rounded-[2rem] md:rounded-[3rem] bg-[#11121d]/80 backdrop-blur-2xl border border-white/5 shadow-2xl relative overflow-hidden"
             >
                 {/* Decorative Elements */}
                 <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[100px] -mr-32 -mt-32 animate-pulse" />
-                <div className="absolute bottom-0 left-0 w-64 h-64 bg-accent/10 rounded-full blur-[100px] -ml-32 -mb-32 animate-pulse" />
-
-                {/* Subtle Moving Sheen */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent skew-x-12 translate-x-[-150%] animate-[shimmer_8s_infinite] pointer-events-none" />
+                <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/10 rounded-full blur-[100px] -ml-32 -mb-32 animate-pulse" />
 
                 <div className="relative z-10">
-                    <div className="text-center mb-12">
-                        <h2 className="text-3xl md:text-4xl font-black text-white tracking-tighter uppercase mb-4">
-                            SANGRILA 2K26 - <span className="text-primary italic">EXTERNAL REGISTRATION</span>
-                        </h2>
-                        <div className="space-y-6 text-muted-foreground font-medium max-w-3xl mx-auto text-sm leading-relaxed">
-                            <div className="space-y-4">
-                                <p className="text-white text-base font-bold">Welcome to Sangrila 2K26, the ultimate celebration of talent, culture, and entertainment! 🎭✨</p>
-                                <p>This form is exclusively for external participants who wish to be a part of Sangrila 2K26. Whether you&apos;re here to showcase your skills, compete in thrilling events, or simply experience an unforgettable evening featuring <span className="text-primary font-black uppercase tracking-widest">Star Night</span>, this is your gateway to an extraordinary fest!</p>
-                            </div>
+                    <div className="text-center mb-8 md:mb-12">
+                        <motion.h2
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            className="text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tighter uppercase mb-4"
+                        >
+                            SANGRILA 2K26 - <span className="text-primary italic">REGISTRATION</span>
+                        </motion.h2>
+                        <div className="space-y-4 text-muted-foreground font-medium max-w-3xl mx-auto text-xs sm:text-sm leading-relaxed">
+                            <p className="text-white text-sm sm:text-base font-bold">Participate in the ultimate celebration of talent! 🎭✨</p>
 
-                            <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 py-6 border-y border-white/5 my-8">
+                            <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 py-4 border-y border-white/5 my-6">
                                 <div className="flex items-center gap-2">
-                                    <div className="relative">
-                                        <div className="w-2 h-2 rounded-full bg-primary shadow-[0_0_10px_rgba(241,90,36,0.5)] relative z-10" />
-                                        <div className="absolute inset-0 bg-primary rounded-full animate-ping opacity-75" />
-                                    </div>
-                                    <span>Date: <span className="text-white">13-14 March, 2026</span></span>
+                                    <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                                    <span>13-14 March, 2026</span>
                                 </div>
                                 <div className="flex items-center gap-2">
                                     <div className="w-2 h-2 rounded-full bg-secondary shadow-[0_0_10px_rgba(253,184,19,0.5)]" />
-                                    <span>Venue: <span className="text-white">Geeta University</span></span>
-                                </div>
-                                <div className="flex items-center gap-2">
-                                    <div className="w-2 h-2 rounded-full bg-white/20" />
-                                    <span>Contact: <span className="text-primary">+91 8168906211</span></span>
-                                </div>
-                            </div>
-
-                            <div className="text-left bg-white/5 p-6 rounded-3xl border border-white/10 space-y-3">
-                                <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-primary mb-4">Registration Guidelines:</h4>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <p className="flex items-start gap-3 flex-1"><span className="text-primary mt-1">•</span> Fill in the required details accurately.</p>
-                                    <p className="flex items-start gap-3"><span className="text-primary mt-1">•</span> Complete payment via UPI/QR Code & enter Transaction ID (TID).</p>
-                                    <p className="flex items-start gap-3"><span className="text-primary mt-1">•</span> Upload a screenshot of the payment for confirmation.</p>
-                                    <p className="flex items-start gap-3"><span className="text-primary mt-1">•</span> Information must match your payment details.</p>
-                                    <p className="flex items-start gap-3 md:col-span-2"><span className="text-primary mt-1">•</span> Multiple entries allowed for different event categories.</p>
+                                    <span>Geeta University</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <form onSubmit={handleSubmit} className="space-y-8">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            {/* Personal Info */}
-                            <div className="space-y-4">
-                                <div className="space-y-2">
-                                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 ml-2">Full Name</label>
-                                    <div className="relative">
-                                        <User className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-primary/50" />
-                                        <input required name="name" type="text" placeholder="Your Name" className="w-full pl-14 pr-6 py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder:text-white/20 focus:outline-none focus:border-primary/50 transition-all" />
-                                    </div>
-                                </div>
-                                <div className="space-y-2">
-                                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 ml-2">Email</label>
-                                    <div className="relative">
-                                        <Send className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-primary/50" />
-                                        <input required name="email" type="email" placeholder="email@example.com" className="w-full pl-14 pr-6 py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder:text-white/20 focus:outline-none focus:border-primary/50 transition-all" />
-                                    </div>
+                    <form onSubmit={handleSubmit} className="space-y-6 md:space-y-8">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                            <div className="space-y-2 group">
+                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 ml-2 group-focus-within:text-primary transition-colors">Full Name</label>
+                                <div className="relative">
+                                    <User className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-primary/50 group-focus-within:text-primary transition-colors" />
+                                    <input required name="name" type="text" placeholder="Your Name" className="w-full pl-12 sm:pl-14 pr-4 sm:pr-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all" />
                                 </div>
                             </div>
-
-                            {/* Academic Info */}
-                            <div className="space-y-4">
-                                <div className="space-y-2">
-                                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 ml-2">University/College</label>
-                                    <div className="relative">
-                                        <School className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-primary/50" />
-                                        <input required name="college" type="text" placeholder="College Name" className="w-full pl-14 pr-6 py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder:text-white/20 focus:outline-none focus:border-primary/50 transition-all" />
-                                    </div>
+                            <div className="space-y-2 group">
+                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 ml-2 group-focus-within:text-primary transition-colors">Email</label>
+                                <div className="relative">
+                                    <Send className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-primary/50 group-focus-within:text-primary transition-colors" />
+                                    <input required name="email" type="email" placeholder="email@example.com" className="w-full pl-12 sm:pl-14 pr-4 sm:pr-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all" />
                                 </div>
-                                <div className="space-y-2">
-                                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 ml-2">Roll Number / ID</label>
-                                    <div className="relative">
-                                        <Hash className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-primary/50" />
-                                        <input required name="rollno" type="text" placeholder="Ex: 2024GU001" className="w-full pl-14 pr-6 py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder:text-white/20 focus:outline-none focus:border-primary/50 transition-all" />
-                                    </div>
+                            </div>
+                            <div className="space-y-2 group">
+                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 ml-2 group-focus-within:text-primary transition-colors">University</label>
+                                <div className="relative">
+                                    <School className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-primary/50 group-focus-within:text-primary transition-colors" />
+                                    <input required name="college" type="text" placeholder="College Name" className="w-full pl-12 sm:pl-14 pr-4 sm:pr-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all" />
+                                </div>
+                            </div>
+                            <div className="space-y-2 group">
+                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 ml-2 group-focus-within:text-primary transition-colors">Roll Number / ID</label>
+                                <div className="relative">
+                                    <Hash className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-primary/50 group-focus-within:text-primary transition-colors" />
+                                    <input required name="rollno" type="text" placeholder="Ex: 2024GU001" className="w-full pl-12 sm:pl-14 pr-4 sm:pr-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all" />
                                 </div>
                             </div>
                         </div>
 
-                        {/* Academic & Event Selection */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
-                            <div className="space-y-2">
-                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 ml-2">Academic Year</label>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                            <div className="space-y-2 group">
+                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 ml-2 group-focus-within:text-primary transition-colors">Event</label>
                                 <div className="relative">
-                                    <School className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-primary/50" />
-                                    <select required name="year" defaultValue="" className="w-full pl-14 pr-12 py-4 rounded-2xl bg-[#0a0b14] border border-white/10 text-white focus:outline-none focus:border-primary/50 transition-all appearance-none cursor-pointer">
-                                        <option value="" disabled>Select Your Year</option>
-                                        <option value="1st Year">1st Year</option>
-                                        <option value="2nd Year">2nd Year</option>
-                                        <option value="3rd Year">3rd Year</option>
-                                        <option value="4th Year">4th Year</option>
-                                        <option value="5th Year">5th Year</option>
-                                        <option value="Post Graduate">Post Graduate</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div className="space-y-2">
-                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 ml-2">Select Event</label>
-                                <div className="relative">
-                                    <Trophy className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-primary/50" />
+                                    <Trophy className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-primary/50 group-focus-within:text-primary transition-colors" />
                                     <select
                                         required
                                         name="event"
@@ -171,127 +128,68 @@ export function RegistrationForm() {
                                             const selectedEvent = events.find(event => event.name === e.target.value);
                                             setIsTeamEvent(selectedEvent?.participants?.includes("-") || (selectedEvent?.participants ? parseInt(selectedEvent.participants) > 1 : false));
                                         }}
-                                        className="w-full pl-14 pr-12 py-4 rounded-2xl bg-[#0a0b14] border border-white/10 text-white focus:outline-none focus:border-primary/50 transition-all appearance-none cursor-pointer"
+                                        className="w-full pl-12 sm:pl-14 pr-10 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-[#0a0b14] border border-white/10 text-white text-sm focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all appearance-none cursor-pointer"
                                     >
                                         <option value="" disabled>Select an Event</option>
                                         {events.map(e => <option key={e.id} value={e.name}>{e.name} ({e.fee})</option>)}
                                     </select>
                                 </div>
                             </div>
-                        </div>
-
-                        {/* Dynamic Team Members Section */}
-                        <AnimatePresence>
-                            {isTeamEvent && (
-                                <motion.div
-                                    initial={{ opacity: 0, height: 0 }}
-                                    animate={{ opacity: 1, height: "auto" }}
-                                    exit={{ opacity: 0, height: 0 }}
-                                    className="space-y-6 pt-8 border-t border-white/5"
-                                >
-                                    <div className="p-6 rounded-[2rem] bg-primary/5 border border-primary/20">
-                                        <h3 className="text-xl font-black text-white uppercase mb-4">Add Team Members</h3>
-                                        <p className="text-sm text-white/60 mb-6 italic">
-                                            If you&apos;re participating individually, skip the team member section.
-                                            You can add up to 15 members including the team leader.
-                                        </p>
-
-                                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                                            {[...Array(14)].map((_, i) => (
-                                                <div key={i} className="space-y-2">
-                                                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 ml-2">Member {i + 2}</label>
-                                                    <input
-                                                        name={`member_${i + 2}`}
-                                                        type="text"
-                                                        placeholder="Name & Roll No"
-                                                        className="w-full px-5 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:border-primary/50 transition-all"
-                                                    />
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
-
-                        {/* Payment Section (Matching Screenshot) */}
-                        <div className="space-y-8 pt-8 border-t border-white/5">
-                            <div className="text-center space-y-4">
-                                <h3 className="text-xl font-black text-white uppercase">PAYMENT QR CODE</h3>
-                                <div className="max-w-[280px] mx-auto p-4 bg-white rounded-3xl shadow-2xl">
-                                    {/* Using a placeholder that looks like the screenshot QR */}
-                                    <div className="aspect-square bg-white rounded-2xl flex items-center justify-center relative overflow-hidden group">
-                                        <img
-                                            src="/qr-code.png"
-                                            alt="Payment QR Code"
-                                            className="w-full h-full object-contain"
-                                            onError={(e) => {
-                                                // If image is missing, show a helpful message
-                                                e.currentTarget.style.display = 'none';
-                                                e.currentTarget.parentElement!.innerHTML = '<div class="text-center p-4 text-gray-400 text-[10px] font-bold uppercase">Insert "qr-code.png" into public folder</div>';
-                                            }}
-                                        />
-                                    </div>
-                                </div>
-                                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-xs text-white/60">
-                                    <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                                    Scan to Pay: <span className="text-white font-black">geetauniversity.62417837@hdfcbank</span>
-                                </div>
-                            </div>
-
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div className="space-y-2">
-                                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 ml-2">Payment Screenshot</label>
-                                    <div className="relative group">
-                                        <Upload className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-primary/50 group-hover:text-primary transition-colors" />
-                                        <input
-                                            name="screenshot"
-                                            type="file"
-                                            accept="image/*"
-                                            className="w-full pl-14 pr-6 py-4 rounded-2xl bg-white/5 border border-white/10 text-white file:hidden cursor-pointer focus:outline-none focus:border-primary/50 transition-all"
-                                        />
-                                        <div className="absolute left-14 top-1/2 -translate-y-1/2 text-white/20 text-sm pointer-events-none group-hover:text-white/40 transition-colors">
-                                            Upload Screenshot (PNG/JPG)
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="space-y-2">
-                                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 ml-2">Transaction ID (TID) *</label>
-                                    <div className="relative">
-                                        <CreditCard className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-primary/50" />
-                                        <input required name="transactionId" type="text" placeholder="Enter UTR / TID" className="w-full pl-14 pr-6 py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder:text-white/20 focus:outline-none focus:border-primary/50 transition-all" />
-                                    </div>
+                            <div className="space-y-2 group">
+                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 ml-2 group-focus-within:text-primary transition-colors">Transaction ID</label>
+                                <div className="relative">
+                                    <CreditCard className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-primary/50 group-focus-within:text-primary transition-colors" />
+                                    <input required name="transactionId" type="text" placeholder="TID / UTR Number" className="w-full pl-12 sm:pl-14 pr-4 sm:pr-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all" />
                                 </div>
                             </div>
                         </div>
 
-                        <button
+                        {/* Payment QR Section */}
+                        <div className="p-6 rounded-[2rem] bg-white/5 border border-white/10 text-center space-y-4 hover:bg-white/10 transition-colors duration-500 group">
+                            <h3 className="text-xs font-black text-white uppercase tracking-widest flex items-center justify-center gap-2">
+                                <Sparkles className="w-3 h-3 text-secondary animate-pulse" />
+                                Payment QR Code
+                            </h3>
+                            <div className="relative w-48 h-48 mx-auto bg-white rounded-2xl p-3 shadow-[0_0_20px_rgba(255,255,255,0.1)] group-hover:scale-105 transition-transform duration-500">
+                                <Image
+                                    src="/qr-code.png"
+                                    alt="Payment QR Code"
+                                    fill
+                                    className="object-contain p-2"
+                                />
+                            </div>
+                            <p className="text-[10px] text-white/40 font-mono">geetauniversity.62417837@hdfcbank</p>
+                        </div>
+
+                        <motion.button
                             disabled={status === "loading"}
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
                             type="submit"
-                            className="w-full py-5 rounded-[2rem] bg-gradient-to-r from-[#fdb813] via-[#f15a24] to-[#8b5cf6] text-white font-black text-sm uppercase tracking-[0.3em] hover:shadow-[0_0_30px_rgba(139,92,246,0.5)] transition-all duration-500 flex items-center justify-center gap-3 disabled:opacity-50 group/btn"
+                            className="w-full py-4 md:py-5 rounded-[2rem] bg-gradient-to-r from-secondary via-primary to-purple-600 text-white font-black text-xs md:text-sm uppercase tracking-widest shadow-xl hover:shadow-[0_0_40px_rgba(241,90,36,0.4)] transition-all flex items-center justify-center gap-3 disabled:opacity-50 relative overflow-hidden group/btn"
                         >
+                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-150%] animate-[shimmer_4s_infinite]" />
                             {status === "loading" ? (
-                                <Loader2 className="w-6 h-6 animate-spin" />
+                                <Loader2 className="w-5 h-5 animate-spin" />
                             ) : (
                                 <>
-                                    <span>Register & Join Fest</span>
-                                    <CheckCircle2 className="w-6 h-6 group-hover:scale-110 transition-transform" />
+                                    <span className="relative z-10">Register & Join Fest</span>
+                                    <CheckCircle2 className="w-5 h-5 relative z-10 group-hover/btn:scale-110 transition-transform" />
                                 </>
                             )}
-                        </button>
+                        </motion.button>
 
                         <AnimatePresence>
                             {status === "success" && (
-                                <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} className="p-4 rounded-2xl bg-green-500/10 border border-green-500/20 text-green-400 text-sm font-bold flex items-center gap-3">
-                                    <CheckCircle2 className="w-5 h-5" />
-                                    {message}
+                                <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="p-4 rounded-2xl bg-green-500/10 border border-green-500/20 text-green-400 text-xs font-bold text-center flex items-center justify-center gap-2">
+                                    <CheckCircle2 className="w-4 h-4" />
+                                    Registration submitted successfully!
                                 </motion.div>
                             )}
                             {status === "error" && (
-                                <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} className="p-4 rounded-2xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm font-bold flex items-center gap-3">
-                                    <AlertCircle className="w-5 h-5" />
-                                    {message}
+                                <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="p-4 rounded-2xl bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-bold text-center flex items-center justify-center gap-2">
+                                    <AlertCircle className="w-4 h-4" />
+                                    {message || "Submission failed. Please try again."}
                                 </motion.div>
                             )}
                         </AnimatePresence>

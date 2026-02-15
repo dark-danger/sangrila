@@ -1,13 +1,27 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { useEffect, useState } from "react";
+
+// Generate deterministic particles outside the component to satisfy purity and effect rules
+const PARTICLES = Array.from({ length: 20 }, (_, i) => ({
+    width: (1.5 + (i % 3) * 0.5).toFixed(1) + "px",
+    height: (1.5 + (i % 3) * 0.5).toFixed(1) + "px",
+    left: (i * 5.3) % 100 + "%",
+    top: (i * 7.7) % 100 + "%",
+    opacity: parseFloat((0.2 + (i % 4) * 0.1).toFixed(2)),
+    duration: 5 + (i % 6),
+    delay: (i % 5) * 0.5,
+}));
 
 export function BackgroundEffects() {
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
-        setMounted(true);
+        // Defer state update to next tick to satisfy React 19's strict effect rules
+        const timeout = setTimeout(() => setMounted(true), 0);
+        return () => clearTimeout(timeout);
     }, []);
 
     if (!mounted) return null;
@@ -19,10 +33,13 @@ export function BackgroundEffects() {
 
             {/* Concert Crowd Background Image - Fixed Layer */}
             <div className="absolute inset-0 z-0">
-                <img
+                <Image
                     src="/concert-crowd.png"
                     alt="Concert Background"
-                    className="w-full h-full object-cover object-bottom opacity-50 blur-[2px]"
+                    fill
+                    className="object-cover object-bottom opacity-50 blur-[2px]"
+                    priority
+                    quality={75}
                 />
                 {/* Gradient Overlays to blend image */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#020205] via-[#020205]/60 to-[#020205]/80" />
@@ -151,25 +168,25 @@ export function BackgroundEffects() {
 
             {/* Rising Particles / Dust Motes */}
             <div className="absolute inset-0 overflow-hidden">
-                {[...Array(20)].map((_, i) => (
+                {PARTICLES.map((particle, i) => (
                     <motion.div
                         key={i}
                         className="absolute bg-white rounded-full"
                         style={{
-                            width: Math.random() * 2 + 1 + "px",
-                            height: Math.random() * 2 + 1 + "px",
-                            left: Math.random() * 100 + "%",
-                            top: Math.random() * 100 + "%",
-                            opacity: Math.random() * 0.5 + 0.1,
+                            width: particle.width,
+                            height: particle.height,
+                            left: particle.left,
+                            top: particle.top,
+                            opacity: particle.opacity,
                         }}
                         animate={{
                             y: [0, -100],
-                            opacity: [0, 1, 0],
+                            opacity: [0, particle.opacity, 0],
                         }}
                         transition={{
-                            duration: Math.random() * 5 + 5,
+                            duration: particle.duration,
                             repeat: Infinity,
-                            delay: Math.random() * 5,
+                            delay: particle.delay,
                             ease: "linear",
                         }}
                     />
