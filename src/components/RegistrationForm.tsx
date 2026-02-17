@@ -63,9 +63,9 @@ export function RegistrationForm() {
                         <motion.h2
                             initial={{ opacity: 0, scale: 0.9 }}
                             whileInView={{ opacity: 1, scale: 1 }}
-                            className="text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tighter uppercase mb-4"
+                            className="text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tighter uppercase mb-4 hover:text-primary transition-colors duration-300 cursor-default"
                         >
-                            SANGRILA 2K26 - <span className="text-primary italic">REGISTRATION</span>
+                            SANGRILA 2K26 - <span className="text-primary italic hover:text-white transition-colors duration-300">REGISTRATION</span>
                         </motion.h2>
                         <div className="space-y-4 text-muted-foreground font-medium max-w-3xl mx-auto text-xs sm:text-sm leading-relaxed">
                             <p className="text-white text-sm sm:text-base font-bold">Participate in the ultimate celebration of talent! 🎭✨</p>

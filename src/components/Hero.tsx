@@ -67,7 +67,13 @@ export function Hero() {
                                                 transition: { type: "spring", stiffness: 300, damping: 15 }
                                             }
                                         }}
-                                        className="text-5xl sm:text-7xl md:text-8xl lg:text-[12rem] font-black tracking-tighter text-white leading-none uppercase drop-shadow-[0_0_30px_rgba(241,90,36,0.2)] hover:text-primary transition-colors cursor-default"
+                                        whileHover={{
+                                            scale: 1.05,
+                                            color: "#f15a24",
+                                            textShadow: "0 0 30px rgba(241,90,36,0.8)",
+                                            transition: { duration: 0.2 }
+                                        }}
+                                        className="text-5xl sm:text-7xl md:text-8xl lg:text-[12rem] font-black tracking-tighter text-white leading-none uppercase drop-shadow-[0_0_30px_rgba(241,90,36,0.2)] transition-all cursor-default"
                                     >
                                         {char}
                                     </motion.h1>
@@ -99,7 +105,13 @@ export function Hero() {
                                                 transition: { type: "spring", stiffness: 300, damping: 15 }
                                             }
                                         }}
-                                        className="text-primary text-3xl sm:text-5xl md:text-7xl lg:text-[10rem] italic font-black drop-shadow-[0_0_20px_rgba(253,184,19,0.3)] hover:text-white transition-colors cursor-default"
+                                        whileHover={{
+                                            scale: 1.05,
+                                            color: "#ffffff",
+                                            textShadow: "0 0 30px rgba(255,255,255,0.8)",
+                                            transition: { duration: 0.2 }
+                                        }}
+                                        className="text-primary text-3xl sm:text-5xl md:text-7xl lg:text-[10rem] italic font-black drop-shadow-[0_0_20px_rgba(253,184,19,0.3)] transition-all cursor-default"
                                     >
                                         {char}
                                     </motion.h2>
