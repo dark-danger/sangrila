@@ -68,10 +68,11 @@ export function Hero() {
                                             }
                                         }}
                                         whileHover={{
-                                            scale: 1.05,
+                                            scale: 1.1,
                                             color: "#f15a24",
-                                            textShadow: "0 0 30px rgba(241,90,36,0.8)",
-                                            transition: { duration: 0.2 }
+                                            textShadow: "0 0 20px #f15a24, 0 0 40px #8b5cf6, 0 0 60px #fdb813",
+                                            rotate: [0, -5, 5, 0],
+                                            transition: { duration: 0.3 }
                                         }}
                                         className="text-5xl sm:text-7xl md:text-8xl lg:text-[12rem] font-black tracking-tighter text-white leading-none uppercase drop-shadow-[0_0_30px_rgba(241,90,36,0.2)] transition-all cursor-default"
                                     >
@@ -106,10 +107,11 @@ export function Hero() {
                                             }
                                         }}
                                         whileHover={{
-                                            scale: 1.05,
+                                            scale: 1.15,
                                             color: "#ffffff",
-                                            textShadow: "0 0 30px rgba(255,255,255,0.8)",
-                                            transition: { duration: 0.2 }
+                                            textShadow: "0 0 20px #ffffff, 0 0 40px #f15a24, 0 0 60px #8b5cf6",
+                                            rotate: [0, 10, -10, 0],
+                                            transition: { duration: 0.3 }
                                         }}
                                         className="text-primary text-3xl sm:text-5xl md:text-7xl lg:text-[10rem] italic font-black drop-shadow-[0_0_20px_rgba(253,184,19,0.3)] transition-all cursor-default"
                                     >
