@@ -22,7 +22,7 @@ export function ContactSection() {
                             <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center shadow-lg shadow-primary/30">
                                 <Globe className="w-6 h-6 text-white" />
                             </div>
-                            <span className="text-[10px] font-black tracking-[0.4em] text-primary uppercase glow-primary hover:text-white transition-all duration-300 hover:drop-shadow-[0_0_15px_rgba(241,90,36,0.6)] cursor-default">Sangrila 2k26</span>
+                            <span className="text-[10px] font-black tracking-[0.4em] text-primary uppercase glow-primary transition-all duration-300 hover:drop-shadow-[0_0_15px_rgba(241,90,36,0.6)] cursor-default">Sangrila 2k26</span>
                         </div>
                         <motion.h2
                             initial={{ opacity: 0, y: 30, letterSpacing: "-0.05em" }}
@@ -129,7 +129,7 @@ export function ContactSection() {
 
             <div className="max-w-7xl mx-auto mt-24 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
                 <div className="flex items-center gap-4 group/footer">
-                    <span className="text-xl font-black text-white tracking-tighter uppercase leading-none group-hover/footer:text-primary transition-all duration-300 group-hover/footer:drop-shadow-[0_4px_12px_rgba(241,90,36,0.6)] group-hover/footer:scale-[1.03] cursor-default">SANGRILA <span className="text-primary italic group-hover/footer:text-white transition-all duration-300">2K26</span></span>
+                    <span className="text-xl font-black text-white tracking-tighter uppercase leading-none transition-all duration-300 group-hover/footer:drop-shadow-[0_0_15px_rgba(255,255,255,0.8)] group-hover/footer:scale-[1.03] cursor-default">SANGRILA <span className="text-primary italic transition-all duration-300 group-hover/footer:drop-shadow-[0_0_15px_rgba(241,90,36,0.8)]">2K26</span></span>
                 </div>
                 <p className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">
                     © 2026 GEETA UNIVERSITY CULTURAL FEST. ALL RIGHTS RESERVED.

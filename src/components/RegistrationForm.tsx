@@ -66,8 +66,7 @@ export function RegistrationForm() {
                             whileHover={{ y: -5, scale: 1.02 }}
                             className="text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tighter uppercase mb-4 transition-all duration-300 group-hover:drop-shadow-[0_10px_30px_rgba(241,90,36,0.2)] cursor-default relative group/reg"
                         >
-                            <span className="hover:text-primary transition-all duration-300 hover:drop-shadow-[0_0_15px_rgba(241,90,36,0.6)]">SANGRILA 2K26</span> - <span className="text-primary italic hover:text-white transition-all duration-300 hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.6)]">REGISTRATION</span>
-                            <div className="absolute -bottom-2 left-0 w-0 h-1 bg-gradient-to-r from-primary via-white to-primary group-hover/reg:w-full transition-all duration-700 rounded-full opacity-60 shadow-[0_0_10px_rgba(241,90,36,0.3)]" />
+                            <span className="transition-all duration-300 hover:drop-shadow-[0_0_20px_rgba(255,255,255,0.8)]">SANGRILA 2K26</span> - <span className="text-primary italic transition-all duration-300 hover:drop-shadow-[0_0_20px_rgba(241,90,36,0.8)]">REGISTRATION</span>
                         </motion.h2>
                         <div className="space-y-4 text-muted-foreground font-medium max-w-3xl mx-auto text-xs sm:text-sm leading-relaxed">
                             <p className="text-white text-sm sm:text-base font-bold">Participate in the ultimate celebration of talent! 🎭✨</p>
