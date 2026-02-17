@@ -74,19 +74,19 @@ export function Hero() {
                                             }
                                         }}
                                         whileHover={{
-                                            y: -15,
+                                            y: -12,
                                             scale: 1.05,
-                                            color: "#ff3d00",
-                                            textShadow: "0 20px 40px rgba(255, 61, 0, 0.4), 0 0 20px rgba(236, 72, 153, 0.3)",
+                                            color: "#f15a24",
+                                            textShadow: "0 0 15px rgba(241,90,36,0.5), 0 0 30px rgba(253,184,19,0.3), 0 0 45px rgba(241,90,36,0.2)",
                                             transition: { type: "spring", stiffness: 400, damping: 10 }
                                         }}
-                                        className="text-5xl sm:text-7xl md:text-8xl lg:text-[12rem] font-black tracking-tighter text-white leading-none uppercase drop-shadow-[0_0_30px_rgba(255, 61, 0, 0.15)] transition-all duration-300"
+                                        className="text-5xl sm:text-7xl md:text-8xl lg:text-[12rem] font-black tracking-tighter text-white leading-none uppercase drop-shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-all duration-300"
                                     >
                                         {char}
                                     </motion.h1>
                                 ))}
                                 {/* Premium Underline Overlay */}
-                                <div className="absolute bottom-0 left-0 w-0 h-1 md:h-2 bg-gradient-to-r from-[#ff3d00] via-[#ec4899] to-[#8b5cf6] group-hover/sangrila:w-full transition-all duration-700 ease-in-out rounded-full opacity-90 shadow-[0_0_15px_rgba(255,61,0,0.5)]" />
+                                <div className="absolute bottom-0 left-0 w-0 h-1 md:h-2 bg-gradient-to-r from-primary via-secondary to-primary group-hover/sangrila:w-full transition-all duration-700 ease-in-out rounded-full opacity-70 shadow-[0_0_10px_rgba(241,90,36,0.3)]" />
                             </motion.div>
 
                             {/* 2K26 Text */}
@@ -116,19 +116,19 @@ export function Hero() {
                                             }
                                         }}
                                         whileHover={{
-                                            y: -10,
+                                            y: -8,
                                             scale: 1.1,
-                                            color: "#00e5ff",
-                                            textShadow: "0 15px 30px rgba(0, 229, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.3)",
+                                            color: "#ffffff",
+                                            textShadow: "0 0 15px rgba(255,255,255,0.6), 0 0 30px rgba(241,90,36,0.4), 0 0 45px rgba(253,184,19,0.2)",
                                             transition: { type: "spring", stiffness: 400, damping: 10 }
                                         }}
-                                        className="text-primary text-3xl sm:text-5xl md:text-7xl lg:text-[10rem] italic font-black drop-shadow-[0_0_20px_rgba(0, 229, 255, 0.2)] transition-all duration-300"
+                                        className="text-primary text-3xl sm:text-5xl md:text-7xl lg:text-[10rem] italic font-black drop-shadow-[0_0_20px_rgba(241,90,36,0.2)] transition-all duration-300"
                                     >
                                         {char}
                                     </motion.h2>
                                 ))}
                                 {/* Secondary Underline */}
-                                <div className="absolute bottom-0 right-0 w-0 h-1 bg-gradient-to-l from-[#00e5ff] via-[#8b5cf6] to-transparent group-hover/year:w-full transition-all duration-700 ease-in-out rounded-full opacity-80 shadow-[0_0_10px_rgba(0,229,255,0.4)]" />
+                                <div className="absolute bottom-0 right-0 w-0 h-1 bg-gradient-to-l from-white via-primary to-transparent group-hover/year:w-full transition-all duration-700 ease-in-out rounded-full opacity-60" />
                             </motion.div>
                         </motion.div>
 
