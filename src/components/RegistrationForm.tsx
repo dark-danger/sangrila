@@ -63,10 +63,11 @@ export function RegistrationForm() {
                         <motion.h2
                             initial={{ opacity: 0, scale: 0.9 }}
                             whileInView={{ opacity: 1, scale: 1 }}
-                            whileHover={{ scale: 1.02 }}
-                            className="text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tighter uppercase mb-4 hover:text-primary transition-all duration-300 hover:drop-shadow-[0_0_15px_rgba(241,90,36,0.8),0_0_30px_rgba(253,184,19,0.4)] cursor-default"
+                            whileHover={{ y: -5, scale: 1.02 }}
+                            className="text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tighter uppercase mb-4 transition-all duration-300 group-hover:drop-shadow-[0_10px_30px_rgba(241,90,36,0.2)] cursor-default relative group/reg"
                         >
-                            SANGRILA 2K26 - <span className="text-primary italic hover:text-white transition-all duration-300 hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.8),0_0_30px_rgba(241,90,36,0.4)]">REGISTRATION</span>
+                            <span className="hover:text-primary transition-all duration-300 hover:drop-shadow-[0_0_15px_rgba(241,90,36,0.8)]">SANGRILA 2K26</span> - <span className="text-primary italic hover:text-white transition-all duration-300 hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.8)]">REGISTRATION</span>
+                            <div className="absolute -bottom-2 left-0 w-0 h-1 bg-gradient-to-r from-primary via-white to-primary group-hover/reg:w-full transition-all duration-700 rounded-full opacity-50" />
                         </motion.h2>
                         <div className="space-y-4 text-muted-foreground font-medium max-w-3xl mx-auto text-xs sm:text-sm leading-relaxed">
                             <p className="text-white text-sm sm:text-base font-bold">Participate in the ultimate celebration of talent! 🎭✨</p>

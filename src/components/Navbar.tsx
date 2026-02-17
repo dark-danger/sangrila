@@ -52,10 +52,10 @@ export function Navbar() {
                         />
                         <div className="flex flex-col justify-center leading-none relative 
                                         md:right-32 right-4">
-                            <span className="text-xl md:text-3xl lg:text-4xl font-black text-white tracking-tighter uppercase leading-none relative right-7 group-hover:text-primary transition-all duration-300 group-hover:drop-shadow-[0_0_15px_rgba(241,90,36,0.8),0_0_30px_rgba(139,92,246,0.4)]">
+                            <span className="text-xl md:text-3xl lg:text-4xl font-black text-white tracking-tighter uppercase leading-none relative right-7 group-hover:text-primary transition-all duration-300 group-hover:drop-shadow-[0_4px_12px_rgba(241,90,36,0.6),0_0_20px_rgba(139,92,246,0.3)] group-hover:-translate-y-0.5">
                                 SANGRILA
                             </span>
-                            <span className="text-[10px] md:text-sm text-primary font-black uppercase tracking-widest leading-none mt-1 relative right-7 group-hover:text-white transition-all duration-300 group-hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.8),0_0_30px_rgba(241,90,36,0.4)]">
+                            <span className="text-[10px] md:text-sm text-primary font-black uppercase tracking-widest leading-none mt-1 relative right-7 group-hover:text-white transition-all duration-300 group-hover:drop-shadow-[0_4px_10px_rgba(255,255,255,0.6),0_0_15px_rgba(241,90,36,0.3)] group-hover:translate-y-0.5">
                                 2K26
                             </span>
                         </div>

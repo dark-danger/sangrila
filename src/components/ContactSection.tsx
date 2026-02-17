@@ -128,8 +128,8 @@ export function ContactSection() {
             </div>
 
             <div className="max-w-7xl mx-auto mt-24 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-                <div className="flex items-center gap-4 group">
-                    <span className="text-xl font-black text-white tracking-tighter uppercase leading-none group-hover:text-primary transition-all duration-300 group-hover:drop-shadow-[0_0_15px_rgba(241,90,36,0.8),0_0_30px_rgba(139,92,246,0.4)] cursor-default">SANGRILA <span className="text-primary italic group-hover:text-white transition-all duration-300">2K26</span></span>
+                <div className="flex items-center gap-4 group/footer">
+                    <span className="text-xl font-black text-white tracking-tighter uppercase leading-none group-hover/footer:text-primary transition-all duration-300 group-hover/footer:drop-shadow-[0_4px_12px_rgba(241,90,36,0.5)] group-hover/footer:scale-[1.03] cursor-default">SANGRILA <span className="text-primary italic group-hover/footer:text-white transition-all duration-300">2K26</span></span>
                 </div>
                 <p className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">
                     © 2026 GEETA UNIVERSITY CULTURAL FEST. ALL RIGHTS RESERVED.

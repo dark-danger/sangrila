@@ -12,7 +12,7 @@ export function Hero() {
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
                     <motion.h1
                         initial={{ opacity: 0 }}
-                        animate={{ opacity: 0.1 }}
+                        animate={{ opacity: 0.2 }}
                         transition={{ duration: 1.5 }}
                         className="text-[18vw] font-black leading-none uppercase select-none tracking-tighter"
                         style={{
@@ -37,11 +37,17 @@ export function Hero() {
 
                     <div className="space-y-4">
                         <motion.div
-                            initial={{ opacity: 0, scale: 0.95 }}
+                            initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 1 }}
+                            transition={{
+                                type: "spring",
+                                stiffness: 200,
+                                damping: 15,
+                                duration: 1
+                            }}
                             className="flex flex-col items-center"
                         >
+                            {/* SANGRILA Text */}
                             <motion.div
                                 initial="hidden"
                                 animate="visible"
@@ -49,10 +55,10 @@ export function Hero() {
                                     hidden: { opacity: 0 },
                                     visible: {
                                         opacity: 1,
-                                        transition: { staggerChildren: 0.05, delayChildren: 0.2 }
+                                        transition: { staggerChildren: 0.08, delayChildren: 0.2 }
                                     }
                                 }}
-                                className="flex"
+                                className="flex relative group/sangrila cursor-default pb-4"
                             >
                                 {Array.from("SANGRILA").map((char, index) => (
                                     <motion.h1
@@ -68,19 +74,22 @@ export function Hero() {
                                             }
                                         }}
                                         whileHover={{
-                                            scale: 1.1,
+                                            y: -15,
+                                            scale: 1.05,
                                             color: "#f15a24",
-                                            textShadow: "0 0 20px #f15a24, 0 0 40px #8b5cf6, 0 0 60px #fdb813",
-                                            rotate: [0, -5, 5, 0],
-                                            transition: { duration: 0.3 }
+                                            textShadow: "0 20px 40px rgba(241,90,36,0.5), 0 0 20px rgba(139,92,246,0.3)",
+                                            transition: { type: "spring", stiffness: 400, damping: 10 }
                                         }}
-                                        className="text-5xl sm:text-7xl md:text-8xl lg:text-[12rem] font-black tracking-tighter text-white leading-none uppercase drop-shadow-[0_0_30px_rgba(241,90,36,0.2)] transition-all cursor-default"
+                                        className="text-5xl sm:text-7xl md:text-8xl lg:text-[12rem] font-black tracking-tighter text-white leading-none uppercase drop-shadow-[0_0_30px_rgba(241,90,36,0.1)] transition-all duration-300"
                                     >
                                         {char}
                                     </motion.h1>
                                 ))}
+                                {/* Premium Underline Overlay */}
+                                <div className="absolute bottom-0 left-0 w-0 h-1 md:h-2 bg-gradient-to-r from-primary via-purple-500 to-secondary group-hover/sangrila:w-full transition-all duration-700 ease-in-out rounded-full opacity-80" />
                             </motion.div>
 
+                            {/* 2K26 Text */}
                             <motion.div
                                 initial="hidden"
                                 animate="visible"
@@ -88,10 +97,10 @@ export function Hero() {
                                     hidden: { opacity: 0 },
                                     visible: {
                                         opacity: 1,
-                                        transition: { staggerChildren: 0.05, delayChildren: 0.6 }
+                                        transition: { staggerChildren: 0.1, delayChildren: 0.8 }
                                     }
                                 }}
-                                className="flex mt-2"
+                                className="flex mt-2 relative group/year cursor-default pb-2"
                             >
                                 {Array.from("2K26").map((char, index) => (
                                     <motion.h2
@@ -107,64 +116,66 @@ export function Hero() {
                                             }
                                         }}
                                         whileHover={{
-                                            scale: 1.15,
+                                            y: -10,
+                                            scale: 1.1,
                                             color: "#ffffff",
-                                            textShadow: "0 0 20px #ffffff, 0 0 40px #f15a24, 0 0 60px #8b5cf6",
-                                            rotate: [0, 10, -10, 0],
-                                            transition: { duration: 0.3 }
+                                            textShadow: "0 15px 30px rgba(255,255,255,0.4), 0 0 20px rgba(241,90,36,0.3)",
+                                            transition: { type: "spring", stiffness: 400, damping: 10 }
                                         }}
-                                        className="text-primary text-3xl sm:text-5xl md:text-7xl lg:text-[10rem] italic font-black drop-shadow-[0_0_20px_rgba(253,184,19,0.3)] transition-all cursor-default"
+                                        className="text-primary text-3xl sm:text-5xl md:text-7xl lg:text-[10rem] italic font-black drop-shadow-[0_0_20px_rgba(253,184,19,0.2)] transition-all duration-300"
                                     >
                                         {char}
                                     </motion.h2>
                                 ))}
+                                {/* Secondary Underline */}
+                                <div className="absolute bottom-0 right-0 w-0 h-1 bg-gradient-to-l from-white via-primary to-transparent group-hover/year:w-full transition-all duration-700 ease-in-out rounded-full opacity-60" />
+                            </motion.div>
+                        </motion.div>
+
+                        {/* Action Buttons */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 1.2 }}
+                            className="flex flex-wrap items-center justify-center gap-3 md:gap-4 mt-8 md:mt-12"
+                        >
+                            <motion.div
+                                whileHover={{ y: -5, scale: 1.02 }}
+                                whileTap={{ scale: 0.95 }}
+                                animate={{ scale: [1, 1.02, 1] }}
+                                transition={{
+                                    scale: { duration: 3, repeat: Infinity, ease: "easeInOut" }
+                                }}
+                            >
+                                <Link
+                                    href="/#register"
+                                    className="px-8 sm:px-10 py-4 sm:py-5 bg-gradient-to-r from-secondary via-primary to-purple-600 text-white font-black rounded-full shadow-[0_10px_40px_rgba(241,90,36,0.4)] hover:shadow-[0_15px_50px_rgba(241,90,36,0.6)] transition-all text-base sm:text-xl border border-white/20 flex items-center justify-center gap-2 relative overflow-hidden group"
+                                >
+                                    <Sparkles className="w-5 h-5 group-hover:animate-bounce" />
+                                    <span className="relative z-10 uppercase tracking-widest">Register Now</span>
+                                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-1000" />
+                                </Link>
                             </motion.div>
 
-                            {/* Action Buttons */}
                             <motion.div
-                                initial={{ opacity: 0, y: 10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.8, delay: 0.5 }}
-                                className="flex flex-wrap items-center justify-center gap-3 md:gap-4 mt-8 md:mt-12"
+                                whileHover={{ y: -5, scale: 1.02 }}
+                                whileTap={{ scale: 0.95 }}
+                                transition={{ type: "spring", stiffness: 400, damping: 10 }}
                             >
-                                <motion.div
-                                    whileHover={{ y: -5, scale: 1.02 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    animate={{ scale: [1, 1.02, 1] }}
-                                    transition={{
-                                        scale: { duration: 3, repeat: Infinity, ease: "easeInOut" }
-                                    }}
+                                <Link
+                                    href="/events"
+                                    className="px-8 sm:px-10 py-4 sm:py-5 bg-white/5 text-white border border-white/10 font-black rounded-full hover:bg-white/10 transition-all text-base sm:text-xl backdrop-blur-md flex items-center justify-center group gap-2"
                                 >
-                                    <Link
-                                        href="/#register"
-                                        className="px-8 sm:px-10 py-4 sm:py-5 bg-gradient-to-r from-secondary via-primary to-purple-600 text-white font-black rounded-full shadow-[0_10px_40px_rgba(241,90,36,0.4)] hover:shadow-[0_15px_50px_rgba(241,90,36,0.6)] transition-all text-base sm:text-xl border border-white/20 flex items-center justify-center gap-2 relative overflow-hidden group"
-                                    >
-                                        <Sparkles className="w-5 h-5 group-hover:animate-bounce" />
-                                        <span className="relative z-10 uppercase tracking-widest">Register Now</span>
-                                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-1000" />
-                                    </Link>
-                                </motion.div>
-
-                                <motion.div
-                                    whileHover={{ y: -5, scale: 1.02 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                                >
-                                    <Link
-                                        href="/events"
-                                        className="px-8 sm:px-10 py-4 sm:py-5 bg-white/5 text-white border border-white/10 font-black rounded-full hover:bg-white/10 transition-all text-base sm:text-xl backdrop-blur-md flex items-center justify-center group gap-2"
-                                    >
-                                        <span className="uppercase tracking-widest">View All Events</span>
-                                        <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
-                                    </Link>
-                                </motion.div>
+                                    <span className="uppercase tracking-widest">View All Events</span>
+                                    <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
+                                </Link>
                             </motion.div>
                         </motion.div>
 
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
-                            transition={{ duration: 1, delay: 0.8 }}
+                            transition={{ duration: 1, delay: 1.5 }}
                             className="relative space-y-6 pt-12"
                         >
                             <h3 className="text-2xl sm:text-3xl md:text-5xl font-black tracking-[0.1em] md:tracking-[0.2em] uppercase relative">
