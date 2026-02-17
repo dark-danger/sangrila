@@ -5,6 +5,7 @@ export type TeamMember = {
     image: string;
     instagram?: string;
     linkedin?: string;
+    rotate?: boolean; // For fixing sideways photos
 };
 
 export const teamMembers: TeamMember[] = [
@@ -62,6 +63,7 @@ export const teamMembers: TeamMember[] = [
         name: "Sneha Arya",
         role: "Sponsorship Head",
         image: "/team/sneha.jpeg",
+        rotate: true,
     },
     {
         id: "10",

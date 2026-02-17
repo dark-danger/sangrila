@@ -59,7 +59,7 @@ export function TeamSection() {
                             </div>
 
                             {/* Image Container */}
-                            <div className="relative aspect-[3/4] w-full overflow-hidden">
+                            <div className="relative w-full h-[380px] md:h-[450px] overflow-hidden">
                                 {/* Gradient Overlay */}
                                 <div className="absolute inset-0 bg-gradient-to-t from-[#05060f] via-transparent to-transparent z-10 opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
 
@@ -68,7 +68,7 @@ export function TeamSection() {
                                     src={member.image}
                                     alt={member.name}
                                     fill
-                                    className="object-cover object-top transition-transform duration-700 group-hover:scale-110"
+                                    className={`object-cover object-top transition-transform duration-700 group-hover:scale-110 ${member.rotate ? "rotate-90 scale-150 group-hover:scale-[1.65]" : ""}`}
                                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                                     priority={parseInt(member.id) <= 3}
                                 />
