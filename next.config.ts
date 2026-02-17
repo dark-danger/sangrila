@@ -10,13 +10,15 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
     ],
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    minimumCacheTTL: 60,
+    deviceSizes: [640, 750, 828, 1080], // Reduced device sizes to save processing time
+    imageSizes: [16, 32, 48, 64, 96, 128, 256],
+    minimumCacheTTL: 3600,
     dangerouslyAllowSVG: true,
     contentDispositionType: 'inline',
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox; img-src 'self' data: https://images.unsplash.com;",
   },
+  compress: true,
+  poweredByHeader: false,
 };
 
 export default nextConfig;

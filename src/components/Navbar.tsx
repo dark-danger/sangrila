@@ -49,6 +49,7 @@ export function Navbar() {
                                        md:top-[22px] md:right-16 
                                        top-[10px] right-2"
                             priority
+                            quality={50}
                         />
                         <div className="flex flex-col justify-center leading-none relative 
                                         md:right-32 right-4">

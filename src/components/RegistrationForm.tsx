@@ -157,6 +157,7 @@ export function RegistrationForm() {
                                     alt="Payment QR Code"
                                     fill
                                     className="object-contain p-2"
+                                    quality={50}
                                 />
                             </div>
                             <p className="text-[10px] text-white/40 font-mono">geetauniversity.62417837@hdfcbank</p>
