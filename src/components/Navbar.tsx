@@ -56,7 +56,7 @@ export function Navbar() {
                                 SANGRILA
                             </span>
                             <span className="text-[10px] md:text-sm text-primary font-black uppercase tracking-widest leading-none mt-1 relative right-7">
-                                2K26
+                                2K25
                             </span>
                         </div>
                     </Link>
