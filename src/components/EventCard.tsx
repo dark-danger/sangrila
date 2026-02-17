@@ -32,7 +32,7 @@ export function EventCard({ event }: { event: Event }) {
             className="group relative bg-[#11121d]/80 backdrop-blur-2xl p-4 rounded-[2.5rem] border border-white/5 hover:border-primary/40 transition-all duration-500 shadow-2xl overflow-hidden h-full flex flex-col"
         >
             {/* Image Container */}
-            <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden mb-6">
+            <div className="relative aspect-[3/4] rounded-[2rem] overflow-hidden mb-6">
                 {/* Event Image or Placeholder */}
                 {event.image ? (
                     <Image
