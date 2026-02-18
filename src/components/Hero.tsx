@@ -55,7 +55,7 @@ export function Hero() {
                                     hidden: { opacity: 0 },
                                     visible: {
                                         opacity: 1,
-                                        transition: { staggerChildren: 0.08, delayChildren: 0.2 }
+                                        transition: { staggerChildren: 0.05, delayChildren: 0.1 }
                                     }
                                 }}
                                 className="flex relative group/sangrila cursor-default pb-4"
@@ -64,22 +64,23 @@ export function Hero() {
                                     <motion.h1
                                         key={index}
                                         variants={{
-                                            hidden: { opacity: 0, scale: 0, y: 50, rotate: -20 },
+                                            hidden: { opacity: 0, scale: 0, y: 30, rotate: -10 },
                                             visible: {
                                                 opacity: 1,
                                                 scale: 1,
                                                 y: 0,
                                                 rotate: 0,
-                                                transition: { type: "spring", stiffness: 300, damping: 15 }
+                                                transition: { type: "spring", stiffness: 400, damping: 15 }
                                             }
                                         }}
                                         whileHover={{
-                                            y: -12,
-                                            scale: 1.05,
-                                            textShadow: "0 0 20px rgba(255,255,255,0.6), 0 0 40px rgba(241,90,36,0.3)",
-                                            transition: { type: "spring", stiffness: 400, damping: 10 }
+                                            y: -20,
+                                            scale: 1.15,
+                                            rotate: -2,
+                                            textShadow: "0 0 30px rgba(255,255,255,0.8), 0 0 60px rgba(241,90,36,0.4)",
+                                            transition: { type: "spring", stiffness: 600, damping: 12 }
                                         }}
-                                        className="text-5xl sm:text-7xl md:text-8xl lg:text-[12rem] font-black tracking-tighter text-white leading-none uppercase drop-shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-all duration-300"
+                                        className="text-5xl sm:text-7xl md:text-8xl lg:text-[12rem] font-black tracking-tighter text-white leading-none uppercase drop-shadow-[0_0_20px_rgba(255,255,255,0.1)]"
                                     >
                                         {char}
                                     </motion.h1>
@@ -94,7 +95,7 @@ export function Hero() {
                                     hidden: { opacity: 0 },
                                     visible: {
                                         opacity: 1,
-                                        transition: { staggerChildren: 0.1, delayChildren: 0.8 }
+                                        transition: { staggerChildren: 0.05, delayChildren: 0.1 }
                                     }
                                 }}
                                 className="flex mt-2 relative cursor-default pb-2"
@@ -103,22 +104,23 @@ export function Hero() {
                                     <motion.h2
                                         key={index}
                                         variants={{
-                                            hidden: { opacity: 0, scale: 0, y: 50, rotate: 20 },
+                                            hidden: { opacity: 0, scale: 0, y: 30, rotate: 10 },
                                             visible: {
                                                 opacity: 1,
                                                 scale: 1,
                                                 y: 0,
                                                 rotate: 0,
-                                                transition: { type: "spring", stiffness: 300, damping: 15 }
+                                                transition: { type: "spring", stiffness: 400, damping: 15 }
                                             }
                                         }}
                                         whileHover={{
-                                            y: -8,
-                                            scale: 1.1,
-                                            textShadow: "0 0 20px rgba(241,90,36,0.8), 0 0 40px rgba(253,184,19,0.4)",
-                                            transition: { type: "spring", stiffness: 400, damping: 10 }
+                                            y: -15,
+                                            scale: 1.2,
+                                            rotate: 2,
+                                            textShadow: "0 0 30px rgba(255,255,255,0.8), 0 0 60px rgba(241,90,36,0.4)",
+                                            transition: { type: "spring", stiffness: 600, damping: 12 }
                                         }}
-                                        className="text-primary text-3xl sm:text-5xl md:text-7xl lg:text-[10rem] italic font-black drop-shadow-[0_0_20px_rgba(241,90,36,0.2)] transition-all duration-300"
+                                        className="text-primary text-3xl sm:text-5xl md:text-7xl lg:text-[10rem] italic font-black drop-shadow-[0_0_20px_rgba(241,90,36,0.2)]"
                                     >
                                         {char}
                                     </motion.h2>

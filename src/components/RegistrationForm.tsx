@@ -10,7 +10,6 @@ import { events } from "@/data/events";
 export function RegistrationForm() {
     const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
     const [message, setMessage] = useState("");
-    const [isTeamEvent, setIsTeamEvent] = useState(false);
 
     // REPLACE THIS URL with your Google Apps Script Web App URL after deployment
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzhVYKQqBOiWTUyDOgX0o4wsczNftDc-iPopL-7J9DQgZzIjFf38ncsyASPDiiRHh2VMg/exec";
@@ -125,10 +124,6 @@ export function RegistrationForm() {
                                         required
                                         name="event"
                                         defaultValue=""
-                                        onChange={(e) => {
-                                            const selectedEvent = events.find(event => event.name === e.target.value);
-                                            setIsTeamEvent(selectedEvent?.participants?.includes("-") || (selectedEvent?.participants ? parseInt(selectedEvent.participants) > 1 : false));
-                                        }}
                                         className="w-full pl-12 sm:pl-14 pr-10 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-[#0a0b14] border border-white/10 text-white text-sm focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all appearance-none cursor-pointer"
                                     >
                                         <option value="" disabled>Select an Event</option>

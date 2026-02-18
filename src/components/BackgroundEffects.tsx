@@ -17,11 +17,22 @@ const PARTICLES = Array.from({ length: 20 }, (_, i) => ({
 
 export function BackgroundEffects() {
     const [mounted, setMounted] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
-        // Defer state update to next tick to satisfy React 19's strict effect rules
-        const timeout = setTimeout(() => setMounted(true), 0);
-        return () => clearTimeout(timeout);
+        // Defer state update to next tick to satisfy React strict effect rules
+        const timer = setTimeout(() => setMounted(true), 0);
+
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+
+        return () => {
+            clearTimeout(timer);
+            window.removeEventListener('resize', checkMobile);
+        };
     }, []);
 
     if (!mounted) return null;
@@ -168,7 +179,7 @@ export function BackgroundEffects() {
 
             {/* Rising Particles / Dust Motes */}
             <div className="absolute inset-0 overflow-hidden">
-                {PARTICLES.map((particle, i) => (
+                {(isMobile ? PARTICLES.slice(0, 8) : PARTICLES).map((particle, i) => (
                     <motion.div
                         key={i}
                         className="absolute bg-white rounded-full"
