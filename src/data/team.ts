@@ -6,6 +6,7 @@ export type TeamMember = {
     instagram?: string;
     linkedin?: string;
     rotate?: boolean; // For fixing sideways photos
+    objectPosition?: string; // For centering faces
 };
 
 export const teamMembers: TeamMember[] = [
@@ -14,49 +15,56 @@ export const teamMembers: TeamMember[] = [
         name: "Yash Khanna",
         role: "President",
         image: "/team/yash-khanna.jpeg",
+        objectPosition: "center 15%",
     },
     {
         id: "2",
         name: "Himanshu Gahalyan",
         role: "Festival Coordinator",
         image: "/team/himanshu.jpeg",
-
+        objectPosition: "center 20%",
     },
     {
         id: "3",
         name: "Aaditya Gupta",
         role: "Vice President",
         image: "/team/aaditya-gupta.jpg",
+        objectPosition: "center 20%",
     },
     {
         id: "4",
         name: "Gurpreet",
         role: "Event Management Head",
         image: "/team/gurpreet.jpg",
+        objectPosition: "center 15%",
     },
     {
         id: "5",
         name: "Aanchal Goswami",
         role: "Creative Director",
-        image: "/team/aanchal.jpg",
+        image: "/team/aanchal.png",
+        objectPosition: "center 20%",
     },
     {
         id: "6",
         name: "Alisha Bhalla",
         role: "Technical Head",
         image: "/team/alisha.jpeg",
+        objectPosition: "center 20%",
     },
     {
         id: "7",
         name: "Karishma Khurana",
         role: "Public Relations",
         image: "/team/karishma.jpeg",
+        objectPosition: "center 25%",
     },
     {
         id: "8",
         name: "Preeti Verma",
         role: "Logistics Head",
         image: "/team/preeti.jpeg",
+        objectPosition: "center 20%",
     },
     {
         id: "9",
@@ -64,11 +72,13 @@ export const teamMembers: TeamMember[] = [
         role: "Sponsorship Head",
         image: "/team/sneha.jpeg",
         rotate: true,
+        objectPosition: "50% 50%", // Keep centered since it's rotated
     },
     {
         id: "10",
         name: "Vanshika Ahlawat",
         role: "Security Head",
         image: "/team/vanshika.jpeg",
+        objectPosition: "center 20%",
     },
 ];
