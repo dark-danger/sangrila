@@ -29,7 +29,7 @@ export const events: Event[] = [
         participants: "1",
         timeLimit: "3 Mins",
         description: "Showcase your individual rhythm and grace.",
-        image: "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=600&q=50",
+        image: "/images/solo-dance.jpeg",
     },
     {
         id: "duet-dance",
@@ -39,7 +39,7 @@ export const events: Event[] = [
         participants: "2",
         timeLimit: "4 Mins",
         description: "A perfect sync of two souls in motion.",
-        image: "https://images.unsplash.com/photo-1547153760-18fc86324498?w=600&q=50",
+        image: "/images/duet-dance.jpeg",
     },
     {
         id: "group-dance",
@@ -49,7 +49,7 @@ export const events: Event[] = [
         participants: "5-10",
         timeLimit: "6 Mins",
         description: "Coordinate, synchronize, and mesmerize as a team.",
-        image: "https://images.unsplash.com/photo-1535525153412-5a42439a210d?w=600&q=50",
+        image: "/images/group-dance.jpeg",
     },
 
     // Singing (3)
@@ -61,7 +61,7 @@ export const events: Event[] = [
         participants: "1",
         timeLimit: "3 Mins",
         description: "Let your voice be heard.",
-        image: "https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=600&q=50",
+        image: "/images/solo-singing.jpeg",
     },
     {
         id: "duet-singing",
@@ -71,7 +71,7 @@ export const events: Event[] = [
         participants: "2",
         timeLimit: "4 Mins",
         description: "A harmonious vocal battle that captures every heart in the room.",
-        image: "https://images.unsplash.com/photo-1514525253361-b83f85df0f5c?w=600&q=50",
+        image: "/images/duet singing.jpeg",
     },
     {
         id: "group-singing",
@@ -81,7 +81,7 @@ export const events: Event[] = [
         participants: "5-10",
         timeLimit: "5 Mins",
         description: "Power in numbers. Experience the soul-stirring energy of a collective voice.",
-        image: "https://images.unsplash.com/photo-1543185377-b756fb601402?w=600&q=50",
+        image: "/images/group singing.jpeg",
     },
 
     // Fine Arts (9)
@@ -93,7 +93,7 @@ export const events: Event[] = [
         participants: "2",
         timeLimit: "1 Hour",
         description: "The ground becomes a vibrant tapestry of culture and traditional colors.",
-        image: "https://images.unsplash.com/photo-1596464716127-f2a82984de30?w=600&q=50",
+        image: "/images/rangoli-making.jpeg",
     },
     {
         id: "poster",
@@ -103,7 +103,7 @@ export const events: Event[] = [
         participants: "1",
         timeLimit: "1 Hour",
         description: "Convey a message through art.",
-        image: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600&q=50",
+        image: "/images/sketching .jpeg", // Fallback to sketching
     },
     {
         id: "mehendi",
@@ -113,7 +113,7 @@ export const events: Event[] = [
         participants: "1",
         timeLimit: "45 Mins",
         description: "Intricate henna designs that tell a story of tradition.",
-        image: "https://images.unsplash.com/photo-1610471242398-636603a11af4?w=600&q=50",
+        image: "/images/mehndi making.jpeg",
     },
     {
         id: "tattoo",
@@ -123,7 +123,7 @@ export const events: Event[] = [
         participants: "1",
         timeLimit: "30 Mins",
         description: "Temporary body art pieces that showcase your edgy side.",
-        image: "https://images.unsplash.com/photo-1590243677462-84149633333d?w=600&q=50",
+        image: "/images/tatoo making.jpeg",
     },
     {
         id: "face-painting",
@@ -133,7 +133,7 @@ export const events: Event[] = [
         participants: "2",
         timeLimit: "45 Mins",
         description: "Transform faces into vibrant living canvases of art.",
-        image: "https://images.unsplash.com/photo-1496293455970-f8581aae0e3c?w=600&q=50",
+        image: "/images/face painting.jpeg",
     },
     {
         id: "nail-art",
@@ -143,7 +143,7 @@ export const events: Event[] = [
         participants: "1",
         timeLimit: "30 Mins",
         description: "Miniature high-fashion masterpieces on every fingertip.",
-        image: "https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=600&q=50",
+        image: "/images/nail art.jpeg",
     },
     {
         id: "sketching",
@@ -153,7 +153,7 @@ export const events: Event[] = [
         participants: "1",
         timeLimit: "45 Mins",
         description: "Capture the essence of reality with your pencil strokes.",
-        image: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600&q=50",
+        image: "/images/sketching .jpeg",
     },
     {
         id: "best-out-of-waste",
@@ -163,7 +163,7 @@ export const events: Event[] = [
         participants: "2",
         timeLimit: "1 Hour",
         description: "Turn trash into treasure.",
-        image: "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=600&q=50",
+        image: "/images/best out of waste.jpeg",
     },
 
 
@@ -176,7 +176,7 @@ export const events: Event[] = [
         participants: "8-12",
         timeLimit: "10 Mins",
         description: "Walk the ramp with style and confidence.",
-        image: "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&q=50",
+        image: "/images/fashion show.jpeg",
     },
 
     // Life Skills (3)
@@ -188,7 +188,7 @@ export const events: Event[] = [
         participants: "1-2",
         timeLimit: "1 Min Video",
         description: "Cinematic storytelling meets viral energy. Be the next trendsetter.",
-        image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&q=50",
+        image: "/images/reel making .jpeg",
     },
     {
         id: "photography",
@@ -198,7 +198,7 @@ export const events: Event[] = [
         participants: "1",
         timeLimit: "Event Duration",
         description: "Freeze time through your lens.",
-        image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=600&q=50",
+        image: "/images/photography.jpeg",
     },
     {
         id: "one-min-film",
@@ -208,7 +208,7 @@ export const events: Event[] = [
         participants: "1-3",
         timeLimit: "1 Min Video",
         description: "Tell a compelling story in just 60 seconds.",
-        image: "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=600&q=50",
+        image: "/images/1-min-film.jpeg",
     },
 
     // Theatre (5)
@@ -220,7 +220,7 @@ export const events: Event[] = [
         participants: "6-12",
         timeLimit: "10 Mins",
         description: "Street play with a social message.",
-        image: "https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?w=600&q=50",
+        image: "/images/nukkad-natak.jpeg",
     },
     {
         id: "story-telling",
@@ -230,7 +230,7 @@ export const events: Event[] = [
         participants: "1",
         timeLimit: "5 Mins",
         description: "Narrate a compelling tale.",
-        image: "https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=600&q=50",
+        image: "/images/storytelling.jpeg",
     },
     {
         id: "monologue",
@@ -240,7 +240,7 @@ export const events: Event[] = [
         participants: "1",
         timeLimit: "4 Mins",
         description: "Command the stage with a powerful solo dramatic performance.",
-        image: "https://images.unsplash.com/photo-1460723235802-29bd9b3bb48a?w=600&q=50",
+        image: "/images/monoloue.jpeg",
     },
     {
         id: "poetry",
@@ -250,7 +250,7 @@ export const events: Event[] = [
         participants: "1",
         timeLimit: "4 Mins",
         description: "Express your original verses.",
-        image: "https://images.unsplash.com/photo-1519791883288-dc8bd696e667?w=600&q=50",
+        image: "/images/self made poetry.jpeg",
     },
     {
         id: "standup",
@@ -260,7 +260,7 @@ export const events: Event[] = [
         participants: "1",
         timeLimit: "5 Mins",
         description: "Mic check. Laughter check. Own the stage with your wit and humor.",
-        image: "https://images.unsplash.com/photo-1585699324551-f6c309eedee6?w=600&q=50",
+        image: "/images/stand up comedy.jpeg",
     },
 
     // Health (1)
@@ -272,6 +272,6 @@ export const events: Event[] = [
         participants: "2",
         timeLimit: "45 Mins",
         description: "Delicious dishes without the flame.",
-        image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&q=50",
+        image: "/images/fireless cooking.jpeg",
     },
 ];

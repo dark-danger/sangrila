@@ -28,13 +28,13 @@ export function TeamSection() {
                 <motion.div
                     initial="hidden"
                     whileInView="show"
-                    viewport={{ once: true, amount: 0.2 }}
+                    viewport={{ once: true, amount: 0.1 }}
                     variants={{
                         hidden: { opacity: 0 },
                         show: {
                             opacity: 1,
                             transition: {
-                                staggerChildren: 0.1
+                                staggerChildren: 0.05
                             }
                         }
                     }}
@@ -62,7 +62,7 @@ export function TeamSection() {
                             </div>
 
                             {/* Image Container */}
-                            <div className="relative w-full aspect-[4/5] sm:aspect-[3/4] md:h-[500px] overflow-hidden">
+                            <div className="relative w-full aspect-[4/5] overflow-hidden bg-white/5">
                                 {/* Gradient Overlay */}
                                 <div className="absolute inset-0 bg-gradient-to-t from-[#05060f] via-transparent to-transparent z-10 opacity-70 group-hover:opacity-40 transition-opacity duration-500" />
 
@@ -76,9 +76,9 @@ export function TeamSection() {
                                         objectPosition: member.objectPosition || "center",
                                         filter: "contrast(1.05) brightness(1.02)"
                                     }}
-                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                                     priority={member.id === "1" || member.id === "2"}
-                                    quality={95}
+                                    quality={80}
                                 />
 
                                 {/* Social Links */}

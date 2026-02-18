@@ -159,3 +159,12 @@ html {
       rgba(255, 255, 255, 0) 100%);
   transform: rotate(45deg);
 }
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

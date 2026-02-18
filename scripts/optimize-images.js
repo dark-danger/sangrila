@@ -13,26 +13,23 @@ const sharp = require('sharp');
 const fs = require('fs');
 const path = require('path');
 
-const teamDir = path.join(__dirname, '../public/team');
+const directories = [
+    path.join(__dirname, '../public/team'),
+    path.join(__dirname, '../public/images')
+];
 const maxWidth = 1200;
 const maxHeight = 1200;
 const quality = 85;
 
 console.log('🎨 Starting image optimization...\n');
 
-if (!fs.existsSync(teamDir)) {
-    console.error('❌ Error: public/team directory not found!');
-    process.exit(1);
-}
-
-const files = fs.readdirSync(teamDir);
 let optimizedCount = 0;
 let totalSizeBefore = 0;
 let totalSizeAfter = 0;
 
-async function optimizeImage(file) {
-    const inputPath = path.join(teamDir, file);
-    const tempPath = path.join(teamDir, file + '.tmp');
+async function optimizeImage(inputDir, file) {
+    const inputPath = path.join(inputDir, file);
+    const tempPath = path.join(inputDir, file + '.tmp');
 
     try {
         const statsBefore = fs.statSync(inputPath);
@@ -70,26 +67,39 @@ async function optimizeImage(file) {
 }
 
 async function optimizeAllImages() {
-    const imageFiles = files.filter(file =>
-        file.match(/\.(jpg|jpeg|png)$/i) && !file.includes('.tmp')
-    );
+    for (const dir of directories) {
+        if (!fs.existsSync(dir)) {
+            console.warn(`⚠️  Warning: ${dir} not found, skipping...`);
+            continue;
+        }
 
-    if (imageFiles.length === 0) {
-        console.log('⚠️  No images found to optimize.');
-        return;
+        const files = fs.readdirSync(dir);
+        const imageFiles = files.filter(file =>
+            file.match(/\.(jpg|jpeg|png)$/i) && !file.includes('.tmp')
+        );
+
+        if (imageFiles.length === 0) {
+            console.log(`ℹ️  No images found in ${path.basename(dir)}.`);
+            continue;
+        }
+
+        console.log(`📍 Optimizing images in: ${path.basename(dir)} (${imageFiles.length} files)`);
+
+        for (const file of imageFiles) {
+            await optimizeImage(dir, file);
+        }
     }
 
-    console.log(`Found ${imageFiles.length} images to optimize\n`);
-
-    for (const file of imageFiles) {
-        await optimizeImage(file);
+    if (optimizedCount === 0) {
+        console.log('⚠️  No images were optimized.');
+        return;
     }
 
     const totalReduction = ((totalSizeBefore - totalSizeAfter) / totalSizeBefore * 100).toFixed(1);
 
     console.log('━'.repeat(50));
     console.log('📊 Optimization Summary:');
-    console.log(`   Images optimized: ${optimizedCount}/${imageFiles.length}`);
+    console.log(`   Images optimized: ${optimizedCount}`);
     console.log(`   Total size before: ${(totalSizeBefore / 1024 / 1024).toFixed(2)}MB`);
     console.log(`   Total size after: ${(totalSizeAfter / 1024 / 1024).toFixed(2)}MB`);
     console.log(`   Total reduction: ${totalReduction}%`);

@@ -146,16 +146,16 @@ export function RegistrationForm() {
                                 <Sparkles className="w-3 h-3 text-secondary animate-pulse" />
                                 Payment QR Code
                             </h3>
-                            <div className="relative w-48 h-48 mx-auto bg-white rounded-2xl p-3 shadow-[0_0_20px_rgba(255,255,255,0.1)] group-hover:scale-105 transition-transform duration-500">
+                            <div className="relative w-48 h-48 mx-auto bg-white rounded-2xl p-3 shadow-[0_0_20px_rgba(255,255,255,0.1)] group-hover:scale-105 transition-transform duration-500 overflow-hidden">
                                 <Image
                                     src="/qr-code.png"
                                     alt="Payment QR Code"
                                     fill
                                     className="object-contain p-2"
-                                    quality={50}
+                                    quality={90}
                                 />
                             </div>
-                            <p className="text-[10px] text-white/40 font-mono">geetauniversity.62417837@hdfcbank</p>
+                            <p className="text-[10px] text-white/40 font-mono break-all">geetauniversity.62417837@hdfcbank</p>
                         </div>
 
                         <motion.button
