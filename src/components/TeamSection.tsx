@@ -51,7 +51,7 @@ export function TeamSection() {
                                 y: -10,
                                 transition: { duration: 0.3 }
                             }}
-                            className="group relative bg-[#11121d] rounded-[2rem] border border-white/10 hover:border-primary/50 transition-all duration-500 shadow-xl hover:shadow-[0_0_30px_rgba(139,92,246,0.2)] overflow-hidden flex flex-col"
+                            className="group relative bg-[#11121d] rounded-[2rem] border border-white/10 hover:border-primary/50 transition-all duration-500 shadow-xl hover:shadow-[0_0_30px_rgba(139,92,246,0.2)] overflow-hidden flex flex-col motion-gpu"
                         >
                             {/* Shine Effect */}
                             <div className="absolute inset-0 z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">

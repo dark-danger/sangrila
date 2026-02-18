@@ -94,12 +94,19 @@
   text-shadow: 0 0 15px rgba(241, 90, 36, 0.3);
 }
 
+/* Performance Optimization */
+.motion-gpu {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
 /* Reduced Animations - Removed Pulsing and Rotating */
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
   background-color: var(--background);
   color: var(--foreground);
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

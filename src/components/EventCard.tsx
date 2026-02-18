@@ -29,7 +29,7 @@ export function EventCard({ event }: { event: Event }) {
                 y: -15,
                 transition: { duration: 0.4 }
             }}
-            className="group relative bg-[#11121d] p-4 rounded-[2.5rem] border border-white/5 hover:border-primary/40 transition-all duration-500 shadow-2xl overflow-hidden h-full flex flex-col"
+            className="group relative bg-[#11121d] p-4 rounded-[2.5rem] border border-white/5 hover:border-primary/40 transition-all duration-500 shadow-2xl overflow-hidden h-full flex flex-col motion-gpu"
         >
             {/* Image Container */}
             <div className="relative w-full h-[320px] rounded-[2rem] overflow-hidden mb-6">

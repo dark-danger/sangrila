@@ -14,7 +14,7 @@ export function Hero() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 0.2 }}
                         transition={{ duration: 1.5 }}
-                        className="text-[18vw] font-black leading-none uppercase select-none tracking-tighter"
+                        className="text-[18vw] font-black leading-none uppercase select-none tracking-tighter motion-gpu"
                         style={{
                             WebkitTextStroke: '2px var(--primary)',
                             color: 'transparent',
@@ -75,12 +75,12 @@ export function Hero() {
                                         }}
                                         whileHover={{
                                             y: -20,
-                                            scale: 1.15,
-                                            rotate: -2,
-                                            textShadow: "0 0 30px rgba(255,255,255,0.8), 0 0 60px rgba(241,90,36,0.4)",
-                                            transition: { type: "spring", stiffness: 600, damping: 12 }
+                                            scale: 1.1,
+                                            rotate: -1,
+                                            textShadow: "0 0 20px rgba(255,255,255,0.6)",
+                                            transition: { type: "spring", stiffness: 400, damping: 20 }
                                         }}
-                                        className="text-5xl sm:text-7xl md:text-8xl lg:text-[12rem] font-black tracking-tighter text-white leading-none uppercase drop-shadow-[0_0_20px_rgba(255,255,255,0.1)]"
+                                        className="text-5xl sm:text-7xl md:text-8xl lg:text-[12rem] font-black tracking-tighter text-white leading-none uppercase drop-shadow-[0_0_20px_rgba(255,255,255,0.1)] motion-gpu"
                                     >
                                         {char}
                                     </motion.h1>
@@ -115,12 +115,12 @@ export function Hero() {
                                         }}
                                         whileHover={{
                                             y: -15,
-                                            scale: 1.2,
-                                            rotate: 2,
-                                            textShadow: "0 0 30px rgba(255,255,255,0.8), 0 0 60px rgba(241,90,36,0.4)",
-                                            transition: { type: "spring", stiffness: 600, damping: 12 }
+                                            scale: 1.15,
+                                            rotate: 1,
+                                            textShadow: "0 0 20px rgba(241,90,36,0.5)",
+                                            transition: { type: "spring", stiffness: 400, damping: 20 }
                                         }}
-                                        className="text-primary text-3xl sm:text-5xl md:text-7xl lg:text-[10rem] italic font-black drop-shadow-[0_0_20px_rgba(241,90,36,0.2)]"
+                                        className="text-primary text-3xl sm:text-5xl md:text-7xl lg:text-[10rem] italic font-black drop-shadow-[0_0_20px_rgba(241,90,36,0.2)] motion-gpu"
                                     >
                                         {char}
                                     </motion.h2>
