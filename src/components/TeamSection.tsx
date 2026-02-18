@@ -69,9 +69,9 @@ export function TeamSection() {
                                     alt={member.name}
                                     fill
                                     className={`object-cover object-top transition-transform duration-700 group-hover:scale-110 ${member.rotate ? "rotate-90 scale-150 group-hover:scale-[1.65]" : ""}`}
-                                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                    sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 30vw"
                                     priority={parseInt(member.id) <= 2}
-                                    quality={60}
+                                    quality={45}
                                 />
 
                                 {/* Social Links */}

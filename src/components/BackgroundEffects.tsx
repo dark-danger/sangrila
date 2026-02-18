@@ -50,7 +50,8 @@ export function BackgroundEffects() {
                     fill
                     className="object-cover object-bottom opacity-50 blur-[2px]"
                     priority
-                    quality={50}
+                    sizes="100vw"
+                    quality={30}
                 />
                 {/* Gradient Overlays to blend image */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#020205] via-[#020205]/60 to-[#020205]/80" />
