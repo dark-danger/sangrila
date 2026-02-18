@@ -7,7 +7,7 @@ import { teamMembers } from "@/data/team";
 
 export function TeamSection() {
     return (
-        <section id="team" className="py-24 px-6 relative z-10 glass mx-4 rounded-[3rem] mt-24 border-white/5">
+        <section id="team" className="py-24 px-6 relative z-10 bg-[#0a0b14] mx-4 rounded-[3rem] mt-24 border border-white/5">
             <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-16 space-y-4">
                     <motion.h2

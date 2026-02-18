@@ -7,7 +7,7 @@ import { ContactForm } from "./ContactForm";
 
 export function ContactSection() {
     return (
-        <footer id="contact" className="py-24 px-6 relative z-10 glass mx-4 rounded-[3rem] mt-24 border-white/5">
+        <footer id="contact" className="py-24 px-6 relative z-10 bg-[#0a0b14] mx-4 rounded-[3rem] mt-24 border border-white/5">
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
 
                 {/* Contact Info */}
@@ -52,7 +52,7 @@ export function ContactSection() {
                         <motion.div
                             variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0 } }}
                             whileHover={{ y: -8 }}
-                            className="group bg-[#11121d]/80 backdrop-blur-2xl p-6 rounded-[2rem] border border-white/5 hover:border-primary/40 transition-all duration-300 flex flex-col items-center text-center space-y-4"
+                            className="group bg-[#11121d] p-6 rounded-[2rem] border border-white/5 hover:border-primary/40 transition-all duration-300 flex flex-col items-center text-center space-y-4"
                         >
                             <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center border border-primary/20 group-hover:bg-primary transition-colors duration-300">
                                 <Mail className="w-6 h-6 text-primary group-hover:text-white" />
@@ -67,7 +67,7 @@ export function ContactSection() {
                         <motion.div
                             variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0 } }}
                             whileHover={{ y: -8 }}
-                            className="group bg-[#11121d]/80 backdrop-blur-2xl p-6 rounded-[2rem] border border-white/5 hover:border-primary/40 transition-all duration-300 flex flex-col items-center text-center space-y-4"
+                            className="group bg-[#11121d] p-6 rounded-[2rem] border border-white/5 hover:border-primary/40 transition-all duration-300 flex flex-col items-center text-center space-y-4"
                         >
                             <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center border border-primary/20 group-hover:bg-primary transition-colors duration-300">
                                 <Phone className="w-6 h-6 text-primary group-hover:text-white" />

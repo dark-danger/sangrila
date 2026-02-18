@@ -29,7 +29,7 @@ export function EventCard({ event }: { event: Event }) {
                 y: -15,
                 transition: { duration: 0.4 }
             }}
-            className="group relative bg-[#11121d]/80 backdrop-blur-2xl p-4 rounded-[2.5rem] border border-white/5 hover:border-primary/40 transition-all duration-500 shadow-2xl overflow-hidden h-full flex flex-col"
+            className="group relative bg-[#11121d] p-4 rounded-[2.5rem] border border-white/5 hover:border-primary/40 transition-all duration-500 shadow-2xl overflow-hidden h-full flex flex-col"
         >
             {/* Image Container */}
             <div className="relative w-full h-[320px] rounded-[2rem] overflow-hidden mb-6">
@@ -51,14 +51,14 @@ export function EventCard({ event }: { event: Event }) {
 
                 {/* Category Badge overlay */}
                 <div className="absolute top-4 left-4 z-20">
-                    <div className={`px-4 py-1.5 rounded-full ${colors.bg} ${colors.text} text-[10px] font-black uppercase tracking-[0.2em] backdrop-blur-xl border border-white/10 shadow-lg`}>
+                    <div className={`px-4 py-1.5 rounded-full ${colors.bg} ${colors.text} text-[10px] font-black uppercase tracking-[0.2em] bg-black/60 border border-white/10 shadow-lg`}>
                         <span className="mr-2">{colors.emoji}</span>
                         {event.category}
                     </div>
                 </div>
 
                 {/* Registration Overlay on Hover */}
-                <div className="absolute inset-0 bg-[#05060f]/70 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center gap-4 z-30">
+                <div className="absolute inset-0 bg-[#05060f]/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-4 z-30">
                     <motion.div
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
