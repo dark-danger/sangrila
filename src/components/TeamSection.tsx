@@ -68,10 +68,10 @@ export function TeamSection() {
                                     src={member.image}
                                     alt={member.name}
                                     fill
-                                    className={`object-cover object-top transition-transform duration-700 group-hover:scale-110 ${member.rotate ? "rotate-90 scale-150 group-hover:scale-[1.65]" : ""}`}
-                                    sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 30vw"
-                                    priority={parseInt(member.id) <= 2}
-                                    quality={45}
+                                    className={`object-cover transition-transform duration-700 group-hover:scale-110 ${member.rotate ? "rotate-90 scale-150 group-hover:scale-[1.65]" : ""}`}
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                    priority={member.id === "1"}
+                                    quality={75}
                                 />
 
                                 {/* Social Links */}
