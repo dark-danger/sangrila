@@ -9,34 +9,45 @@ export function ContactForm() {
     const [message, setMessage] = useState("");
 
     // REPLACE THIS URL with your Google Apps Script Web App URL after deployment
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzhVYKQqBOiWTUyDOgX0o4wsczNftDc-iPopL-7J9DQgZzIjFf38ncsyASPDiiRHh2VMg/exec";
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxIyNhLJ2mkQZxDf1fMCKG12EqFcgLvypkxzp-iawyOneGDHtYPr3ufsRjt1xMRfucHzQ/exec";
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        if (!SCRIPT_URL) {
+        if (!SCRIPT_URL || SCRIPT_URL.includes("REPLACE_THIS")) {
             setStatus("error");
-            setMessage("Please configure the Google Apps Script URL in the code.");
+            setMessage("Script URL not configured. Please check GOOGLE_SHEET_SETUP.md");
             return;
         }
 
         setStatus("loading");
-        const formData = new FormData(e.currentTarget);
+        const form = e.currentTarget;
+        const formData = new FormData(form);
 
         try {
-            const response = await fetch(SCRIPT_URL, {
-                method: "POST",
-                body: formData,
+            // Using URLSearchParams for Google Apps Script compatibility
+            const params = new URLSearchParams();
+            formData.forEach((value, key) => {
+                params.append(key, value as string);
             });
 
-            if (response.ok) {
-                setStatus("success");
-                setMessage("Message sent successfully! We'll get back to you soon.");
-                (e.target as HTMLFormElement).reset();
-            } else {
-                throw new Error("Failed to send message");
-            }
-        } catch {
+            // For Google Apps Script, we use 'no-cors' due to redirect behavior
+            await fetch(SCRIPT_URL, {
+                method: "POST",
+                mode: "no-cors",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                },
+                body: params.toString(),
+            });
+
+            // Since it's no-cors, we assume success if no error is thrown
+            setStatus("success");
+            setMessage("Message sent successfully! We'll get back to you soon.");
+            form.reset();
+
+        } catch (error) {
+            console.error("Submission error:", error);
             setStatus("error");
             setMessage("Something went wrong. Please try again later.");
         }
