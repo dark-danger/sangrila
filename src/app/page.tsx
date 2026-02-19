@@ -14,10 +14,6 @@ const ContactSection = dynamic(() => import("@/components/ContactSection").then(
   loading: () => <div className="min-h-[400px]" />,
 });
 
-const EventsSection = dynamic(() => import("@/components/EventsSection").then(mod => mod.EventsSection), {
-  loading: () => <div className="min-h-[500px]" />,
-  ssr: false
-});
 
 export default function Home() {
   return (
@@ -25,7 +21,6 @@ export default function Home() {
       <BackgroundEffects />
       <Navbar />
       <Hero />
-      <EventsSection />
       <RegistrationForm />
       <TeamSection />
       <ContactSection />

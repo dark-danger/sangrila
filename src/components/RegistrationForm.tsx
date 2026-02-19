@@ -1,15 +1,27 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Suspense, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { User, School, Hash, Trophy, CreditCard, Send, CheckCircle2, AlertCircle, Loader2, Sparkles } from "lucide-react";
+import { useSearchParams } from "next/navigation";
 
 import { events } from "@/data/events";
 
-export function RegistrationForm() {
+function RegistrationFormContent() {
+    const searchParams = useSearchParams();
+    const eventParam = searchParams.get("event");
     const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
     const [message, setMessage] = useState("");
+
+    // State for the selected event to handle programmed selection
+    const [selectedEvent, setSelectedEvent] = useState("");
+
+    useEffect(() => {
+        if (eventParam) {
+            setSelectedEvent(eventParam);
+        }
+    }, [eventParam]);
 
     // REPLACE THIS URL with your Google Apps Script Web App URL after deployment
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzhVYKQqBOiWTUyDOgX0o4wsczNftDc-iPopL-7J9DQgZzIjFf38ncsyASPDiiRHh2VMg/exec";
@@ -123,7 +135,8 @@ export function RegistrationForm() {
                                     <select
                                         required
                                         name="event"
-                                        defaultValue=""
+                                        value={selectedEvent}
+                                        onChange={(e) => setSelectedEvent(e.target.value)}
                                         className="w-full pl-12 sm:pl-14 pr-10 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-[#0a0b14] border border-white/10 text-white text-sm focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all appearance-none cursor-pointer"
                                     >
                                         <option value="" disabled>Select an Event</option>
@@ -194,5 +207,13 @@ export function RegistrationForm() {
                 </div>
             </motion.div>
         </section>
+    );
+}
+
+export function RegistrationForm() {
+    return (
+        <Suspense fallback={<div className="h-[800px] flex items-center justify-center">Loading Registration Form...</div>}>
+            <RegistrationFormContent />
+        </Suspense>
     );
 }
