@@ -58,7 +58,7 @@ function RegistrationFormContent() {
     };
 
     return (
-        <section id="register" className="py-24 px-4 md:px-6 relative z-10">
+        <section className="py-12 md:py-24 px-4 md:px-6 relative z-10 transition-all duration-500">
             <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}

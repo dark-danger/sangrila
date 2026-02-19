@@ -100,7 +100,7 @@ export const events: Event[] = [
         participants: "2",
         timeLimit: "4 Mins",
         description: "A harmonious vocal battle that captures every heart in the room.",
-        image: "/images/duet singing.jpeg",
+        image: "/images/duet-singing.jpeg",
         rules: [
             "Time limit: 4 minutes.",
             "Vocal harmony and coordination are the main judge criteria.",
@@ -117,7 +117,7 @@ export const events: Event[] = [
         participants: "5-10",
         timeLimit: "5 Mins",
         description: "Power in numbers. Experience the soul-stirring energy of a collective voice.",
-        image: "/images/group singing.jpeg",
+        image: "/images/group-singing.jpeg",
         rules: [
             "Team size: 5 to 10 participants.",
             "Time limit: 5 minutes.",
@@ -153,7 +153,7 @@ export const events: Event[] = [
         participants: "1",
         timeLimit: "1 Hour",
         description: "Convey a message through art.",
-        image: "/images/sketching .jpeg",
+        image: "/images/sketching.jpeg",
         rules: [
             "Duration: 1 hour.",
             "Topic will be provided on the spot.",
@@ -170,7 +170,7 @@ export const events: Event[] = [
         participants: "1",
         timeLimit: "45 Mins",
         description: "Intricate henna designs that tell a story of tradition.",
-        image: "/images/mehndi making.jpeg",
+        image: "/images/mehndi-making.jpeg",
         rules: [
             "Duration: 45 minutes.",
             "Bring your own mehendi cones.",
@@ -187,7 +187,7 @@ export const events: Event[] = [
         participants: "1",
         timeLimit: "30 Mins",
         description: "Temporary body art pieces that showcase your edgy side.",
-        image: "/images/tatoo making.jpeg",
+        image: "/images/tattoo-making.jpeg",
         rules: [
             "Duration: 30 minutes.",
             "Theme: Fusion/Abstract/Zentangle.",
@@ -204,7 +204,7 @@ export const events: Event[] = [
         participants: "2",
         timeLimit: "45 Mins",
         description: "Transform faces into vibrant living canvases of art.",
-        image: "/images/face painting.jpeg",
+        image: "/images/face-painting.jpeg",
         rules: [
             "Duration: 45 minutes.",
             "One member paints, the other acts as the model.",
@@ -221,7 +221,7 @@ export const events: Event[] = [
         participants: "1",
         timeLimit: "30 Mins",
         description: "Miniature high-fashion masterpieces on every fingertip.",
-        image: "/images/nail art.jpeg",
+        image: "/images/nail-art.jpeg",
         rules: [
             "Duration: 30 minutes.",
             "Bring your own nail paints and tools.",
@@ -238,7 +238,7 @@ export const events: Event[] = [
         participants: "1",
         timeLimit: "45 Mins",
         description: "Capture the essence of reality with your pencil strokes.",
-        image: "/images/sketching .jpeg",
+        image: "/images/sketching.jpeg",
         rules: [
             "Duration: 45 minutes.",
             "Topic: Live Sketching or Still Life (to be announced).",
@@ -255,7 +255,7 @@ export const events: Event[] = [
         participants: "2",
         timeLimit: "1 Hour",
         description: "Turn trash into treasure.",
-        image: "/images/best out of waste.jpeg",
+        image: "/images/best-out-of-waste.jpeg",
         rules: [
             "Duration: 1 hour.",
             "Only waste/discarded material can be used.",
@@ -292,7 +292,7 @@ export const events: Event[] = [
         participants: "2",
         timeLimit: "5 Mins",
         description: "The ultimate search for style and personality. Open to outsiders.",
-        image: "/images/fashion show.jpeg",
+        image: "/images/mr_ms_sangrila.jpeg",
         rules: [
             "Open to all students (university and outsiders).",
             "2 Rounds: Introduction & Style + Question/Answer.",
@@ -311,7 +311,7 @@ export const events: Event[] = [
         participants: "1-2",
         timeLimit: "1 Min Video",
         description: "Cinematic storytelling meets viral energy. Be the next trendsetter.",
-        image: "/images/reel making .jpeg",
+        image: "/images/reel-making.jpeg",
         rules: [
             "Video length: 30 to 60 seconds.",
             "Topic: 'Sangrila 2k26 Vibe' or 'College Life'.",
@@ -432,7 +432,7 @@ export const events: Event[] = [
         participants: "1",
         timeLimit: "5 Mins",
         description: "Mic check. Laughter check. Own the stage with your wit and humor.",
-        image: "/images/stand up comedy.jpeg",
+        image: "/images/stand-up-comedy.jpeg",
         rules: [
             "Time limit: 5 minutes.",
             "Content must not be offensive to any religion or community.",
@@ -451,7 +451,7 @@ export const events: Event[] = [
         participants: "2",
         timeLimit: "45 Mins",
         description: "Delicious dishes without the flame.",
-        image: "/images/fireless cooking.jpeg",
+        image: "/images/fireless-cooking.jpeg",
         rules: [
             "Duration: 45 minutes.",
             "Electricity or gas strictly NOT allowed.",
