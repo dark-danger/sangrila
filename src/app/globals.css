@@ -168,3 +168,72 @@ html {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Lightweight CSS Background Animations */
+@keyframes spotlightSwayLeft {
+  0%, 100% { transform: rotate(-15deg); opacity: 0.15; }
+  50% { transform: rotate(-5deg); opacity: 0.25; }
+}
+
+@keyframes spotlightSwayRight {
+  0%, 100% { transform: rotate(15deg); opacity: 0.15; }
+  50% { transform: rotate(5deg); opacity: 0.25; }
+}
+
+@keyframes laserSweepLeft {
+  0%, 100% { transform: rotate(-25deg); opacity: 0; }
+  50% { transform: rotate(25deg); opacity: 0.5; }
+}
+
+@keyframes laserSweepRight {
+  0%, 100% { transform: rotate(25deg); opacity: 0; }
+  50% { transform: rotate(-25deg); opacity: 0.5; }
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.08; }
+  50% { opacity: 0.15; }
+}
+
+.spotlight-left {
+  animation: spotlightSwayLeft 8s ease-in-out infinite;
+}
+
+.spotlight-right {
+  animation: spotlightSwayRight 9s ease-in-out infinite;
+}
+
+.laser-left {
+  animation: laserSweepLeft 5s linear infinite;
+}
+
+.laser-right {
+  animation: laserSweepRight 6s linear infinite 0.5s;
+}
+
+.glow-pulse {
+  animation: glowPulse 6s ease-in-out infinite;
+}
+
+/* Star Performers floating animations */
+@keyframes floatUp {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes floatUpSlow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+.float-animation {
+  animation: floatUp 6s ease-in-out infinite;
+}
+
+.float-animation-slow {
+  animation: floatUpSlow 8s ease-in-out infinite;
+}
+
+.float-animation-delay {
+  animation: floatUp 7s ease-in-out infinite 1s;
+}
