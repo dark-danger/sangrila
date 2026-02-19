@@ -1,42 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useState } from "react";
-
-// Generate deterministic particles outside the component to satisfy purity and effect rules
-const PARTICLES = Array.from({ length: 10 }, (_, i) => ({
-    width: (1.5 + (i % 3) * 0.5).toFixed(1) + "px",
-    height: (1.5 + (i % 3) * 0.5).toFixed(1) + "px",
-    left: (i * 10.3) % 100 + "%",
-    top: (i * 12.7) % 100 + "%",
-    opacity: parseFloat((0.2 + (i % 4) * 0.1).toFixed(2)),
-    duration: 6 + (i % 6),
-    delay: (i % 5) * 0.5,
-}));
 
 export function BackgroundEffects() {
-    const [mounted, setMounted] = useState(false);
-    const [isMobile, setIsMobile] = useState(false);
-
-    useEffect(() => {
-        // Defer state update to next tick to satisfy React strict effect rules
-        const timer = setTimeout(() => setMounted(true), 0);
-
-        const checkMobile = () => {
-            setIsMobile(window.innerWidth < 768);
-        };
-        checkMobile();
-        window.addEventListener('resize', checkMobile);
-
-        return () => {
-            clearTimeout(timer);
-            window.removeEventListener('resize', checkMobile);
-        };
-    }, []);
-
-    if (!mounted) return null;
-
     return (
         <div className="fixed inset-0 z-[-1] overflow-hidden bg-[#020205] pointer-events-none">
             {/* Base Dark Stage Background */}
@@ -53,130 +19,26 @@ export function BackgroundEffects() {
                     sizes="100vw"
                     quality={30}
                 />
-                {/* Gradient Overlays to blend image */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#020205] via-[#020205]/60 to-[#020205]/80" />
                 <div className="absolute inset-0 bg-gradient-to-b from-[#020205] via-transparent to-[#020205]/90" />
             </div>
 
-            {/* Animated Spotlights - Disabled on Mobile for performance */}
-            {!isMobile && (
-                <>
-                    <motion.div
-                        animate={{
-                            rotate: [-15, -5, -15],
-                            opacity: [0.3, 0.5, 0.3],
-                            scale: [1, 1.1, 1],
-                        }}
-                        transition={{
-                            duration: 7,
-                            repeat: Infinity,
-                            ease: "easeInOut"
-                        }}
-                        className="absolute -top-[20%] -left-[10%] w-[40vw] h-[150vh] bg-gradient-to-b from-blue-500/20 via-purple-500/5 to-transparent blur-[30px] transform origin-top rotate-[-12deg] mix-blend-screen motion-gpu"
-                        style={{ clipPath: "polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%)" }}
-                    />
-
-                    <motion.div
-                        animate={{
-                            rotate: [15, 5, 15],
-                            opacity: [0.3, 0.5, 0.3],
-                            scale: [1, 1.1, 1],
-                        }}
-                        transition={{
-                            duration: 8,
-                            repeat: Infinity,
-                            ease: "easeInOut",
-                            delay: 1
-                        }}
-                        className="absolute -top-[20%] -right-[10%] w-[40vw] h-[150vh] bg-gradient-to-b from-pink-500/20 via-purple-500/5 to-transparent blur-[30px] transform origin-top rotate-[12deg] mix-blend-screen motion-gpu"
-                        style={{ clipPath: "polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%)" }}
-                    />
-                </>
-            )}
-
-            {/* Sharp Laser Beams - Disabled on Mobile */}
-            {!isMobile && (
-                <>
-                    <motion.div
-                        animate={{
-                            rotate: [-25, 25, -25],
-                            opacity: [0, 0.8, 0],
-                        }}
-                        transition={{
-                            duration: 4,
-                            repeat: Infinity,
-                            ease: "linear"
-                        }}
-                        className="absolute -top-[10%] left-[20%] w-[2px] h-[150vh] bg-cyan-400 blur-[1px] origin-top mix-blend-screen box-shadow-[0_0_10px_#22d3ee] motion-gpu"
-                    />
-                    <motion.div
-                        animate={{
-                            rotate: [25, -25, 25],
-                            opacity: [0, 0.8, 0],
-                        }}
-                        transition={{
-                            duration: 5,
-                            repeat: Infinity,
-                            ease: "linear",
-                            delay: 0.5
-                        }}
-                        className="absolute -top-[10%] right-[20%] w-[2px] h-[150vh] bg-fuchsia-400 blur-[1px] origin-top mix-blend-screen box-shadow-[0_0_10px_#e879f9] motion-gpu"
-                    />
-                    <motion.div
-                        animate={{
-                            rotate: [-40, 40, -40],
-                            opacity: [0.2, 0.6, 0.2],
-                            scaleY: [0.8, 1.2, 0.8]
-                        }}
-                        transition={{
-                            duration: 3,
-                            repeat: Infinity,
-                            ease: "easeInOut",
-                        }}
-                        className="absolute top-0 left-1/2 w-[1px] h-[120vh] bg-purple-500/80 blur-[0.5px] origin-top -translate-x-1/2 motion-gpu"
-                    />
-                </>
-            )}
-
-            {/* Center Top Glow - Simplified */}
-            <motion.div
-                animate={{
-                    opacity: [0.1, 0.2, 0.1],
-                }}
-                transition={{
-                    duration: 5,
-                    repeat: Infinity,
-                    ease: "linear"
-                }}
-                className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[60vw] h-[40vh] bg-purple-500/10 rounded-full blur-[100px]"
+            {/* CSS-only Spotlight Left */}
+            <div className="hidden md:block absolute -top-[20%] -left-[10%] w-[40vw] h-[150vh] bg-gradient-to-b from-blue-500/15 via-purple-500/3 to-transparent blur-[30px] origin-top rotate-[-12deg] mix-blend-screen spotlight-left"
+                style={{ clipPath: "polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%)" }}
             />
 
-            {/* Rising Particles / Dust Motes */}
-            <div className="absolute inset-0 overflow-hidden">
-                {(isMobile ? PARTICLES.slice(0, 4) : PARTICLES).map((particle, i) => (
-                    <motion.div
-                        key={i}
-                        className="absolute bg-white rounded-full"
-                        style={{
-                            width: particle.width,
-                            height: particle.height,
-                            left: particle.left,
-                            top: particle.top,
-                            opacity: particle.opacity,
-                        }}
-                        animate={{
-                            y: [0, -100],
-                            opacity: [0, particle.opacity, 0],
-                        }}
-                        transition={{
-                            duration: particle.duration,
-                            repeat: Infinity,
-                            delay: particle.delay,
-                            ease: "linear",
-                        }}
-                    />
-                ))}
-            </div>
+            {/* CSS-only Spotlight Right */}
+            <div className="hidden md:block absolute -top-[20%] -right-[10%] w-[40vw] h-[150vh] bg-gradient-to-b from-pink-500/15 via-purple-500/3 to-transparent blur-[30px] origin-top rotate-[12deg] mix-blend-screen spotlight-right"
+                style={{ clipPath: "polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%)" }}
+            />
+
+            {/* CSS-only Laser Beams - desktop only */}
+            <div className="hidden md:block absolute -top-[10%] left-[20%] w-[1px] h-[150vh] bg-cyan-400/50 blur-[1px] origin-top mix-blend-screen laser-left" />
+            <div className="hidden md:block absolute -top-[10%] right-[20%] w-[1px] h-[150vh] bg-fuchsia-400/50 blur-[1px] origin-top mix-blend-screen laser-right" />
+
+            {/* Center Top Glow - static */}
+            <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[60vw] h-[40vh] bg-purple-500/10 rounded-full blur-[100px] glow-pulse" />
 
             {/* Bottom Glow */}
             <div className="absolute bottom-0 left-0 right-0 h-[20vh] bg-gradient-to-t from-black via-[#0a0b1e] to-transparent opacity-80" />

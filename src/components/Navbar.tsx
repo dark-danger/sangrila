@@ -8,9 +8,10 @@ import { Menu, X, Sparkles } from "lucide-react";
 
 const navItems = [
     { name: "Home", href: "/", emoji: "🏠" },
+    { name: "About", href: "/#about", emoji: "🏫" },
     { name: "Events", href: "/events", emoji: "🎯" },
+    { name: "Rules", href: "/rules", emoji: "📋" },
     { name: "Team", href: "/#team", emoji: "👥" },
-    { name: "Contact", href: "/#contact", emoji: "📞" },
 ];
 
 export function Navbar() {
@@ -38,28 +39,17 @@ export function Navbar() {
             >
                 <div className="flex items-center justify-between w-full h-full">
 
-                    {/* Logo - Restored to your preferred custom alignment but made responsive */}
-                    <Link href="/" className="flex items-center gap-1 group relative">
+                    {/* Logo */}
+                    <Link href="/" className="flex items-center gap-2 group relative">
                         <Image
-                            src="/logo.png"
-                            alt="Geeta University Logo"
-                            width={200}
-                            height={200}
-                            className="h-20 md:h-20 lg:h-28 w-auto object-contain hover:scale-105 transition-transform duration-300 relative 
-                                       md:top-[22px] md:right-16 
-                                       top-[10px] right-2"
+                            src="/sangrila-logo.png"
+                            alt="Sangrila Cultural Fest"
+                            width={180}
+                            height={180}
+                            className="h-14 md:h-16 lg:h-20 w-auto object-contain hover:scale-105 transition-transform duration-300"
                             priority
-                            quality={50}
+                            quality={75}
                         />
-                        <div className="flex flex-col justify-center leading-none relative 
-                                        md:right-32 right-4">
-                            <span className="text-xl md:text-3xl lg:text-4xl font-black text-white tracking-tighter uppercase leading-none relative right-7 group-hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.8)] transition-all duration-150">
-                                SANGRILA
-                            </span>
-                            <span className="text-[10px] md:text-sm text-primary font-black uppercase tracking-widest leading-none mt-1 relative right-7 group-hover:drop-shadow-[0_0_15px_rgba(241,90,36,0.8)] transition-all duration-150">
-                                2K26
-                            </span>
-                        </div>
                     </Link>
 
                     {/* Desktop Menu */}
