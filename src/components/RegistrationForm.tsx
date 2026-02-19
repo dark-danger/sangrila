@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, Suspense, useEffect, useRef } from "react";
+import { useState, Suspense, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { User, School, Hash, Trophy, CreditCard, Send, CheckCircle2, AlertCircle, Loader2, Sparkles, Plus, Trash2, Camera, Upload, Phone, Users } from "lucide-react";
@@ -16,25 +16,38 @@ function RegistrationFormContent() {
     const fileInputRef = useRef<HTMLInputElement>(null);
 
     // State for the selected event to handle programmed selection
-    const [selectedEvent, setSelectedEvent] = useState("");
+    const [selectedEvent, setSelectedEvent] = useState(() => {
+        if (eventParam) {
+            const event = events.find(e => e.id === eventParam || e.name === eventParam);
+            return event ? event.name : "";
+        }
+        return "";
+    });
+
+    // Sync selectedEvent with URL parameter change
+    const [prevEventParam, setPrevEventParam] = useState(eventParam);
+    if (eventParam !== prevEventParam) {
+        setPrevEventParam(eventParam);
+        const event = events.find(e => e.id === eventParam || e.name === eventParam);
+        if (event && event.name !== selectedEvent) {
+            setSelectedEvent(event.name);
+        }
+    }
+
     const [teamMembers, setTeamMembers] = useState<string[]>([]);
+
+    // Reset team members when event changes
+    const [prevSelectedEvent, setPrevSelectedEvent] = useState(selectedEvent);
+    if (selectedEvent !== prevSelectedEvent) {
+        setPrevSelectedEvent(selectedEvent);
+        if (teamMembers.length > 0) {
+            setTeamMembers([]);
+        }
+    }
+
     const [screenshot, setScreenshot] = useState<File | null>(null);
     const [screenshotPreview, setScreenshotPreview] = useState<string | null>(null);
     const [screenshotBase64, setScreenshotBase64] = useState<string>("");
-
-    useEffect(() => {
-        if (eventParam) {
-            const event = events.find(e => e.id === eventParam || e.name === eventParam);
-            if (event) {
-                setSelectedEvent(event.name);
-            }
-        }
-    }, [eventParam]);
-
-    // Reset team members when event changes
-    useEffect(() => {
-        setTeamMembers([]);
-    }, [selectedEvent]);
 
     const currentEvent = events.find(e => e.name === selectedEvent);
     const isTeamEvent = currentEvent && (parseInt(currentEvent.participants) > 1 || currentEvent.participants.includes("-"));
@@ -327,7 +340,7 @@ function RegistrationFormContent() {
                                     ))}
                                 </div>
                                 {teamMembers.length === 0 && (
-                                    <p className="text-[10px] text-white/30 text-center italic">Registering as solo. Use "Add Member" for team entries.</p>
+                                    <p className="text-[10px] text-white/30 text-center italic">Registering as solo. Use &quot;Add Member&quot; for team entries.</p>
                                 )}
                             </motion.div>
                         )}
@@ -346,7 +359,8 @@ function RegistrationFormContent() {
                                         alt="Payment QR Code"
                                         fill
                                         className="object-contain p-2"
-                                        quality={90}
+                                        sizes="160px"
+                                        quality={75}
                                     />
                                 </div>
                                 <div className="space-y-1">

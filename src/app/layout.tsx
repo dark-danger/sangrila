@@ -9,6 +9,7 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://sangrila.vercel.app"),
   title: "Sangrila Festival 2026 | Official Student Fest",
   description: "Experience the ultimate celebration of talent, culture, and creativity at Sangrila 2026. Register for dance, singing, fashion, and theatre events at Geeta University.",
   keywords: ["Sangrila 2026", "Sangrila Festival", "College Fest Panipat", "Geeta University Fest", "Student Cultural Festival", "Fashion Show Panipat", "Dance Competition 2026"],
