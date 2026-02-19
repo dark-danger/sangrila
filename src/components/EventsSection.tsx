@@ -38,8 +38,8 @@ export function EventsSection() {
                         <button
                             onClick={() => setActiveCategory("All")}
                             className={`whitespace-nowrap px-5 py-2 rounded-full transition-all border font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] relative overflow-hidden flex-shrink-0 ${activeCategory === "All"
-                                    ? "bg-primary text-white border-transparent"
-                                    : "bg-white/5 text-white/40 border-white/5"
+                                ? "bg-primary text-white border-transparent"
+                                : "bg-white/5 text-white/40 border-white/5"
                                 }`}
                         >
                             All Events
@@ -50,8 +50,8 @@ export function EventsSection() {
                                 key={category}
                                 onClick={() => setActiveCategory(category)}
                                 className={`whitespace-nowrap px-5 py-2 rounded-full transition-all border font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] relative overflow-hidden flex-shrink-0 ${activeCategory === category
-                                        ? "bg-primary text-white border-transparent"
-                                        : "bg-white/5 text-white/40 border-white/5"
+                                    ? "bg-primary text-white border-transparent"
+                                    : "bg-white/5 text-white/40 border-white/5"
                                     }`}
                             >
                                 {category}
@@ -66,9 +66,9 @@ export function EventsSection() {
                         {filteredEvents.map((event) => (
                             <motion.div
                                 key={event.id}
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                exit={{ opacity: 0 }}
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, scale: 0.95 }}
                                 transition={{ duration: 0.2 }}
                             >
                                 <EventCard event={event} />

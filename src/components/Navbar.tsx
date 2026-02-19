@@ -8,7 +8,7 @@ import { Menu, X, Sparkles } from "lucide-react";
 
 const navItems = [
     { name: "Home", href: "/#hero", emoji: "🏠" },
-    { name: "Events", href: "/events", emoji: "🎯" },
+    { name: "Events", href: "/#events", emoji: "🎯" },
     { name: "Team", href: "/#team", emoji: "👥" },
     { name: "Contact", href: "/#contact", emoji: "📞" },
 ];

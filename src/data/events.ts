@@ -7,6 +7,7 @@ export type Event = {
     timeLimit: string;
     description: string;
     image?: string;
+    rules?: string[];
 };
 
 export const categories = [
@@ -30,6 +31,13 @@ export const events: Event[] = [
         timeLimit: "3 Mins",
         description: "Showcase your individual rhythm and grace.",
         image: "/images/solo-dance.jpeg",
+        rules: [
+            "Time limit: Max 3 minutes (+1 min for set-up).",
+            "Any dance style is allowed (Classical, Western, Folk).",
+            "Bring your track in a pendrive (MP3 format).",
+            "Costumes should be decent and appropriate.",
+            "Decision of judges will be final and binding."
+        ]
     },
     {
         id: "duet-dance",
@@ -40,6 +48,13 @@ export const events: Event[] = [
         timeLimit: "4 Mins",
         description: "A perfect sync of two souls in motion.",
         image: "/images/duet-dance.jpeg",
+        rules: [
+            "Time limit: Max 4 minutes.",
+            "Synchronization and choreography are key scoring criteria.",
+            "Audio track must be submitted 30 mins before the event.",
+            "No props that can damage the stage (water, fire, glass).",
+            "In case of technical failure, the team may get a restart at judges' discretion."
+        ]
     },
     {
         id: "group-dance",
@@ -50,6 +65,13 @@ export const events: Event[] = [
         timeLimit: "6 Mins",
         description: "Coordinate, synchronize, and mesmerize as a team.",
         image: "/images/group-dance.jpeg",
+        rules: [
+            "Team size: 5 to 10 members.",
+            "Time limit: 6 minutes (including stage setup).",
+            "Themes are encouraged (Storytelling, Social Message).",
+            "Marks for uniformity, costumes, and expressions.",
+            "Participants should carry their own makeup and props."
+        ]
     },
 
     // Singing (3)
@@ -62,6 +84,13 @@ export const events: Event[] = [
         timeLimit: "3 Mins",
         description: "Let your voice be heard.",
         image: "/images/solo-singing.jpeg",
+        rules: [
+            "Time limit: 3 minutes.",
+            "Styles: Bollywood, Classical, or Semi-classical.",
+            "Instruments/Karaoke allowed (only one backing track).",
+            "Lyrics should not contain explicit language.",
+            "Judged on pitch, rhythm, and stage presence."
+        ]
     },
     {
         id: "duet-singing",
@@ -72,6 +101,13 @@ export const events: Event[] = [
         timeLimit: "4 Mins",
         description: "A harmonious vocal battle that captures every heart in the room.",
         image: "/images/duet singing.jpeg",
+        rules: [
+            "Time limit: 4 minutes.",
+            "Vocal harmony and coordination are the main judge criteria.",
+            "Only one instrument or one karaoke track allowed.",
+            "Songs can be in Hindi, English, or Punjabi.",
+            "Avoid shouting or excessive volume levels."
+        ]
     },
     {
         id: "group-singing",
@@ -82,6 +118,13 @@ export const events: Event[] = [
         timeLimit: "5 Mins",
         description: "Power in numbers. Experience the soul-stirring energy of a collective voice.",
         image: "/images/group singing.jpeg",
+        rules: [
+            "Team size: 5 to 10 participants.",
+            "Time limit: 5 minutes.",
+            "Acoustic instruments preferred; karaoke allowed.",
+            "Synchronization and arrangement are vital.",
+            "Strictly no lip-syncing allowed."
+        ]
     },
 
     // Fine Arts (9)
@@ -94,6 +137,13 @@ export const events: Event[] = [
         timeLimit: "1 Hour",
         description: "The ground becomes a vibrant tapestry of culture and traditional colors.",
         image: "/images/rangoli-making.jpeg",
+        rules: [
+            "Duration: 1 hour.",
+            "Space provided: 3x3 feet.",
+            "Participants must bring their own colors and materials.",
+            "Stencils or pre-made patterns are not allowed.",
+            "The theme should be traditional or cultural."
+        ]
     },
     {
         id: "poster",
@@ -103,7 +153,14 @@ export const events: Event[] = [
         participants: "1",
         timeLimit: "1 Hour",
         description: "Convey a message through art.",
-        image: "/images/sketching .jpeg", // Fallback to sketching
+        image: "/images/sketching .jpeg",
+        rules: [
+            "Duration: 1 hour.",
+            "Topic will be provided on the spot.",
+            "A3 size sheet will be provided by the organizers.",
+            "Bring your own colors (crayons, sketches, paints).",
+            "Digital references or pre-drawn sketches not allowed."
+        ]
     },
     {
         id: "mehendi",
@@ -114,6 +171,13 @@ export const events: Event[] = [
         timeLimit: "45 Mins",
         description: "Intricate henna designs that tell a story of tradition.",
         image: "/images/mehndi making.jpeg",
+        rules: [
+            "Duration: 45 minutes.",
+            "Bring your own mehendi cones.",
+            "Must be applied on a person's hand (palm to forearm).",
+            "Intricacy and clarity of design are key scoring criteria.",
+            "Reference books or mobile phones are prohibited during the event."
+        ]
     },
     {
         id: "tattoo",
@@ -124,6 +188,13 @@ export const events: Event[] = [
         timeLimit: "30 Mins",
         description: "Temporary body art pieces that showcase your edgy side.",
         image: "/images/tatoo making.jpeg",
+        rules: [
+            "Duration: 30 minutes.",
+            "Theme: Fusion/Abstract/Zentangle.",
+            "Bring your own skin-safe colors/markers.",
+            "Can be done on your own or a friend's hand/arm.",
+            "Offensive symbols or language will lead to disqualification."
+        ]
     },
     {
         id: "face-painting",
@@ -134,6 +205,13 @@ export const events: Event[] = [
         timeLimit: "45 Mins",
         description: "Transform faces into vibrant living canvases of art.",
         image: "/images/face painting.jpeg",
+        rules: [
+            "Duration: 45 minutes.",
+            "One member paints, the other acts as the model.",
+            "Use only skin-friendly paints/materials.",
+            "Participants must explain their theme to the judges.",
+            "Partial face or full face painting is allowed."
+        ]
     },
     {
         id: "nail-art",
@@ -144,6 +222,13 @@ export const events: Event[] = [
         timeLimit: "30 Mins",
         description: "Miniature high-fashion masterpieces on every fingertip.",
         image: "/images/nail art.jpeg",
+        rules: [
+            "Duration: 30 minutes.",
+            "Bring your own nail paints and tools.",
+            "Artificial nails are allowed if prepared on the spot.",
+            "Theme: Glitter & Glamour.",
+            "Neatness and creativity will be judged."
+        ]
     },
     {
         id: "sketching",
@@ -154,6 +239,13 @@ export const events: Event[] = [
         timeLimit: "45 Mins",
         description: "Capture the essence of reality with your pencil strokes.",
         image: "/images/sketching .jpeg",
+        rules: [
+            "Duration: 45 minutes.",
+            "Topic: Live Sketching or Still Life (to be announced).",
+            "Organizers will provide the sheet.",
+            "Only pencils (graphite/charcoal) are allowed.",
+            "Erasers and sharpeners should be your own."
+        ]
     },
     {
         id: "best-out-of-waste",
@@ -164,10 +256,17 @@ export const events: Event[] = [
         timeLimit: "1 Hour",
         description: "Turn trash into treasure.",
         image: "/images/best out of waste.jpeg",
+        rules: [
+            "Duration: 1 hour.",
+            "Only waste/discarded material can be used.",
+            "Bring your own materials, glue, and scissors.",
+            "The item should be decorative or functional.",
+            "Pre-assembled parts are not allowed."
+        ]
     },
 
 
-    // Fashion (1)
+    // Fashion (2)
     {
         id: "fashion-show",
         name: "Fashion Show",
@@ -177,6 +276,13 @@ export const events: Event[] = [
         timeLimit: "10 Mins",
         description: "Walk the ramp with style and confidence.",
         image: "/images/team_fashion_show.jpeg",
+        rules: [
+            "Team size: 8 to 12 participants.",
+            "Total time: 10 mins (including 2 mins stage prep).",
+            "Theme should be clearly visible in choice of music and attire.",
+            "Walking style, poise, and confidence are main parameters.",
+            "Negative marking for excessive exposure or indecency."
+        ]
     },
     {
         id: "mr-ms-sangrila",
@@ -186,7 +292,14 @@ export const events: Event[] = [
         participants: "2",
         timeLimit: "5 Mins",
         description: "The ultimate search for style and personality. Open to outsiders.",
-        image: "/images/fashion show.jpeg", // Using same fashion image
+        image: "/images/fashion show.jpeg",
+        rules: [
+            "Open to all students (university and outsiders).",
+            "2 Rounds: Introduction & Style + Question/Answer.",
+            "Participants should be ready with their own outfits.",
+            "Score based on personality, wit, and styling.",
+            "Solo participation (name registered individually)."
+        ]
     },
 
     // Life Skills (3)
@@ -199,6 +312,13 @@ export const events: Event[] = [
         timeLimit: "1 Min Video",
         description: "Cinematic storytelling meets viral energy. Be the next trendsetter.",
         image: "/images/reel making .jpeg",
+        rules: [
+            "Video length: 30 to 60 seconds.",
+            "Topic: 'Sangrila 2k26 Vibe' or 'College Life'.",
+            "Submissions via Google Form or WhatsApp.",
+            "Quality, editing, and creativity are judged.",
+            "Must be original content (no copyright strikes)."
+        ]
     },
     {
         id: "photography",
@@ -209,6 +329,13 @@ export const events: Event[] = [
         timeLimit: "Event Duration",
         description: "Freeze time through your lens.",
         image: "/images/photography.jpeg",
+        rules: [
+            "Theme: 'Festive Candid' or 'Shadows & Light'.",
+            "Submit 3 best shots taken during the fest.",
+            "Editing (brightness/contrast) allowed; manipulation (AI) is NOT.",
+            "Photos must be from the campus within event dates.",
+            "EXIF data must be preserved for verification."
+        ]
     },
     {
         id: "one-min-film",
@@ -219,6 +346,13 @@ export const events: Event[] = [
         timeLimit: "1 Min Video",
         description: "Tell a compelling story in just 60 seconds.",
         image: "/images/1-min-film.jpeg",
+        rules: [
+            "Duration: Exactly 60 seconds.",
+            "Must have a clear story or message.",
+            "High definition (HD) recording preferred.",
+            "Language: Hindi/English (use subtitles if needed).",
+            "Judged on plot, cinematography, and direction."
+        ]
     },
 
     // Theatre (5)
@@ -231,6 +365,13 @@ export const events: Event[] = [
         timeLimit: "10 Mins",
         description: "Street play with a social message.",
         image: "/images/nukkad-natak.jpeg",
+        rules: [
+            "Team size: 6 to 12 members.",
+            "Time limit: 10 minutes.",
+            "Topics must address social issues.",
+            "No microphones allowed (loud voice projection needed).",
+            "Props should be minimal and portable."
+        ]
     },
     {
         id: "story-telling",
@@ -241,6 +382,13 @@ export const events: Event[] = [
         timeLimit: "5 Mins",
         description: "Narrate a compelling tale.",
         image: "/images/storytelling.jpeg",
+        rules: [
+            "Time limit: 5 minutes.",
+            "Content must be original or a creative adaptation.",
+            "Language: Hindi or English.",
+            "Voice modulation and expressions are key.",
+            "Strictly no use of scripts during performance."
+        ]
     },
     {
         id: "monologue",
@@ -251,6 +399,13 @@ export const events: Event[] = [
         timeLimit: "4 Mins",
         description: "Command the stage with a powerful solo dramatic performance.",
         image: "/images/monoloue.jpeg",
+        rules: [
+            "Time limit: 4 minutes.",
+            "Can be dramatic, comedic, or classical.",
+            "Bring your own costume/minimal props.",
+            "Judged on emotional depth and characterisation.",
+            "Introduction of character (30 sec) is excluded from time limit."
+        ]
     },
     {
         id: "poetry",
@@ -261,6 +416,13 @@ export const events: Event[] = [
         timeLimit: "4 Mins",
         description: "Express your original verses.",
         image: "/images/self made poetry.jpeg",
+        rules: [
+            "Content must be 100% original (no plagiarism).",
+            "Topic: Open theme.",
+            "Time: 4 mins per poet.",
+            "Language: Hindi, English, Urdu, or Punjabi.",
+            "Recitation style and metaphors will be judged."
+        ]
     },
     {
         id: "standup",
@@ -271,6 +433,13 @@ export const events: Event[] = [
         timeLimit: "5 Mins",
         description: "Mic check. Laughter check. Own the stage with your wit and humor.",
         image: "/images/stand up comedy.jpeg",
+        rules: [
+            "Time limit: 5 minutes.",
+            "Content must not be offensive to any religion or community.",
+            "Observational or narrative comedy allowed.",
+            "Audience engagement and punchlines are vital.",
+            "No pre-recorded laugh tracks allowed."
+        ]
     },
 
     // Health (1)
@@ -283,5 +452,13 @@ export const events: Event[] = [
         timeLimit: "45 Mins",
         description: "Delicious dishes without the flame.",
         image: "/images/fireless cooking.jpeg",
+        rules: [
+            "Duration: 45 minutes.",
+            "Electricity or gas strictly NOT allowed.",
+            "Bring all ingredients (can be pre-cut but not pre-cooked).",
+            "Scores for hygiene, taste, and presentation.",
+            "Provide a brief nutrient list of the dish."
+        ]
     },
 ];
+
