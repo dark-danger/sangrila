@@ -258,8 +258,8 @@ function RegistrationFormContent() {
                                         onChange={(e) => setSelectedEvent(e.target.value)}
                                         className="w-full pl-12 sm:pl-14 pr-10 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-[#0a0b14] border border-white/10 text-white text-sm focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all appearance-none cursor-pointer"
                                     >
-                                        <option value="" disabled>Select an Event</option>
-                                        {events.map(e => <option key={e.id} value={e.name}>{e.name} ({e.fee})</option>)}
+                                        <option value="" disabled style={{ background: '#1a1b2e', color: '#ffffff' }}>Select an Event</option>
+                                        {events.map(e => <option key={e.id} value={e.name} style={{ background: '#1a1b2e', color: '#ffffff' }}>{e.name} ({e.fee})</option>)}
                                     </select>
                                 </div>
                             </div>
