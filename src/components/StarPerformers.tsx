@@ -30,7 +30,7 @@ export function StarPerformers() {
                     className="text-3xl md:text-5xl lg:text-6xl font-black text-white tracking-tighter uppercase"
                 >
                     STAR{" "}
-                    <span className="gradient-text">PERFORMERS</span>
+                    <span className="gradient-text">PERFORMER</span>
                 </motion.h2>
             </div>
 
