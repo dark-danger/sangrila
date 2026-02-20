@@ -33,7 +33,7 @@ export function Hero() {
                         transition={{ duration: 0.8 }}
                         className="inline-flex items-center gap-3 px-6 py-2 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-black uppercase tracking-[0.4em] backdrop-blur-sm"
                     >
-                        GEETA UNIVERSITY | 13.03.2026
+                        GEETA UNIVERSITY | 13.03.2026 | 14.03.2026
                     </motion.div>
 
                     <div className="space-y-4">
