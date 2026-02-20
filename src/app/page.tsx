@@ -22,6 +22,7 @@ const RegistrationForm = dynamic(() => import("@/components/RegistrationForm").t
 const EventFlow = dynamic(() => import("@/components/EventFlow").then(mod => mod.EventFlow), {
   loading: () => <div className="min-h-[400px]" />,
 });
+const WhatsAppButton = dynamic(() => import("@/components/WhatsAppButton").then(mod => mod.WhatsAppButton));
 
 
 export default function Home() {
@@ -36,6 +37,7 @@ export default function Home() {
       <EventFlow />
       <RegistrationForm />
       <TeamSection />
+      <WhatsAppButton />
     </main>
   );
 }
