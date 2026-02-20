@@ -71,7 +71,7 @@ export function Navbar() {
                             whileTap={{ scale: 0.95 }}
                         >
                             <Link
-                                href="/#register"
+                                href="/register"
                                 className="px-4 lg:px-6 py-2 lg:py-2.5 bg-gradient-to-r from-secondary via-primary to-purple-600 text-white font-black rounded-full text-[10px] lg:text-xs uppercase tracking-wider lg:tracking-widest shadow-xl hover:shadow-[0_0_20px_rgba(241,90,36,0.3)] transition-all border border-white/20 flex items-center justify-center whitespace-nowrap relative overflow-hidden group"
                             >
                                 <Sparkles className="w-3 h-3 mr-2 group-hover:animate-spin" />
@@ -111,7 +111,7 @@ export function Navbar() {
                         ))}
                         <motion.div whileTap={{ scale: 0.95 }}>
                             <Link
-                                href="/#register"
+                                href="/register"
                                 onClick={() => setIsOpen(false)}
                                 className="mt-6 block w-full py-4 bg-gradient-to-r from-secondary via-primary to-purple-600 text-white text-center font-black rounded-full text-lg border border-primary/30 relative overflow-hidden group"
                             >

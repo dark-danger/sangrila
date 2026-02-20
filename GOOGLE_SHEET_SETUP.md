@@ -4,7 +4,7 @@ Follow these steps to connect your website's contact form to a Google Sheet.
 
 ## Step 1: Create a Google Sheet
 1. Go to [Google Sheets](https://sheets.new) and create a new spreadsheet.
-2. Give it a name (e.g., "Sangrila 2k26 Contacts").
+2. Give it a name: **"Sangrila 2k26 External Registrations connected with website"**.
 3. In the first row, add the following headers:
    - `Timestamp`
    - `Name`
@@ -18,8 +18,8 @@ Follow these steps to connect your website's contact form to a Google Sheet.
 
 ```javascript
 /*
-  Google Apps Script to handle Form Submissions
-  This script receives POST requests from both the Contact and Registration forms.
+  Google Apps Script to handle Form Submissions (v2.2)
+  Sheet Name: "Sangrila 2k26 External Registrations connected with website"
 */
 
 function doPost(e) {
@@ -28,17 +28,17 @@ function doPost(e) {
     var now = new Date();
     var data = e.parameter;
     
-    // Choose sheet based on form type (Contact or Registration)
-    // If the data contains 'rollno', it's a registration
+    // Using your specific sheet name for Registrations
     var isRegistration = data.rollno ? true : false;
-    var sheetName = isRegistration ? "Registrations" : "Contacts";
+    var sheetName = isRegistration ? "Sangrila 2k26 External Registrations connected with website" : "Contacts";
     var sheet = ss.getSheetByName(sheetName);
     
     // Create sheet if it doesn't exist
     if (!sheet) {
       sheet = ss.insertSheet(sheetName);
       if (isRegistration) {
-        var headers = ["Timestamp", "Year", "Name", "Email", "College", "Roll No", "Event", "Transaction ID"];
+        var headers = ["Timestamp", "Name", "Phone", "Email", "College", "Roll No", "Team Name", "Event", "Transaction ID", "Screenshot Link"];
+        // Support for 15 members (Leader + 14 additional)
         for (var i = 2; i <= 15; i++) headers.push("Member " + i);
         sheet.appendRow(headers);
       } else {
@@ -49,11 +49,39 @@ function doPost(e) {
     // Prepare values to append
     var values = [now];
     if (data.rollno) {
-      // Academic Year
-      values.push(data.year || "");
       // Basic Info
-      values.push(data.name, data.email, data.college, data.rollno, data.event, data.transactionId);
-      // Team Members (14 slots)
+      values.push(
+        data.name || "", 
+        "'" + (data.phone || ""), // Prefix with ' to force string/mobile format
+        data.email || "", 
+        data.college || "", 
+        data.rollno || "", 
+        data.teamName || "Solo", 
+        data.event || "", 
+        data.transactionId || ""
+      );
+      
+      // Handle Screenshot
+      var screenshotUrl = "No Screenshot";
+      if (data.screenshot) {
+        try {
+          var folderName = "Sangrila_Payments";
+          var folders = DriveApp.getFoldersByName(folderName);
+          var folder = folders.hasNext() ? folders.next() : DriveApp.createFolder(folderName);
+          
+          var contentType = "image/jpeg";
+          var fileName = "Payment_" + (data.name || "Unknown") + "_" + (data.rollno || "NoID") + "_" + now.getTime();
+          var decodedData = Utilities.base64Decode(data.screenshot);
+          var blob = Utilities.newBlob(decodedData, contentType, fileName);
+          var file = folder.createFile(blob);
+          screenshotUrl = file.getUrl();
+        } catch (fError) {
+          screenshotUrl = "Error saving: " + fError.toString();
+        }
+      }
+      values.push(screenshotUrl);
+      
+      // Team Members (up to 15 total)
       for (var i = 2; i <= 15; i++) {
         values.push(data["member_" + i] || "");
       }
@@ -64,7 +92,7 @@ function doPost(e) {
     sheet.appendRow(values);
     
     return ContentService
-      .createTextOutput(JSON.stringify({ "result": "success" }))
+      .createTextOutput(JSON.stringify({ "result": "success", "url": screenshotUrl }))
       .setMimeType(ContentService.MimeType.JSON);
       
   } catch (error) {
@@ -79,20 +107,16 @@ function doOptions(e) {
 }
 ```
 
-## Step 3: Deploy as a Web App
-1. Click the **Deploy** button at the top right > **New deployment**.
+## Step 3: Deploy as a Web App (IMPORTANT)
+1. Click **Deploy** -> **New deployment**.
 2. Select type: **Web app**.
-3. Description: `Sangrila Form API`.
+3. Description: `Sangrila API v2.2`.
 4. Execute as: **Me**.
 5. Who has access: **Anyone**.
-6. Click **Deploy**.
-7. Copy the **Web App URL**.
+6. Click **Deploy** and **Authorize Access**.
 
-## Step 4: Update the Website Code
-1. Open `src/components/ContactForm.tsx` and paste the URL in `SCRIPT_URL`.
-2. Open `src/components/RegistrationForm.tsx` and paste the same URL in `SCRIPT_URL`.
-
-## Test It!
-1. Go to your website, fill out the forms.
-2. Check your Google Sheet. It will automatically create two tabs: **Contacts** and **Registrations**.
+## Step 4: Final Check
+1. Copy the **Web App URL**.
+2. Visit `src/components/RegistrationForm.tsx` and ensure the `SCRIPT_URL` matches.
+3. Your registrations will now go directly to the tab named **"Sangrila 2k26 External Registrations connected with website"**.
 

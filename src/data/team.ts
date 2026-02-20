@@ -53,14 +53,14 @@ export const teamMembers: TeamMember[] = [
         objectPosition: "center 25%",
     },
     {
-        id: "5",
+        id: "4",
         name: "Gurpreet",
         role: "Creative Head",
         image: "/team/gurpreet.jpg",
         objectPosition: "center 15%",
     },
     {
-        id: "7",
+        id: "5",
         name: "Aanchal Goswami",
         role: "Creative Head",
         image: "/team/aanchal.png",
@@ -79,6 +79,6 @@ export const teamMembers: TeamMember[] = [
         role: "Event Management Head",
         image: "/team/sneha.jpeg",
         rotate: true,
-        objectPosition: "50% 50%", // Keep centered since it's rotated
+        objectPosition: "50% 50%",
     },
 ];
