@@ -10,9 +10,6 @@ const AboutSection = dynamic(() => import("@/components/AboutSection").then(mod 
 const StarPerformers = dynamic(() => import("@/components/StarPerformers").then(mod => mod.StarPerformers), {
   loading: () => <div className="min-h-[400px]" />,
 });
-const EventsSection = dynamic(() => import("@/components/EventsSection").then(mod => mod.EventsSection), {
-  loading: () => <div className="min-h-[600px]" />,
-});
 const TeamSection = dynamic(() => import("@/components/TeamSection").then(mod => mod.TeamSection), {
   loading: () => <div className="min-h-[400px]" />,
 });
@@ -33,7 +30,6 @@ export default function Home() {
       <Hero />
       <AboutSection />
       <StarPerformers />
-      <EventsSection limit={8} />
       <EventFlow />
       <RegistrationForm />
       <TeamSection />
@@ -41,3 +37,4 @@ export default function Home() {
     </main>
   );
 }
+
