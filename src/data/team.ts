@@ -18,13 +18,6 @@ export const teamMembers: TeamMember[] = [
         objectPosition: "center 15%",
     },
     {
-        id: "2",
-        name: "Himanshu Gahalyan",
-        role: "Technical Head",
-        image: "/team/himanshu.jpeg",
-        objectPosition: "center 20%",
-    },
-    {
         id: "3",
         name: "Aaditya Gupta",
         role: "Vice President",
@@ -32,17 +25,10 @@ export const teamMembers: TeamMember[] = [
         objectPosition: "center 20%",
     },
     {
-        id: "4",
-        name: "Gurpreet",
-        role: "Cultural Head",
-        image: "/team/gurpreet.jpg",
-        objectPosition: "center 15%",
-    },
-    {
-        id: "5",
-        name: "Aanchal Goswami",
-        role: "Cultural Head",
-        image: "/team/aanchal.png",
+        id: "2",
+        name: "Himanshu Gahalyan",
+        role: "Technical Head",
+        image: "/team/himanshu.jpeg",
         objectPosition: "center 20%",
     },
     {
@@ -53,6 +39,13 @@ export const teamMembers: TeamMember[] = [
         objectPosition: "center 20%",
     },
     {
+        id: "8",
+        name: "Preeti Verma",
+        role: "Cultural Head",
+        image: "/team/preeti.jpeg",
+        objectPosition: "center 20%",
+    },
+    {
         id: "7",
         name: "Karishma Khurana",
         role: "Cultural Head",
@@ -60,10 +53,24 @@ export const teamMembers: TeamMember[] = [
         objectPosition: "center 25%",
     },
     {
-        id: "8",
-        name: "Preeti Verma",
-        role: "Cultural Head",
-        image: "/team/preeti.jpeg",
+        id: "4",
+        name: "Gurpreet",
+        role: "Creative Head",
+        image: "/team/gurpreet.jpg",
+        objectPosition: "center 15%",
+    },
+    {
+        id: "5",
+        name: "Aanchal Goswami",
+        role: "Creative Head",
+        image: "/team/aanchal.png",
+        objectPosition: "center 20%",
+    },
+    {
+        id: "10",
+        name: "Vanshika Ahlawat",
+        role: "Event Management Head",
+        image: "/team/vanshika.jpeg",
         objectPosition: "center 20%",
     },
     {
@@ -73,12 +80,5 @@ export const teamMembers: TeamMember[] = [
         image: "/team/sneha.jpeg",
         rotate: true,
         objectPosition: "50% 50%",
-    },
-    {
-        id: "10",
-        name: "Vanshika Ahlawat",
-        role: "Event Management Head",
-        image: "/team/vanshika.jpeg",
-        objectPosition: "center 20%",
     },
 ];

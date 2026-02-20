@@ -111,6 +111,19 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Force dark theme on native select dropdowns */
+select,
+select option {
+  background-color: #1a1b2e !important;
+  color: #ffffff !important;
+}
+
+select option:hover,
+select option:checked {
+  background-color: #f15a24 !important;
+  color: #ffffff !important;
+}
+
 /* Selection with Festive Color */
 ::selection {
   background: linear-gradient(to right, var(--festive-orange), var(--festive-gold));
@@ -171,28 +184,71 @@ html {
 
 /* Lightweight CSS Background Animations */
 @keyframes spotlightSwayLeft {
-  0%, 100% { transform: rotate(-15deg); opacity: 0.15; }
-  50% { transform: rotate(-5deg); opacity: 0.25; }
+
+  0%,
+  100% {
+    transform: rotate(-15deg);
+    opacity: 0.15;
+  }
+
+  50% {
+    transform: rotate(-5deg);
+    opacity: 0.25;
+  }
 }
 
 @keyframes spotlightSwayRight {
-  0%, 100% { transform: rotate(15deg); opacity: 0.15; }
-  50% { transform: rotate(5deg); opacity: 0.25; }
+
+  0%,
+  100% {
+    transform: rotate(15deg);
+    opacity: 0.15;
+  }
+
+  50% {
+    transform: rotate(5deg);
+    opacity: 0.25;
+  }
 }
 
 @keyframes laserSweepLeft {
-  0%, 100% { transform: rotate(-25deg); opacity: 0; }
-  50% { transform: rotate(25deg); opacity: 0.5; }
+
+  0%,
+  100% {
+    transform: rotate(-25deg);
+    opacity: 0;
+  }
+
+  50% {
+    transform: rotate(25deg);
+    opacity: 0.5;
+  }
 }
 
 @keyframes laserSweepRight {
-  0%, 100% { transform: rotate(25deg); opacity: 0; }
-  50% { transform: rotate(-25deg); opacity: 0.5; }
+
+  0%,
+  100% {
+    transform: rotate(25deg);
+    opacity: 0;
+  }
+
+  50% {
+    transform: rotate(-25deg);
+    opacity: 0.5;
+  }
 }
 
 @keyframes glowPulse {
-  0%, 100% { opacity: 0.08; }
-  50% { opacity: 0.15; }
+
+  0%,
+  100% {
+    opacity: 0.08;
+  }
+
+  50% {
+    opacity: 0.15;
+  }
 }
 
 .spotlight-left {
@@ -217,13 +273,27 @@ html {
 
 /* Star Performers floating animations */
 @keyframes floatUp {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-12px); }
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
 }
 
 @keyframes floatUpSlow {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
 }
 
 .float-animation {

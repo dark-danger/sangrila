@@ -19,37 +19,25 @@ export function AboutSection() {
                 >
                     <div className="bg-[#0a0b14] rounded-[2.5rem] border border-white/5 overflow-hidden">
                         <div className="grid md:grid-cols-2 gap-0">
-                            {/* Left - Image/Logo Side */}
-                            <div className="relative p-10 md:p-16 flex flex-col items-center justify-center bg-gradient-to-br from-[#1d355e]/20 to-transparent min-h-[300px]">
-                                <div className="absolute inset-0 opacity-10">
-                                    <div className="absolute top-10 left-10 w-32 h-32 rounded-full bg-blue-500/30 blur-3xl" />
-                                    <div className="absolute bottom-10 right-10 w-40 h-40 rounded-full bg-primary/20 blur-3xl" />
-                                </div>
-                                <motion.div
-                                    whileHover={{ scale: 1.05, rotate: 2 }}
-                                    transition={{ type: "spring", stiffness: 300 }}
-                                    className="relative z-10"
-                                >
-                                    <Image
-                                        src="/logo.png"
-                                        alt="Geeta University"
-                                        width={180}
-                                        height={180}
-                                        className="object-contain drop-shadow-[0_0_30px_rgba(29,53,94,0.4)]"
-                                    />
-                                </motion.div>
-                                <motion.h3
-                                    initial={{ opacity: 0 }}
-                                    whileInView={{ opacity: 1 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: 0.3 }}
-                                    className="text-2xl md:text-3xl font-black text-white tracking-tighter uppercase mt-6 text-center"
-                                >
-                                    Geeta University
-                                </motion.h3>
-                                <div className="flex items-center gap-2 mt-2 text-muted-foreground text-sm">
-                                    <MapPin className="w-4 h-4 text-primary" />
-                                    <span>Panipat, Haryana</span>
+                            {/* Left - University Image */}
+                            <div className="relative min-h-[300px] md:min-h-[400px] overflow-hidden">
+                                <Image
+                                    src="/images/geeta-university.jpg"
+                                    alt="Geeta University Campus"
+                                    fill
+                                    className="object-cover"
+                                    sizes="(max-width: 768px) 100vw, 50vw"
+                                    quality={85}
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0b14] via-transparent to-transparent" />
+                                <div className="absolute bottom-6 left-6 z-10">
+                                    <h3 className="text-2xl md:text-3xl font-black text-white tracking-tighter uppercase drop-shadow-lg">
+                                        Geeta University
+                                    </h3>
+                                    <div className="flex items-center gap-2 mt-1 text-white/70 text-sm">
+                                        <MapPin className="w-4 h-4 text-primary" />
+                                        <span>Panipat, Haryana</span>
+                                    </div>
                                 </div>
                             </div>
 
@@ -115,32 +103,32 @@ export function AboutSection() {
                                 </div>
                             </div>
 
-                            {/* Right - Visual Side */}
+                            {/* Right - Sangrila Logo */}
                             <div className="relative p-10 md:p-16 flex flex-col items-center justify-center bg-gradient-to-bl from-primary/10 via-purple-500/5 to-transparent min-h-[300px] order-1 md:order-2">
                                 <div className="absolute inset-0 opacity-15">
                                     <div className="absolute top-10 right-10 w-32 h-32 rounded-full bg-primary/40 blur-3xl" />
                                     <div className="absolute bottom-10 left-10 w-40 h-40 rounded-full bg-purple-500/30 blur-3xl" />
-                                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full bg-secondary/20 blur-3xl" />
                                 </div>
-                                <div className="relative z-10 text-center">
-                                    <motion.div
-                                        initial={{ scale: 0.8, opacity: 0 }}
-                                        whileInView={{ scale: 1, opacity: 1 }}
-                                        viewport={{ once: true }}
-                                        transition={{ type: "spring", stiffness: 200, damping: 15 }}
-                                    >
-                                        <h3 className="text-5xl md:text-7xl font-black text-white tracking-tighter uppercase leading-none">
-                                            SANGRILA
-                                        </h3>
-                                        <span className="text-3xl md:text-5xl font-black text-primary italic">
-                                            2K26
-                                        </span>
-                                    </motion.div>
-                                    <p className="text-white/40 text-sm font-bold uppercase tracking-[0.3em] mt-4">
-                                        Cultural Fest
-                                    </p>
-                                    <div className="w-20 h-0.5 bg-gradient-to-r from-primary via-purple-500 to-secondary mx-auto mt-3" />
-                                </div>
+                                <motion.div
+                                    initial={{ scale: 0.8, opacity: 0 }}
+                                    whileInView={{ scale: 1, opacity: 1 }}
+                                    viewport={{ once: true }}
+                                    transition={{ type: "spring", stiffness: 200, damping: 15 }}
+                                    whileHover={{ scale: 1.05 }}
+                                    className="relative z-10"
+                                >
+                                    <Image
+                                        src="/sangrila-logo.png"
+                                        alt="Sangrila 2K26"
+                                        width={250}
+                                        height={250}
+                                        className="object-contain drop-shadow-[0_0_40px_rgba(241,90,36,0.3)]"
+                                    />
+                                </motion.div>
+                                <p className="text-white/40 text-sm font-bold uppercase tracking-[0.3em] mt-4 relative z-10">
+                                    Cultural Fest
+                                </p>
+                                <div className="w-20 h-0.5 bg-gradient-to-r from-primary via-purple-500 to-secondary mx-auto mt-3 relative z-10" />
                             </div>
                         </div>
                     </div>
