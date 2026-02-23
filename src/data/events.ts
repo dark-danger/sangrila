@@ -13,6 +13,7 @@ export type Event = {
 export const categories = [
     "Dance",
     "Singing",
+    "Music",
     "Fine Arts",
     "Fashion",
     "Life Skills",
@@ -458,6 +459,38 @@ export const events: Event[] = [
             "Bring all ingredients (can be pre-cut but not pre-cooked).",
             "Scores for hygiene, taste, and presentation.",
             "Provide a brief nutrient list of the dish."
+        ]
+    },
+
+    // Music (1)
+    {
+        id: "battle-of-bands",
+        name: "Battle of the Bands",
+        category: "Music",
+        fee: "₹300/head",
+        participants: "3-8",
+        timeLimit: "8-12 Mins",
+        description: "Unleash your musical fury in the ultimate band showdown!",
+        image: "/images/battle-of-bands.png",
+        rules: [
+            "Code of Conduct: Only College/University students are allowed.",
+            "A valid College/University ID card is mandatory.",
+            "Consent to participate grants the university the right to use any photos or videos for promotional purposes.",
+            "Participants must report at the venue 30 minutes before the event. Late entries may lead to cancellation.",
+            "Vulgar, offensive lyrics or gestures will result in immediate disqualification.",
+            "Violation of rules will lead to disqualification.",
+            "The organizing committee reserves the right to modify rules if required.",
+            "Each band must have 3–8 members.",
+            "Time Limit: 8–12 minutes (including setup time).",
+            "Bands must bring their own instruments (guitar, keyboard, drums, etc.). Basic sound setup will be provided.",
+            "At least one song must be performed live (no lip-sync allowed).",
+            "Original compositions are encouraged. Cover songs are also permitted.",
+            "Obscene or inappropriate lyrics are strictly prohibited.",
+            "Bands must submit their track list and technical requirements 5 days in advance.",
+            "The decision of judges will be final and binding.",
+            "Judging Criteria: Musical Coordination & Synchronization, Vocal & Instrumental Quality, Stage Presence & Energy, Creativity & Originality, Audience Engagement.",
+            "Registration Fee: ₹300 per band member.",
+            "🏆 Prize Pool: Exciting Cash Prizes + Trophies + Certificates."
         ]
     },
 ];

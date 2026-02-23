@@ -62,7 +62,7 @@ export function TeamSection() {
                             </div>
 
                             {/* Image Container - Compact */}
-                            <div className="relative w-full aspect-[3/3.5] overflow-hidden bg-white/5">
+                            <div className="relative w-full aspect-[3/4.5] overflow-hidden bg-white/5">
                                 {/* Gradient Overlay */}
                                 <div className="absolute inset-0 bg-gradient-to-t from-[#05060f] via-transparent to-transparent z-10 opacity-70 group-hover:opacity-40 transition-opacity duration-500" />
 

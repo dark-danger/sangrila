@@ -85,7 +85,7 @@ export function AboutSection() {
                                     <span className="text-white font-bold">Sangrila</span> is the annual cultural extravaganza of Geeta University — a celebration of art, music, dance, drama, and everything creative. It is the most awaited event of the academic calendar, bringing together students from across the region.
                                 </p>
                                 <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
-                                    From electrifying solo performances to team-based competitions, Sangrila offers a platform for students to showcase their talent, push their creative boundaries, and create unforgettable memories. The fest features 20+ events including dance, singing, fashion shows, comedy, arts, and much more.
+                                    From electrifying solo performances to team-based competitions, Sangrila offers a platform for students to showcase their talent, push their creative boundaries, and create unforgettable memories. The fest features 25+ events including dance, singing, fashion shows, comedy, arts, and much more.
                                 </p>
                                 <div className="flex flex-wrap gap-3 pt-2">
                                     <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 text-white/70 text-xs font-bold border border-white/5">
@@ -94,7 +94,7 @@ export function AboutSection() {
                                     </div>
                                     <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 text-white/70 text-xs font-bold border border-white/5">
                                         <Star className="w-3 h-3 text-secondary" />
-                                        20+ Events
+                                        25+ Events
                                     </div>
                                     <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 text-white/70 text-xs font-bold border border-white/5">
                                         <Sparkles className="w-3 h-3 text-purple-400" />

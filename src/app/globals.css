@@ -307,3 +307,14 @@ html {
 .float-animation-delay {
   animation: floatUp 7s ease-in-out infinite 1s;
 }
+
+/* Shimmer sweep animation for buttons */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-150%);
+  }
+
+  100% {
+    transform: translateX(150%);
+  }
+}
