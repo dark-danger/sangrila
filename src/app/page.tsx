@@ -16,9 +16,6 @@ const TeamSection = dynamic(() => import("@/components/TeamSection").then(mod =>
 const RegistrationForm = dynamic(() => import("@/components/RegistrationForm").then(mod => mod.RegistrationForm), {
   loading: () => <div className="min-h-[600px]" />,
 });
-const EventFlow = dynamic(() => import("@/components/EventFlow").then(mod => mod.EventFlow), {
-  loading: () => <div className="min-h-[400px]" />,
-});
 const WhatsAppButton = dynamic(() => import("@/components/WhatsAppButton").then(mod => mod.WhatsAppButton));
 
 
@@ -30,7 +27,6 @@ export default function Home() {
       <Hero />
       <AboutSection />
       <StarPerformers />
-      <EventFlow />
       <RegistrationForm />
       <TeamSection />
       <WhatsAppButton />

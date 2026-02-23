@@ -78,7 +78,6 @@ export const teamMembers: TeamMember[] = [
         name: "Sneha Arya",
         role: "Event Management Head",
         image: "/team/sneha.jpeg",
-        rotate: true,
-        objectPosition: "50% 50%",
+        objectPosition: "center 20%",
     },
 ];
