@@ -63,7 +63,7 @@ export const teamMembers: TeamMember[] = [
         id: "5",
         name: "Aanchal Goswami",
         role: "Creative Head",
-        image: "/team/aanchal.png",
+        image: "/team/aanchal.jpeg",
         objectPosition: "center 20%",
     },
     {
