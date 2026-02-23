@@ -12,14 +12,15 @@ const day1Events = [
     { time: "01:00 PM", title: "Lunch Break", icon: <UtensilsCrossed className="w-4 h-4" />, color: "from-green-500 to-emerald-400" },
     { time: "02:00 PM", title: "Theatre & Poetry", icon: <Theater className="w-4 h-4" />, color: "from-emerald-500 to-teal-400" },
     { time: "03:00 PM", title: "Life Skills & Photography", icon: <Camera className="w-4 h-4" />, color: "from-cyan-500 to-blue-400" },
-    { time: "04:00 PM", title: "Fashion Show & Mr./Ms. Sangrila", icon: <Shirt className="w-4 h-4" />, color: "from-fuchsia-500 to-pink-400" },
-    { time: "06:00 PM", title: "Results & Prize Distribution", icon: <Star className="w-4 h-4" />, color: "from-yellow-500 to-amber-400" },
+    { time: "04:00 PM", title: "Fashion Show Pre-Final & Mr./Ms. Sangrila", icon: <Shirt className="w-4 h-4" />, color: "from-fuchsia-500 to-pink-400" },
+    { time: "06:00 PM", title: "DJ & EDM Night", icon: <Music className="w-4 h-4" />, color: "from-purple-500 to-violet-400" },
+    { time: "08:00 PM", title: "Results & Prize Distribution", icon: <Star className="w-4 h-4" />, color: "from-yellow-500 to-amber-400" },
 ];
 
 const day2Events = [
+    { time: "04:00 PM", title: "Fashion Show Final", icon: <Shirt className="w-4 h-4" />, color: "from-fuchsia-500 to-pink-400" },
     { time: "05:00 PM", title: "Gates Open", icon: <Calendar className="w-4 h-4" />, color: "from-blue-500 to-cyan-400" },
-    { time: "06:00 PM", title: "DJ & EDM Night", icon: <Music className="w-4 h-4" />, color: "from-purple-500 to-violet-400" },
-    { time: "08:00 PM", title: "⭐ Star Night — Asees Kaur Live", icon: <Star className="w-4 h-4" />, color: "from-primary to-yellow-400" },
+    { time: "06:00 PM", title: "⭐ Star Night — Asees Kaur Live", icon: <Star className="w-4 h-4" />, color: "from-primary to-yellow-400" },
     { time: "10:00 PM", title: "Grand Finale & Closing", icon: <PartyPopper className="w-4 h-4" />, color: "from-secondary to-primary" },
 ];
 
