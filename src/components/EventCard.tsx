@@ -94,7 +94,7 @@ export function EventCard({ event }: { event: Event }) {
                     </div>
 
                     <Link
-                        href={`/?event=${encodeURIComponent(event.name)}#register`}
+                        href={`/register?event=${encodeURIComponent(event.name)}`}
                         className="w-full py-3.5 bg-gradient-to-r from-secondary via-primary to-purple-600 text-white rounded-2xl text-center text-[10px] font-black uppercase tracking-[0.2em] transition-all shadow-[0_10px_30px_rgba(241,90,36,0.3)] hover:shadow-[0_15px_40px_rgba(241,90,36,0.5)] flex items-center justify-center gap-2 group/reg relative overflow-hidden active:scale-95"
                     >
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-150%] group-hover/reg:animate-[shimmer_2s_infinite]" />

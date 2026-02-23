@@ -275,7 +275,7 @@ export const events: Event[] = [
         participants: "8-15",
         timeLimit: "10 Mins",
         description: "Walk the ramp with style and confidence.",
-        image: "/images/team_fashion_show.jpeg",
+        image: "/images/team-fashion-show.jpeg",
         rules: [
             "Team size: 8 to 15 participants.",
             "Total time: 10 mins (including 2 mins stage prep).",
@@ -292,7 +292,7 @@ export const events: Event[] = [
         participants: "2",
         timeLimit: "5 Mins",
         description: "The ultimate search for style and personality. Open to outsiders.",
-        image: "/images/mr_ms_sangrila.jpeg",
+        image: "/images/mr-ms-sangrila.jpeg",
         rules: [
             "Open to all students (university and outsiders).",
             "2 Rounds: Introduction & Style + Question/Answer.",
@@ -398,7 +398,7 @@ export const events: Event[] = [
         participants: "1",
         timeLimit: "4 Mins",
         description: "Command the stage with a powerful solo dramatic performance.",
-        image: "/images/monoloue.jpeg",
+        image: "/images/monologue.jpeg",
         rules: [
             "Time limit: 4 minutes.",
             "Can be dramatic, comedic, or classical.",
@@ -415,7 +415,7 @@ export const events: Event[] = [
         participants: "1",
         timeLimit: "4 Mins",
         description: "Express your original verses.",
-        image: "/images/self made poetry.jpeg",
+        image: "/images/self-made-poetry.jpeg",
         rules: [
             "Content must be 100% original (no plagiarism).",
             "Topic: Open theme.",
