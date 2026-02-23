@@ -17,12 +17,12 @@ import {
     Shield,
     ListChecks,
     Award,
-    Bus,
+    Building,
 } from "lucide-react";
 import {
     eventCategories,
     generalRules,
-    transportRules,
+    accommodationRules,
     type EventRule,
 } from "@/data/eventRules";
 
@@ -208,7 +208,7 @@ export default function RulesPage() {
         eventCategories[0].id,
     );
     const [showGeneral, setShowGeneral] = useState(false);
-    const [showTransport, setShowTransport] = useState(false);
+    const [showAccommodation, setShowAccommodation] = useState(false);
 
     const activeCat = eventCategories.find((c) => c.id === activeCategory)!;
 
@@ -329,27 +329,27 @@ export default function RulesPage() {
                             </AnimatePresence>
                         </div>
 
-                        {/* Transport & Accommodation */}
+                        {/* Accommodation Only */}
                         <div className="rounded-2xl border border-white/5 bg-[#0a0b18] overflow-hidden">
                             <button
-                                onClick={() => setShowTransport(!showTransport)}
+                                onClick={() => setShowAccommodation(!showAccommodation)}
                                 className="w-full flex items-center justify-between p-5 cursor-pointer"
                             >
                                 <div className="flex items-center gap-3">
                                     <div className="p-2.5 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-xl text-white">
-                                        <Bus className="w-5 h-5" />
+                                        <Building className="w-5 h-5" />
                                     </div>
                                     <h3 className="text-white font-black text-lg uppercase tracking-wider">
-                                        Transport & Accommodation
+                                        Accommodation Only
                                     </h3>
                                 </div>
                                 <ChevronDown
-                                    className={`w-5 h-5 text-muted-foreground transition-transform duration-300 ${showTransport ? "rotate-180" : ""
+                                    className={`w-5 h-5 text-muted-foreground transition-transform duration-300 ${showAccommodation ? "rotate-180" : ""
                                         }`}
                                 />
                             </button>
                             <AnimatePresence>
-                                {showTransport && (
+                                {showAccommodation && (
                                     <motion.div
                                         initial={{ height: 0, opacity: 0 }}
                                         animate={{ height: "auto", opacity: 1 }}
@@ -358,7 +358,7 @@ export default function RulesPage() {
                                         className="overflow-hidden"
                                     >
                                         <div className="px-5 pb-5 space-y-2 border-t border-white/5 pt-4">
-                                            {transportRules.map((rule, i) => (
+                                            {accommodationRules.map((rule, i) => (
                                                 <div key={i} className="flex items-start gap-3">
                                                     <span className="flex-shrink-0 w-6 h-6 rounded-lg bg-white/5 text-blue-400 text-xs font-black flex items-center justify-center mt-0.5">
                                                         {i + 1}
@@ -388,8 +388,8 @@ export default function RulesPage() {
                                     key={cat.id}
                                     onClick={() => setActiveCategory(cat.id)}
                                     className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold whitespace-nowrap transition-all duration-300 cursor-pointer flex-shrink-0 ${activeCategory === cat.id
-                                            ? "bg-white/10 text-white border border-white/20 shadow-lg"
-                                            : "bg-white/[0.03] text-muted-foreground border border-white/5 hover:bg-white/[0.06] hover:text-white/80"
+                                        ? "bg-white/10 text-white border border-white/20 shadow-lg"
+                                        : "bg-white/[0.03] text-muted-foreground border border-white/5 hover:bg-white/[0.06] hover:text-white/80"
                                         }`}
                                 >
                                     <span className="text-lg">{cat.icon}</span>

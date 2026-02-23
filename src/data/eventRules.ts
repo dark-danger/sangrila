@@ -27,8 +27,8 @@ export interface EventCategory {
 }
 
 const commonCodeOfConduct = [
-    "Only College/University students are allowed.",
-    "A valid College/University ID card is mandatory.",
+    "Only University / College students are allowed.",
+    "A valid University / College ID card is mandatory.",
     "Consent to participate grants the university the right to use any photos or videos for promotional purposes.",
     "It is mandatory to reach the respective venue 30 minutes prior to the beginning of the event. Failure to do so will result in the cancellation of registration.",
     "Vulgar or offensive comments/gestures will not be entertained. If found, the participant will be disqualified immediately.",
@@ -37,21 +37,21 @@ const commonCodeOfConduct = [
 ];
 
 export const generalRules = [
-    "Only the students of the participating colleges/University are allowed to register for the various events.",
+    "Only the students of the participating universities / colleges are allowed to register for the various events.",
     "There is a separate fee for participating in different events.",
-    "Each participant must produce a valid college ID.",
+    "Each participant must produce a valid university / college ID.",
     "The registration fee is non-refundable.",
-    "Participants are not to disclose their college names in any competition.",
+    "Participants are not to disclose their university / college names in any competition.",
     "Organizing committee holds the right to change any rules at any time with prior information to the participant.",
     "Any kind of harm structural or to the premises is strictly prohibited.",
     "Smoking and drinking are prohibited in University premises.",
     "Only participants are allowed for the Star Night.",
 ];
 
-export const transportRules = [
-    "Participating teams shall be provided with accommodation from 09:00 A.M on March 13 to March 14, 2026 up to 12:00 PM.",
+export const accommodationRules = [
+    "Participating teams shall be provided with accommodation from 09:00 A.M on March 13 to March 15, 2026 up to 10:00 AM.",
     "A contestant who wishes to arrive a day early must intimate the same to the organizing committee for arrangement, which may incur extra charges.",
-    "Teams will have to vacate the allotted rooms by 12:00 hrs. on March 14, 2026.",
+    "Teams will have to vacate the allotted rooms by 10:00 AM on March 15, 2026.",
     "Allocation of rooms will be done by the organizing committee and no change requests will be entertained on unreasonable grounds.",
     "The accommodation fee for participants is Rs 1500/-, which includes meals and accommodation.",
     "Meals: 13th March – Breakfast, Lunch & Dinner | 14th March – Breakfast, Lunch & Dinner | 15th March – Breakfast.",
