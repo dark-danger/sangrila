@@ -363,19 +363,20 @@ function RegistrationFormContent() {
                                     <Sparkles className="w-3 h-3 text-secondary animate-pulse" />
                                     Payment QR Code
                                 </h3>
-                                <div className="relative w-40 h-40 mx-auto bg-white rounded-2xl p-3 shadow-[0_0_20px_rgba(255,255,255,0.1)] group-hover:scale-105 transition-transform duration-500 overflow-hidden">
+                                <div className="relative w-48 h-48 mx-auto bg-white rounded-2xl p-1 shadow-[0_0_30px_rgba(255,255,255,0.15)] group-hover:scale-105 transition-transform duration-500 overflow-hidden border-4 border-white">
                                     <Image
-                                        src="/qr-code.png"
+                                        src="/qr-code.jpeg"
                                         alt="Payment QR Code"
                                         fill
-                                        className="object-contain p-2"
-                                        sizes="160px"
-                                        quality={75}
+                                        className="object-cover object-top"
+                                        sizes="192px"
+                                        quality={100}
+                                        priority
                                     />
                                 </div>
                                 <div className="space-y-1">
                                     <p className="text-[10px] text-white font-bold">Account: Geeta University</p>
-                                    <p className="text-[10px] text-white/40 font-mono break-all hover:text-primary transition-colors cursor-pointer select-all">geetauniversity.62417837@hdfcbank</p>
+                                    <p className="text-[10px] text-white/40 italic">Scan the QR code to complete payment</p>
                                 </div>
                             </div>
 
