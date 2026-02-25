@@ -1,4 +1,5 @@
 ## when i update code i use this to push chnages 
+git pull origin main
 git add .
 git commit -m "update"
 git push

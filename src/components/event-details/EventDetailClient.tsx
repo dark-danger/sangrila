@@ -162,7 +162,7 @@ export default function EventDetailClient({ id }: { id: string }) {
                             </Link>
 
                             <a
-                                href="/rulebook.pdf"
+                                href="/SANGRILA_2026_RuleBook.pdf"
                                 download
                                 className="px-10 py-5 bg-white/5 hover:bg-white/10 border border-white/10 text-white font-black rounded-full transition-all flex items-center gap-3 uppercase tracking-widest text-sm group"
                             >
