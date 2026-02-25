@@ -489,8 +489,7 @@ export const events: Event[] = [
             "Bands must submit their track list and technical requirements 5 days in advance.",
             "The decision of judges will be final and binding.",
             "Judging Criteria: Musical Coordination & Synchronization, Vocal & Instrumental Quality, Stage Presence & Energy, Creativity & Originality, Audience Engagement.",
-            "Registration Fee: ₹300 per band member.",
-            "🏆 Prize Pool: Exciting Cash Prizes + Trophies + Certificates."
+            "Registration Fee: ₹300 per band member."
         ]
     },
 ];

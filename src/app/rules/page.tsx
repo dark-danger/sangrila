@@ -107,18 +107,7 @@ function EventCard({ event, catColor }: { event: EventRule; catColor: string }) 
                                 </div>
                             </div>
 
-                            {/* Prize */}
-                            <div className="flex items-start gap-2">
-                                <Trophy className="w-4 h-4 text-yellow-400 mt-0.5 flex-shrink-0" />
-                                <div>
-                                    <h5 className="text-white font-bold text-sm uppercase tracking-wider">
-                                        Prize
-                                    </h5>
-                                    <p className="text-muted-foreground text-sm mt-1">
-                                        {event.prize}
-                                    </p>
-                                </div>
-                            </div>
+
 
                             {/* Last Date & Contacts */}
                             <div className="flex flex-col sm:flex-row gap-4">
@@ -225,10 +214,16 @@ export default function RulesPage() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6 }}
-                            className="inline-flex items-center gap-3 px-6 py-2 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-black uppercase tracking-[0.4em] backdrop-blur-sm"
+                            className="flex flex-wrap justify-center gap-4"
                         >
-                            <BookOpen className="w-4 h-4" />
-                            SANGRILA 2K26
+                            <div className="inline-flex items-center gap-3 px-6 py-2 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-black uppercase tracking-[0.4em] backdrop-blur-sm shadow-[0_0_20px_rgba(241,90,36,0.1)]">
+                                <BookOpen className="w-4 h-4" />
+                                SANGRILA 2K26
+                            </div>
+                            <div className="inline-flex items-center gap-3 px-6 py-2 rounded-full border border-yellow-500/20 bg-yellow-500/5 text-yellow-500 text-xs font-black uppercase tracking-[0.4em] backdrop-blur-sm shadow-[0_0_20px_rgba(253,184,19,0.1)]">
+                                <Trophy className="w-4 h-4" />
+                                1 Lakh Prize Pool
+                            </div>
                         </motion.div>
 
                         <motion.h1
@@ -241,19 +236,13 @@ export default function RulesPage() {
                             <span className="gradient-text">Guidelines</span>
                         </motion.h1>
 
-                        <motion.p
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ duration: 0.8, delay: 0.3 }}
-                            className="text-muted-foreground max-w-2xl mx-auto font-medium text-sm md:text-base"
-                        >
+                        <p className="text-muted-foreground max-w-2xl mx-auto font-medium text-sm md:text-base">
                             Welcome to Sangrila 2K26 — the Annual Cultural Fest on{" "}
                             <span className="text-white font-semibold">
                                 13th & 14th March 2026
-                            </span>
-                            . Total Prize Pool:{" "}
-                            <span className="text-primary font-bold">₹1,00,000</span>
-                        </motion.p>
+                            </span>. Total Prize Pool:{" "}
+                            <span className="text-primary font-bold tracking-wider">₹1,00,000</span>
+                        </p>
                     </div>
 
                     {/* ─── Important Notice ─── */}
@@ -425,12 +414,7 @@ export default function RulesPage() {
                                             </p>
                                         </div>
                                     </div>
-                                    <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-yellow-500/10 border border-yellow-500/20">
-                                        <Trophy className="w-4 h-4 text-yellow-400" />
-                                        <span className="text-yellow-300 text-sm font-bold">
-                                            Prize Pool: {activeCat.prizePool}
-                                        </span>
-                                    </div>
+
                                 </div>
                             </div>
 
