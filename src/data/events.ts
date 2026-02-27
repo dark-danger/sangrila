@@ -471,7 +471,7 @@ export const events: Event[] = [
         participants: "3-8",
         timeLimit: "8-12 Mins",
         description: "Unleash your musical fury in the ultimate band showdown!",
-        image: "/images/battle-of-bands.png",
+        image: "/images/battle_of_bands.jpeg",
         rules: [
             "Code of Conduct: Only College/University students are allowed.",
             "A valid College/University ID card is mandatory.",
