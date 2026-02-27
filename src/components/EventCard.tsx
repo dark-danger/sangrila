@@ -14,6 +14,7 @@ const categoryColors: Record<string, { from: string; to: string; emoji: string; 
     "Life Skills": { from: "from-[#301934]", to: "to-[#1a0f1d]", emoji: "🎯", text: "text-[#a78bfa]", bg: "bg-[#301934]/30", glow: "shadow-[#301934]/20" },
     "Theatre": { from: "from-[#ea580c]", to: "to-[#9a3412]", emoji: "🎭", text: "text-[#fb923c]", bg: "bg-[#ea580c]/10", glow: "shadow-[#ea580c]/20" },
     "Health & Wellness": { from: "from-[#fcd34d]", to: "to-[#d97706]", emoji: "🧘", text: "text-[#fbbf24]", bg: "bg-[#fcd34d]/10", glow: "shadow-[#fcd34d]/20" },
+    "Music": { from: "from-[#6366f1]", to: "to-[#4338ca]", emoji: "🎸", text: "text-[#818cf8]", bg: "bg-[#6366f1]/10", glow: "shadow-[#6366f1]/20" },
 };
 
 export function EventCard({ event }: { event: Event }) {
@@ -25,7 +26,7 @@ export function EventCard({ event }: { event: Event }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             whileHover="hovered"
-            className="group relative bg-[#11121d] p-4 rounded-[2.5rem] border border-white/5 hover:border-primary/40 transition-all duration-500 shadow-2xl overflow-hidden h-[580px] flex flex-col motion-gpu"
+            className="group relative glass-card p-4 rounded-[2.5rem] transition-all duration-500 shadow-2xl overflow-hidden min-h-[580px] flex flex-col motion-gpu"
         >
 
 
@@ -61,7 +62,7 @@ export function EventCard({ event }: { event: Event }) {
             <div className="px-3 pb-4 space-y-4 flex-grow flex flex-col">
                 <div className="space-y-2">
                     <Link href={`/events/${event.id}`}>
-                        <h3 className="text-2xl font-black text-white uppercase tracking-tight leading-tight hover:text-primary transition-colors cursor-pointer">
+                        <h3 className="text-xl sm:text-2xl font-black text-white uppercase tracking-tight leading-tight hover:text-primary transition-colors cursor-pointer line-clamp-2">
                             {event.name}
                         </h3>
                     </Link>
@@ -74,7 +75,7 @@ export function EventCard({ event }: { event: Event }) {
                     </div>
                 </div>
 
-                <p className="text-muted-foreground text-xs font-medium leading-relaxed line-clamp-4">
+                <p className="text-muted-foreground text-xs font-medium leading-relaxed line-clamp-3">
                     {event.description}
                 </p>
 
@@ -94,7 +95,7 @@ export function EventCard({ event }: { event: Event }) {
                     </div>
 
                     <Link
-                        href={`/?event=${encodeURIComponent(event.name)}#register`}
+                        href={`/register?event=${encodeURIComponent(event.name)}`}
                         className="w-full py-3.5 bg-gradient-to-r from-secondary via-primary to-purple-600 text-white rounded-2xl text-center text-[10px] font-black uppercase tracking-[0.2em] transition-all shadow-[0_10px_30px_rgba(241,90,36,0.3)] hover:shadow-[0_15px_40px_rgba(241,90,36,0.5)] flex items-center justify-center gap-2 group/reg relative overflow-hidden active:scale-95"
                     >
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-150%] group-hover/reg:animate-[shimmer_2s_infinite]" />

@@ -1,24 +1,25 @@
 @import "tailwindcss";
 
 :root {
-  --background: #050614;
+  --background: #020410;
   --foreground: #ffffff;
 
-  /* Sangrila Quad-Color Theme - Gold, Blue, Orange, Purple */
+  /* Sangrila Premium Concert Theme */
   --primary: #f15a24;
-  /* Vibrant Orange */
-  --primary-foreground: #ffffff;
+  /* Electric Orange */
+  --primary-glow: rgba(241, 90, 36, 0.4);
 
   --secondary: #fdb813;
-  /* Royal Gold */
-  --secondary-foreground: #0a0b1a;
+  /* Sunshine Gold */
+  --secondary-glow: rgba(253, 184, 19, 0.3);
 
-  --accent: #1d355e;
-  /* Elegant Blue */
-  --accent-foreground: #ffffff;
+  --accent: #3b82f6;
+  /* Laser Blue */
+  --accent-glow: rgba(59, 130, 246, 0.4);
 
   --purple: #8b5cf6;
-  /* Royal Purple */
+  /* Neon Purple */
+  --purple-glow: rgba(139, 92, 246, 0.4);
 
   --festive-orange: #f15a24;
   --festive-gold: #fdb813;
@@ -28,13 +29,13 @@
 
   --gradient-festive: linear-gradient(135deg, #fdb813, #f15a24, #8b5cf6, #3b82f6);
 
-  --muted: #1e1b4b;
-  --muted-foreground: #94a3b8;
+  --muted: #0f1122;
+  --muted-foreground: #a1a1aa;
 
-  --card: #16182d;
+  --card: rgba(15, 17, 35, 0.7);
   --card-foreground: #ffffff;
 
-  --border: rgba(255, 255, 255, 0.1);
+  --border: rgba(255, 255, 255, 0.08);
 
   --radius: 1.5rem;
 }
@@ -63,27 +64,35 @@
   background: var(--accent);
 }
 
-/* Glassmorphism Refined - Party Style */
+/* Glassmorphism Refined - Attractive Concert Style */
 .glass {
-  background: rgba(15, 17, 35, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(10, 12, 30, 0.65);
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-5px);
 }
 
 .glow-primary {
-  box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
+  box-shadow: 0 0 30px var(--primary-glow);
 }
 
 .glow-accent {
-  box-shadow: 0 0 20px rgba(29, 53, 94, 0.2);
+  box-shadow: 0 0 30px var(--accent-glow);
 }
 
 .text-glow {
@@ -187,13 +196,13 @@ html {
 
   0%,
   100% {
-    transform: rotate(-15deg);
-    opacity: 0.15;
+    transform: rotate(-25deg) scaleX(1);
+    opacity: 0.1;
   }
 
   50% {
-    transform: rotate(-5deg);
-    opacity: 0.25;
+    transform: rotate(-10deg) scaleX(1.2);
+    opacity: 0.3;
   }
 }
 
@@ -201,13 +210,13 @@ html {
 
   0%,
   100% {
-    transform: rotate(15deg);
-    opacity: 0.15;
+    transform: rotate(25deg) scaleX(1);
+    opacity: 0.1;
   }
 
   50% {
-    transform: rotate(5deg);
-    opacity: 0.25;
+    transform: rotate(10deg) scaleX(1.2);
+    opacity: 0.3;
   }
 }
 
@@ -215,13 +224,21 @@ html {
 
   0%,
   100% {
-    transform: rotate(-25deg);
+    transform: rotate(-45deg);
     opacity: 0;
   }
 
+  25% {
+    opacity: 0.8;
+  }
+
   50% {
-    transform: rotate(25deg);
-    opacity: 0.5;
+    transform: rotate(45deg);
+    opacity: 0.2;
+  }
+
+  75% {
+    opacity: 0.8;
   }
 }
 
@@ -229,13 +246,48 @@ html {
 
   0%,
   100% {
-    transform: rotate(25deg);
+    transform: rotate(45deg);
     opacity: 0;
   }
 
+  25% {
+    opacity: 0.8;
+  }
+
   50% {
-    transform: rotate(-25deg);
+    transform: rotate(-45deg);
+    opacity: 0.2;
+  }
+
+  75% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes fogMove {
+  0% {
+    transform: translateX(-10%) translateY(0) scale(1);
+    opacity: 0.3;
+  }
+
+  50% {
+    transform: translateX(10%) translateY(-5%) scale(1.1);
     opacity: 0.5;
+  }
+
+  100% {
+    transform: translateX(-10%) translateY(0) scale(1);
+    opacity: 0.3;
+  }
+}
+
+@keyframes beamRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
   }
 }
 
@@ -252,23 +304,27 @@ html {
 }
 
 .spotlight-left {
-  animation: spotlightSwayLeft 8s ease-in-out infinite;
+  animation: spotlightSwayLeft 12s ease-in-out infinite;
 }
 
 .spotlight-right {
-  animation: spotlightSwayRight 9s ease-in-out infinite;
+  animation: spotlightSwayRight 15s ease-in-out infinite;
 }
 
 .laser-left {
-  animation: laserSweepLeft 5s linear infinite;
+  animation: laserSweepLeft 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 .laser-right {
-  animation: laserSweepRight 6s linear infinite 0.5s;
+  animation: laserSweepRight 5s cubic-bezier(0.4, 0, 0.2, 1) infinite 0.5s;
 }
 
-.glow-pulse {
-  animation: glowPulse 6s ease-in-out infinite;
+.fog-animation {
+  animation: fogMove 20s ease-in-out infinite;
+}
+
+.beam-rotate {
+  animation: beamRotate 20s linear infinite;
 }
 
 /* Star Performers floating animations */
@@ -306,4 +362,15 @@ html {
 
 .float-animation-delay {
   animation: floatUp 7s ease-in-out infinite 1s;
+}
+
+/* Shimmer sweep animation for buttons */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-150%);
+  }
+
+  100% {
+    transform: translateX(150%);
+  }
 }

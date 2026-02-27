@@ -16,18 +16,20 @@
 - ✅ Lazy loading enabled
 - ✅ Responsive image sizing
 - ✅ Priority loading for critical images (logo, background)
+- ✅ Standardized hyphenated naming (e.g., `team-fashion-show.jpeg`)
 
 ### 3. **Mobile Responsiveness** 📱
 - ✅ **Navbar**: Fully responsive with proper sizing
   - Logo: `h-10 md:h-14 lg:h-16`
   - Text: `text-base md:text-xl lg:text-2xl`
   - Padding: `px-4 md:px-6 lg:px-12`
-  - Register button: Optimized for mobile
+  - Register button: Points to dedicated `/register` page instead of `/#register`
 
 - ✅ **Hero Section**: Responsive titles and buttons
   - Main title: `text-5xl sm:text-7xl md:text-8xl lg:text-[12rem]`
   - Subtitle: `text-3xl sm:text-5xl md:text-7xl lg:text-[10rem]`
-  - Buttons: `px-6 sm:px-8 py-3 sm:py-4`
+  - Register button: Linked to `/register`
+  - View Events button: Linked to `/events`
 
 - ✅ **Forms**: Mobile-optimized buttons
   - Contact form: Responsive padding and text
@@ -43,6 +45,13 @@
 - ✅ Image formats: AVIF, WebP
 - ✅ Device sizes configured
 - ✅ Caching enabled (60s TTL)
+
+### 6. **Navigation Consistency** 🔗
+- ✅ Dedicated `/register` page created
+- ✅ All "Register Now" links updated (Navbar, Hero, Event Cards, Event Details)
+- ✅ Event pre-selection via query parameters (`?event=...`)
+- ✅ Removed redundant `#register` anchors
+- ✅ Redirect paths verified for all internal links
 
 ## 📋 Pre-Deployment Steps
 

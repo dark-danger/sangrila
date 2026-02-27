@@ -13,11 +13,11 @@ export function Hero() {
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
                     <motion.h1
                         initial={{ opacity: 0 }}
-                        animate={{ opacity: 0.2 }}
+                        animate={{ opacity: 0.25 }}
                         transition={{ duration: 1.5 }}
                         className="text-[18vw] font-black leading-none uppercase select-none tracking-tighter motion-gpu"
                         style={{
-                            WebkitTextStroke: '2px var(--primary)',
+                            WebkitTextStroke: '2px rgba(241, 90, 36, 0.4)',
                             color: 'transparent',
                         }}
                     >
@@ -33,7 +33,7 @@ export function Hero() {
                         transition={{ duration: 0.8 }}
                         className="inline-flex items-center gap-3 px-6 py-2 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-black uppercase tracking-[0.4em] backdrop-blur-sm"
                     >
-                        GEETA UNIVERSITY | 13.03.2026
+                        GEETA UNIVERSITY | 13.03.2026 | 14.03.2026
                     </motion.div>
 
                     <div className="space-y-4">
@@ -145,7 +145,7 @@ export function Hero() {
                                 }}
                             >
                                 <Link
-                                    href="/#register"
+                                    href="/register"
                                     className="px-8 sm:px-10 py-4 sm:py-5 bg-gradient-to-r from-secondary via-primary to-purple-600 text-white font-black rounded-full shadow-[0_10px_40px_rgba(241,90,36,0.4)] hover:shadow-[0_15px_50px_rgba(241,90,36,0.6)] transition-all text-base sm:text-xl border border-white/20 flex items-center justify-center gap-2 relative overflow-hidden group"
                                 >
                                     <Sparkles className="w-5 h-5 group-hover:animate-bounce" />

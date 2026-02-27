@@ -13,6 +13,7 @@ export type Event = {
 export const categories = [
     "Dance",
     "Singing",
+    "Music",
     "Fine Arts",
     "Fashion",
     "Life Skills",
@@ -275,7 +276,7 @@ export const events: Event[] = [
         participants: "8-15",
         timeLimit: "10 Mins",
         description: "Walk the ramp with style and confidence.",
-        image: "/images/team_fashion_show.jpeg",
+        image: "/images/team-fashion-show.jpeg",
         rules: [
             "Team size: 8 to 15 participants.",
             "Total time: 10 mins (including 2 mins stage prep).",
@@ -292,7 +293,7 @@ export const events: Event[] = [
         participants: "2",
         timeLimit: "5 Mins",
         description: "The ultimate search for style and personality. Open to outsiders.",
-        image: "/images/mr_ms_sangrila.jpeg",
+        image: "/images/mr-ms-sangrila.jpeg",
         rules: [
             "Open to all students (university and outsiders).",
             "2 Rounds: Introduction & Style + Question/Answer.",
@@ -398,7 +399,7 @@ export const events: Event[] = [
         participants: "1",
         timeLimit: "4 Mins",
         description: "Command the stage with a powerful solo dramatic performance.",
-        image: "/images/monoloue.jpeg",
+        image: "/images/monologue.jpeg",
         rules: [
             "Time limit: 4 minutes.",
             "Can be dramatic, comedic, or classical.",
@@ -415,7 +416,7 @@ export const events: Event[] = [
         participants: "1",
         timeLimit: "4 Mins",
         description: "Express your original verses.",
-        image: "/images/self made poetry.jpeg",
+        image: "/images/self-made-poetry.jpeg",
         rules: [
             "Content must be 100% original (no plagiarism).",
             "Topic: Open theme.",
@@ -458,6 +459,37 @@ export const events: Event[] = [
             "Bring all ingredients (can be pre-cut but not pre-cooked).",
             "Scores for hygiene, taste, and presentation.",
             "Provide a brief nutrient list of the dish."
+        ]
+    },
+
+    // Music (1)
+    {
+        id: "battle-of-bands",
+        name: "Battle of the Bands",
+        category: "Music",
+        fee: "₹300/head",
+        participants: "3-8",
+        timeLimit: "8-12 Mins",
+        description: "Unleash your musical fury in the ultimate band showdown!",
+        image: "/images/battle_of_bands.jpeg",
+        rules: [
+            "Code of Conduct: Only College/University students are allowed.",
+            "A valid College/University ID card is mandatory.",
+            "Consent to participate grants the university the right to use any photos or videos for promotional purposes.",
+            "Participants must report at the venue 30 minutes before the event. Late entries may lead to cancellation.",
+            "Vulgar, offensive lyrics or gestures will result in immediate disqualification.",
+            "Violation of rules will lead to disqualification.",
+            "The organizing committee reserves the right to modify rules if required.",
+            "Each band must have 3–8 members.",
+            "Time Limit: 8–12 minutes (including setup time).",
+            "Bands must bring their own instruments (guitar, keyboard, drums, etc.). Basic sound setup will be provided.",
+            "At least one song must be performed live (no lip-sync allowed).",
+            "Original compositions are encouraged. Cover songs are also permitted.",
+            "Obscene or inappropriate lyrics are strictly prohibited.",
+            "Bands must submit their track list and technical requirements 5 days in advance.",
+            "The decision of judges will be final and binding.",
+            "Judging Criteria: Musical Coordination & Synchronization, Vocal & Instrumental Quality, Stage Presence & Energy, Creativity & Originality, Audience Engagement.",
+            "Registration Fee: ₹300 per band member."
         ]
     },
 ];

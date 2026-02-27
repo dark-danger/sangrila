@@ -122,6 +122,8 @@ export function ContactSection() {
                         height="100%"
                         style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg) brightness(0.8) contrast(1.2)' }}
                         loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                        allowFullScreen
                         className="group-hover:filter-none transition-all duration-1000"
                     ></iframe>
                 </motion.div>
