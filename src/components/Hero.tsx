@@ -13,11 +13,11 @@ export function Hero() {
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
                     <motion.h1
                         initial={{ opacity: 0 }}
-                        animate={{ opacity: 0.2 }}
+                        animate={{ opacity: 0.25 }}
                         transition={{ duration: 1.5 }}
                         className="text-[18vw] font-black leading-none uppercase select-none tracking-tighter motion-gpu"
                         style={{
-                            WebkitTextStroke: '2px var(--primary)',
+                            WebkitTextStroke: '2px rgba(241, 90, 36, 0.4)',
                             color: 'transparent',
                         }}
                     >

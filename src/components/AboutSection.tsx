@@ -17,7 +17,7 @@ export function AboutSection() {
                     transition={{ duration: 0.8 }}
                     className="relative"
                 >
-                    <div className="bg-[#0a0b14] rounded-[2.5rem] border border-white/5 overflow-hidden">
+                    <div className="glass rounded-[2.5rem] overflow-hidden">
                         <div className="grid md:grid-cols-2 gap-0">
                             {/* Left - University Image */}
                             <div className="relative min-h-[300px] md:min-h-[400px] overflow-hidden">
@@ -73,7 +73,7 @@ export function AboutSection() {
                     transition={{ duration: 0.8 }}
                     className="relative"
                 >
-                    <div className="bg-[#0a0b14] rounded-[2.5rem] border border-white/5 overflow-hidden">
+                    <div className="glass rounded-[2.5rem] overflow-hidden">
                         <div className="grid md:grid-cols-2 gap-0">
                             {/* Left - Content Side */}
                             <div className="p-10 md:p-16 flex flex-col justify-center space-y-6 order-2 md:order-1">

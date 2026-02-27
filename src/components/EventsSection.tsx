@@ -18,7 +18,7 @@ export function EventsSection({ limit }: { limit?: number }) {
     }, [activeCategory, limit]);
 
     return (
-        <section id="events" className="py-24 px-4 sm:px-6 relative z-10 bg-[#0a0b14] mx-auto max-w-[95%] rounded-[3rem] mt-12 border border-white/5 overflow-hidden">
+        <section id="events" className="py-24 px-4 sm:px-6 relative z-10 glass mx-auto max-w-[95%] rounded-[3rem] mt-12 overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)]">
             <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-16 space-y-4">
                     <motion.h2

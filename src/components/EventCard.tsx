@@ -26,7 +26,7 @@ export function EventCard({ event }: { event: Event }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             whileHover="hovered"
-            className="group relative bg-[#11121d] p-4 rounded-[2.5rem] border border-white/5 hover:border-primary/40 transition-all duration-500 shadow-2xl overflow-hidden min-h-[580px] flex flex-col motion-gpu"
+            className="group relative glass-card p-4 rounded-[2.5rem] transition-all duration-500 shadow-2xl overflow-hidden min-h-[580px] flex flex-col motion-gpu"
         >
 
 
