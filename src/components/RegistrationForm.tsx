@@ -1,12 +1,17 @@
 "use client";
 
-import { useState, Suspense, useRef } from "react";
+import { useState, Suspense, useRef, useMemo } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { User, School, Hash, Trophy, CreditCard, Send, CheckCircle2, AlertCircle, Loader2, Sparkles, Plus, Trash2, Camera, Upload, Phone, Users } from "lucide-react";
+import { User, School, Hash, Trophy, CreditCard, Send, CheckCircle2, AlertCircle, Loader2, Sparkles, Plus, Trash2, Camera, Upload, Phone, Users, ArrowRight, ArrowLeft, IndianRupee, QrCode } from "lucide-react";
 import { useSearchParams } from "next/navigation";
+import { QRCodeSVG } from "qrcode.react";
 
 import { events } from "@/data/events";
+
+// UPI Config
+const UPI_ID = "geetauniversity.62417837@hdfcbank";
+const UPI_NAME = "Geeta University";
 
 function RegistrationFormContent() {
     const searchParams = useSearchParams();
@@ -14,6 +19,9 @@ function RegistrationFormContent() {
     const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
     const [message, setMessage] = useState("");
     const fileInputRef = useRef<HTMLInputElement>(null);
+
+    // Step state: 1 = details, 2 = payment
+    const [step, setStep] = useState(1);
 
     // State for the selected event to handle programmed selection
     const [selectedEvent, setSelectedEvent] = useState(() => {
@@ -43,6 +51,10 @@ function RegistrationFormContent() {
         if (teamMembers.length > 0) {
             setTeamMembers([]);
         }
+        // Reset step when event changes
+        if (step === 2) {
+            setStep(1);
+        }
     }
 
     const [screenshot, setScreenshot] = useState<File | null>(null);
@@ -62,8 +74,35 @@ function RegistrationFormContent() {
         return parseInt(parts) || 1;
     };
 
+    // Parse min participants
+    const getMinParticipants = () => {
+        if (!currentEvent) return 1;
+        const parts = currentEvent.participants;
+        if (parts.includes("-")) {
+            return parseInt(parts.split("-")[0]);
+        }
+        return parseInt(parts) || 1;
+    };
+
     const maxParticipants = getMaxParticipants();
+    const minParticipants = getMinParticipants();
     const canAddMember = teamMembers.length < maxParticipants - 1;
+
+    // Calculate total amount
+    const totalAmount = useMemo(() => {
+        if (!currentEvent) return 0;
+        const feeStr = currentEvent.fee;
+        const feeNum = parseInt(feeStr.replace(/[^0-9]/g, "")) || 0;
+        const isPerHead = feeStr.toLowerCase().includes("/head");
+        const totalMembers = 1 + teamMembers.filter(m => m.trim() !== "").length;
+        return isPerHead ? feeNum * totalMembers : feeNum;
+    }, [currentEvent, teamMembers]);
+
+    // Generate UPI URL
+    const upiUrl = useMemo(() => {
+        if (totalAmount <= 0) return "";
+        return `upi://pay?pa=${encodeURIComponent(UPI_ID)}&pn=${encodeURIComponent(UPI_NAME)}&am=${totalAmount}&cu=INR&tn=${encodeURIComponent(`Sangrila 2K26 - ${selectedEvent}`)}`;
+    }, [totalAmount, selectedEvent]);
 
     const handleAddMember = () => {
         if (canAddMember) {
@@ -95,12 +134,46 @@ function RegistrationFormContent() {
             const reader = new FileReader();
             reader.onloadend = () => {
                 setScreenshotPreview(reader.result as string);
-                // Extract base64 part
                 const base64 = (reader.result as string).split(",")[1];
                 setScreenshotBase64(base64);
             };
             reader.readAsDataURL(file);
         }
+    };
+
+    // Validate step 1 before proceeding
+    const handleProceedToPayment = () => {
+        // Check required fields
+        const form = document.querySelector('form') as HTMLFormElement;
+        if (!form) return;
+
+        const name = (form.querySelector('[name="name"]') as HTMLInputElement)?.value;
+        const phone = (form.querySelector('[name="phone"]') as HTMLInputElement)?.value;
+        const email = (form.querySelector('[name="email"]') as HTMLInputElement)?.value;
+        const college = (form.querySelector('[name="college"]') as HTMLInputElement)?.value;
+        const rollno = (form.querySelector('[name="rollno"]') as HTMLInputElement)?.value;
+
+        if (!name || !phone || !email || !college || !rollno || !selectedEvent) {
+            setStatus("error");
+            setMessage("Please fill all required fields before proceeding.");
+            setTimeout(() => { setStatus("idle"); setMessage(""); }, 3000);
+            return;
+        }
+
+        // Check min team members for team events
+        if (minParticipants > 1) {
+            const filledMembers = teamMembers.filter(m => m.trim() !== "").length;
+            if (filledMembers + 1 < minParticipants) {
+                setStatus("error");
+                setMessage(`This event requires at least ${minParticipants} members (including you). Please add more team members.`);
+                setTimeout(() => { setStatus("idle"); setMessage(""); }, 4000);
+                return;
+            }
+        }
+
+        setStatus("idle");
+        setMessage("");
+        setStep(2);
     };
 
     // REPLACE THIS URL with your Google Apps Script Web App URL after deployment
@@ -109,9 +182,24 @@ function RegistrationFormContent() {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
+        // If on step 1, don't submit - go to step 2
+        if (step === 1) {
+            handleProceedToPayment();
+            return;
+        }
+
         if (!SCRIPT_URL || SCRIPT_URL.includes("REPLACE_THIS")) {
             setStatus("error");
             setMessage("Script URL not configured. Please check GOOGLE_SHEET_SETUP.md");
+            return;
+        }
+
+        // Check transaction ID
+        const form = e.currentTarget;
+        const transactionId = (form.querySelector('[name="transactionId"]') as HTMLInputElement)?.value;
+        if (!transactionId) {
+            setStatus("error");
+            setMessage("Please enter the Transaction ID / UTR number.");
             return;
         }
 
@@ -122,7 +210,6 @@ function RegistrationFormContent() {
         }
 
         setStatus("loading");
-        const form = e.currentTarget;
         const formData = new FormData(form);
 
         // Add additional members to formData explicitly with keys member_2, member_3...
@@ -132,11 +219,6 @@ function RegistrationFormContent() {
 
         // Calculate total amount based on event fee and team size
         if (currentEvent) {
-            const feeStr = currentEvent.fee;
-            const feeNum = parseInt(feeStr.replace(/[^0-9]/g, "")) || 0;
-            const isPerHead = feeStr.toLowerCase().includes("/head");
-            const totalMembers = 1 + teamMembers.filter(m => m.trim() !== "").length;
-            const totalAmount = isPerHead ? feeNum * totalMembers : feeNum;
             formData.append("amount", `₹${totalAmount}`);
         }
 
@@ -146,14 +228,11 @@ function RegistrationFormContent() {
         }
 
         try {
-            // Using URLSearchParams for Google Apps Script compatibility
             const params = new URLSearchParams();
             formData.forEach((value, key) => {
                 params.append(key, value as string);
             });
 
-            // For Google Apps Script, we often need to use 'no-cors' due to redirect behavior
-            // We use fetch with x-www-form-urlencoded
             await fetch(SCRIPT_URL, {
                 method: "POST",
                 mode: "no-cors",
@@ -163,17 +242,16 @@ function RegistrationFormContent() {
                 body: params.toString(),
             });
 
-            // Since it's no-cors, we assume success if no error is thrown
             setStatus("success");
             setMessage("Registration submitted successfully! Our team will verify your payment and contact you.");
 
-            // Reset form
             form.reset();
             setTeamMembers([]);
             setScreenshot(null);
             setScreenshotPreview(null);
             setScreenshotBase64("");
             setSelectedEvent("");
+            setStep(1);
 
         } catch (error) {
             console.error("Submission error:", error);
@@ -190,7 +268,7 @@ function RegistrationFormContent() {
                 viewport={{ once: true }}
                 className="max-w-4xl mx-auto p-5 sm:p-8 md:p-12 rounded-[2rem] md:rounded-[3rem] bg-[#11121d] border border-white/5 shadow-2xl relative overflow-hidden"
             >
-                {/* Decorative Elements - Simplified */}
+                {/* Decorative Elements */}
                 <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-[80px] -mr-32 -mt-32" />
                 <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/5 rounded-full blur-[80px] -ml-32 -mb-32" />
 
@@ -218,256 +296,381 @@ function RegistrationFormContent() {
                                 </div>
                             </div>
                         </div>
+
+                        {/* Step Indicator */}
+                        <div className="flex items-center justify-center gap-3 mt-6">
+                            <div className={`flex items-center gap-2 px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-widest transition-all duration-500 ${step === 1 ? 'bg-primary/20 text-primary border border-primary/30 shadow-[0_0_20px_rgba(241,90,36,0.15)]' : 'bg-white/5 text-white/30 border border-white/5'}`}>
+                                <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-black ${step === 1 ? 'bg-primary text-white' : step === 2 ? 'bg-green-500 text-white' : 'bg-white/10 text-white/30'}`}>
+                                    {step === 2 ? '✓' : '1'}
+                                </span>
+                                Details
+                            </div>
+                            <div className={`w-8 h-[2px] rounded-full transition-all duration-500 ${step === 2 ? 'bg-primary' : 'bg-white/10'}`} />
+                            <div className={`flex items-center gap-2 px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-widest transition-all duration-500 ${step === 2 ? 'bg-primary/20 text-primary border border-primary/30 shadow-[0_0_20px_rgba(241,90,36,0.15)]' : 'bg-white/5 text-white/30 border border-white/5'}`}>
+                                <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-black ${step === 2 ? 'bg-primary text-white' : 'bg-white/10 text-white/30'}`}>
+                                    2
+                                </span>
+                                Payment
+                            </div>
+                        </div>
                     </div>
 
                     <form onSubmit={handleSubmit} className="space-y-6 md:space-y-8">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                            <div className="space-y-2 group">
-                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 ml-2 group-focus-within:text-primary transition-colors">Full Name (Team Leader)</label>
-                                <div className="relative">
-                                    <User className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-primary/50 group-focus-within:text-primary transition-colors" />
-                                    <input required name="name" type="text" placeholder="Your Name" className="w-full pl-12 sm:pl-14 pr-4 sm:pr-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all" />
-                                </div>
-                            </div>
-                            <div className="space-y-2 group">
-                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 ml-2 group-focus-within:text-primary transition-colors">Phone Number</label>
-                                <div className="relative">
-                                    <Phone className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-primary/50 group-focus-within:text-primary transition-colors" />
-                                    <input required name="phone" type="tel" placeholder="WhatsApp Number" className="w-full pl-12 sm:pl-14 pr-4 sm:pr-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all" />
-                                </div>
-                            </div>
-                            <div className="space-y-2 group">
-                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 ml-2 group-focus-within:text-primary transition-colors">Email</label>
-                                <div className="relative">
-                                    <Send className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-primary/50 group-focus-within:text-primary transition-colors" />
-                                    <input required name="email" type="email" placeholder="email@example.com" className="w-full pl-12 sm:pl-14 pr-4 sm:pr-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all" />
-                                </div>
-                            </div>
-                            <div className="space-y-2 group">
-                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 ml-2 group-focus-within:text-primary transition-colors">University / College</label>
-                                <div className="relative">
-                                    <School className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-primary/50 group-focus-within:text-primary transition-colors" />
-                                    <input required name="college" type="text" placeholder="College Name" className="w-full pl-12 sm:pl-14 pr-4 sm:pr-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all" />
-                                </div>
-                            </div>
-                            <div className="space-y-2 group">
-                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 ml-2 group-focus-within:text-primary transition-colors">Roll Number / ID</label>
-                                <div className="relative">
-                                    <Hash className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-primary/50 group-focus-within:text-primary transition-colors" />
-                                    <input required name="rollno" type="text" placeholder="Ex: 2024GU001" className="w-full pl-12 sm:pl-14 pr-4 sm:pr-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all" />
-                                </div>
-                            </div>
-                            <div className="space-y-2 group">
-                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 ml-2 group-focus-within:text-primary transition-colors">Event</label>
-                                <div className="relative">
-                                    <Trophy className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-primary/50 group-focus-within:text-primary transition-colors" />
-                                    <select
-                                        required
-                                        name="event"
-                                        value={selectedEvent}
-                                        onChange={(e) => setSelectedEvent(e.target.value)}
-                                        className="w-full pl-12 sm:pl-14 pr-10 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-[#0a0b14] border border-white/10 text-white text-sm focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all appearance-none cursor-pointer"
-                                    >
-                                        <option value="" disabled style={{ background: '#1a1b2e', color: '#ffffff' }}>Select an Event</option>
-                                        {events.map(e => <option key={e.id} value={e.name} style={{ background: '#1a1b2e', color: '#ffffff' }}>{e.name} ({e.fee})</option>)}
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
 
-                        <AnimatePresence>
-                            {isTeamEvent && (
+                        {/* ========== STEP 1: DETAILS ========== */}
+                        <AnimatePresence mode="wait">
+                            {step === 1 && (
                                 <motion.div
-                                    initial={{ opacity: 0, y: -10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: -10 }}
-                                    className="space-y-2 group"
+                                    key="step1"
+                                    initial={{ opacity: 0, x: -30 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    exit={{ opacity: 0, x: -30 }}
+                                    transition={{ duration: 0.3 }}
+                                    className="space-y-6 md:space-y-8"
                                 >
-                                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 ml-2 group-focus-within:text-primary transition-colors">Team Name</label>
-                                    <div className="relative">
-                                        <Users className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-primary/50 group-focus-within:text-primary transition-colors" />
-                                        <input required name="teamName" type="text" placeholder="Enter Your Awesome Team Name" className="w-full pl-12 sm:pl-14 pr-4 sm:pr-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all" />
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                                        <div className="space-y-2 group">
+                                            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 ml-2 group-focus-within:text-primary transition-colors">Full Name (Team Leader)</label>
+                                            <div className="relative">
+                                                <User className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-primary/50 group-focus-within:text-primary transition-colors" />
+                                                <input required name="name" type="text" placeholder="Your Name" className="w-full pl-12 sm:pl-14 pr-4 sm:pr-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all" />
+                                            </div>
+                                        </div>
+                                        <div className="space-y-2 group">
+                                            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 ml-2 group-focus-within:text-primary transition-colors">Phone Number</label>
+                                            <div className="relative">
+                                                <Phone className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-primary/50 group-focus-within:text-primary transition-colors" />
+                                                <input required name="phone" type="tel" placeholder="WhatsApp Number" className="w-full pl-12 sm:pl-14 pr-4 sm:pr-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all" />
+                                            </div>
+                                        </div>
+                                        <div className="space-y-2 group">
+                                            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 ml-2 group-focus-within:text-primary transition-colors">Email</label>
+                                            <div className="relative">
+                                                <Send className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-primary/50 group-focus-within:text-primary transition-colors" />
+                                                <input required name="email" type="email" placeholder="email@example.com" className="w-full pl-12 sm:pl-14 pr-4 sm:pr-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all" />
+                                            </div>
+                                        </div>
+                                        <div className="space-y-2 group">
+                                            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 ml-2 group-focus-within:text-primary transition-colors">University / College</label>
+                                            <div className="relative">
+                                                <School className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-primary/50 group-focus-within:text-primary transition-colors" />
+                                                <input required name="college" type="text" placeholder="College Name" className="w-full pl-12 sm:pl-14 pr-4 sm:pr-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all" />
+                                            </div>
+                                        </div>
+                                        <div className="space-y-2 group">
+                                            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 ml-2 group-focus-within:text-primary transition-colors">Roll Number / ID</label>
+                                            <div className="relative">
+                                                <Hash className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-primary/50 group-focus-within:text-primary transition-colors" />
+                                                <input required name="rollno" type="text" placeholder="Ex: 2024GU001" className="w-full pl-12 sm:pl-14 pr-4 sm:pr-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all" />
+                                            </div>
+                                        </div>
+                                        <div className="space-y-2 group">
+                                            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 ml-2 group-focus-within:text-primary transition-colors">Event</label>
+                                            <div className="relative">
+                                                <Trophy className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-primary/50 group-focus-within:text-primary transition-colors" />
+                                                <select
+                                                    required
+                                                    name="event"
+                                                    value={selectedEvent}
+                                                    onChange={(e) => setSelectedEvent(e.target.value)}
+                                                    className="w-full pl-12 sm:pl-14 pr-10 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-[#0a0b14] border border-white/10 text-white text-sm focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all appearance-none cursor-pointer"
+                                                >
+                                                    <option value="" disabled style={{ background: '#1a1b2e', color: '#ffffff' }}>Select an Event</option>
+                                                    {events.map(e => <option key={e.id} value={e.name} style={{ background: '#1a1b2e', color: '#ffffff' }}>{e.name} ({e.fee})</option>)}
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
+
+                                    {/* Team Name for team events */}
+                                    <AnimatePresence>
+                                        {isTeamEvent && (
+                                            <motion.div
+                                                initial={{ opacity: 0, y: -10 }}
+                                                animate={{ opacity: 1, y: 0 }}
+                                                exit={{ opacity: 0, y: -10 }}
+                                                className="space-y-2 group"
+                                            >
+                                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 ml-2 group-focus-within:text-primary transition-colors">Team Name</label>
+                                                <div className="relative">
+                                                    <Users className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-primary/50 group-focus-within:text-primary transition-colors" />
+                                                    <input required name="teamName" type="text" placeholder="Enter Your Awesome Team Name" className="w-full pl-12 sm:pl-14 pr-4 sm:pr-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all" />
+                                                </div>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+
+                                    {/* Team Members Section */}
+                                    {maxParticipants > 1 && (
+                                        <motion.div
+                                            initial={{ opacity: 0, height: 0 }}
+                                            animate={{ opacity: 1, height: "auto" }}
+                                            className="space-y-4 p-6 rounded-3xl bg-white/5 border border-white/10"
+                                        >
+                                            <div className="flex items-center justify-between mb-2">
+                                                <h3 className="text-xs font-black text-white uppercase tracking-widest flex items-center gap-2">
+                                                    Team Members ({1 + teamMembers.length}/{maxParticipants})
+                                                </h3>
+                                                {canAddMember && (
+                                                    <button
+                                                        type="button"
+                                                        onClick={handleAddMember}
+                                                        className="px-3 py-1.5 rounded-full bg-primary/20 text-primary text-[10px] font-bold uppercase tracking-tighter hover:bg-primary hover:text-white transition-all flex items-center gap-1"
+                                                    >
+                                                        <Plus className="w-3 h-3" />
+                                                        Add Member
+                                                    </button>
+                                                )}
+                                            </div>
+                                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                                {teamMembers.map((member, index) => (
+                                                    <motion.div
+                                                        initial={{ opacity: 0, scale: 0.95 }}
+                                                        animate={{ opacity: 1, scale: 1 }}
+                                                        key={index}
+                                                        className="relative group"
+                                                    >
+                                                        <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[10px] font-black text-white/20">{index + 2}</div>
+                                                        <input
+                                                            required
+                                                            type="text"
+                                                            value={member}
+                                                            onChange={(e) => handleMemberChange(index, e.target.value)}
+                                                            placeholder="Name & ID"
+                                                            className="w-full pl-10 pr-10 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-xs focus:outline-none focus:border-primary/50 transition-all"
+                                                        />
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => handleRemoveMember(index)}
+                                                            className="absolute right-3 top-1/2 -translate-y-1/2 text-white/20 hover:text-red-500 transition-colors"
+                                                        >
+                                                            <Trash2 className="w-3 h-3" />
+                                                        </button>
+                                                    </motion.div>
+                                                ))}
+                                            </div>
+                                            {teamMembers.length === 0 && (
+                                                <p className="text-[10px] text-white/30 text-center italic">Registering as solo. Use &quot;Add Member&quot; for team entries.</p>
+                                            )}
+                                        </motion.div>
+                                    )}
+
+                                    {/* Amount Preview */}
+                                    {currentEvent && (
+                                        <motion.div
+                                            initial={{ opacity: 0, y: 10 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            className="p-4 sm:p-6 rounded-2xl bg-gradient-to-r from-primary/10 via-secondary/10 to-purple-500/10 border border-primary/20 flex flex-col sm:flex-row items-center justify-between gap-4"
+                                        >
+                                            <div className="flex items-center gap-3">
+                                                <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center">
+                                                    <IndianRupee className="w-5 h-5 text-primary" />
+                                                </div>
+                                                <div>
+                                                    <p className="text-[10px] font-black uppercase tracking-widest text-white/40">Total Amount</p>
+                                                    <p className="text-2xl font-black text-white">₹{totalAmount}</p>
+                                                </div>
+                                            </div>
+                                            <div className="text-right text-[10px] text-white/40">
+                                                <p>{currentEvent.fee} × {1 + teamMembers.filter(m => m.trim() !== "").length} member{(1 + teamMembers.filter(m => m.trim() !== "").length) > 1 ? 's' : ''}</p>
+                                                <p className="text-white/60 font-bold">{selectedEvent}</p>
+                                            </div>
+                                        </motion.div>
+                                    )}
+
+                                    {/* Proceed to Payment Button */}
+                                    <motion.button
+                                        type="button"
+                                        onClick={handleProceedToPayment}
+                                        disabled={!selectedEvent}
+                                        whileHover={{ scale: 1.02 }}
+                                        whileTap={{ scale: 0.98 }}
+                                        className="w-full py-4 md:py-5 rounded-[2rem] bg-gradient-to-r from-secondary via-primary to-purple-600 text-white font-black text-xs md:text-sm uppercase tracking-widest shadow-xl hover:shadow-[0_0_40px_rgba(241,90,36,0.4)] transition-all flex items-center justify-center gap-3 disabled:opacity-30 disabled:cursor-not-allowed relative overflow-hidden group/btn"
+                                    >
+                                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-150%] animate-[shimmer_4s_infinite]" />
+                                        <span className="relative z-10">Proceed to Payment</span>
+                                        <ArrowRight className="w-5 h-5 relative z-10 group-hover/btn:translate-x-1 transition-transform" />
+                                    </motion.button>
+                                </motion.div>
+                            )}
+
+                            {/* ========== STEP 2: PAYMENT ========== */}
+                            {step === 2 && (
+                                <motion.div
+                                    key="step2"
+                                    initial={{ opacity: 0, x: 30 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    exit={{ opacity: 0, x: 30 }}
+                                    transition={{ duration: 0.3 }}
+                                    className="space-y-6 md:space-y-8"
+                                >
+                                    {/* Back Button */}
+                                    <button
+                                        type="button"
+                                        onClick={() => setStep(1)}
+                                        className="flex items-center gap-2 text-white/40 hover:text-white text-xs font-black uppercase tracking-widest transition-colors group/back"
+                                    >
+                                        <ArrowLeft className="w-4 h-4 group-hover/back:-translate-x-1 transition-transform" />
+                                        Back to Details
+                                    </button>
+
+                                    {/* Event & Amount Summary */}
+                                    <div className="p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-green-500/10 via-emerald-500/10 to-teal-500/10 border border-green-500/20">
+                                        <div className="flex items-center justify-between flex-wrap gap-4">
+                                            <div>
+                                                <p className="text-[10px] font-black uppercase tracking-widest text-white/40 mb-1">Selected Event</p>
+                                                <p className="text-lg font-black text-white">{selectedEvent}</p>
+                                                <p className="text-[10px] text-white/40 mt-1">
+                                                    {currentEvent?.fee} × {1 + teamMembers.filter(m => m.trim() !== "").length} member{(1 + teamMembers.filter(m => m.trim() !== "").length) > 1 ? 's' : ''}
+                                                </p>
+                                            </div>
+                                            <div className="text-right">
+                                                <p className="text-[10px] font-black uppercase tracking-widest text-white/40 mb-1">Pay Amount</p>
+                                                <p className="text-3xl font-black text-green-400">₹{totalAmount}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Payment Section */}
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+                                        {/* Payment QR Section */}
+                                        <div className="p-6 rounded-[2rem] bg-white/5 border border-white/10 text-center space-y-4 hover:bg-white/10 transition-colors duration-500 group h-full">
+                                            <h3 className="text-xs font-black text-white uppercase tracking-widest flex items-center justify-center gap-2">
+                                                <QrCode className="w-3 h-3 text-secondary animate-pulse" />
+                                                Scan & Pay ₹{totalAmount}
+                                            </h3>
+
+                                            {/* Dynamic QR Code */}
+                                            <div className="relative w-48 h-48 mx-auto bg-white rounded-2xl p-3 shadow-[0_0_30px_rgba(255,255,255,0.15)] group-hover:scale-105 transition-transform duration-500 flex items-center justify-center">
+                                                {upiUrl ? (
+                                                    <QRCodeSVG
+                                                        value={upiUrl}
+                                                        size={168}
+                                                        bgColor="#ffffff"
+                                                        fgColor="#000000"
+                                                        level="H"
+                                                        includeMargin={false}
+                                                    />
+                                                ) : (
+                                                    <div className="text-gray-400 text-xs text-center">Select event to generate QR</div>
+                                                )}
+                                            </div>
+
+                                            <div className="space-y-2">
+                                                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20">
+                                                    <IndianRupee className="w-3 h-3 text-green-400" />
+                                                    <span className="text-sm font-black text-green-400">₹{totalAmount}</span>
+                                                </div>
+                                                <p className="text-[10px] text-white font-bold">Account: {UPI_NAME}</p>
+                                                <p className="text-[10px] text-white/40 font-mono break-all hover:text-primary transition-colors cursor-pointer select-all">{UPI_ID}</p>
+                                            </div>
+                                        </div>
+
+                                        {/* Transaction ID & Screenshot Section */}
+                                        <div className="space-y-4">
+                                            {/* Transaction ID */}
+                                            <div className="space-y-2 group">
+                                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 ml-2 group-focus-within:text-primary transition-colors">Transaction ID / UTR</label>
+                                                <div className="relative">
+                                                    <CreditCard className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-primary/50 group-focus-within:text-primary transition-colors" />
+                                                    <input required name="transactionId" type="text" placeholder="Enter Transaction ID / UTR" className="w-full pl-12 sm:pl-14 pr-4 sm:pr-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all" />
+                                                </div>
+                                            </div>
+
+                                            {/* Screenshot Upload Section */}
+                                            <div className="p-5 rounded-[2rem] bg-white/5 border border-white/10 text-center space-y-4 hover:bg-white/10 transition-colors duration-500 flex flex-col items-center justify-center">
+                                                <h3 className="text-xs font-black text-white uppercase tracking-widest flex items-center justify-center gap-2">
+                                                    <Camera className="w-3 h-3 text-primary animate-pulse" />
+                                                    Payment Screenshot
+                                                </h3>
+
+                                                <input
+                                                    type="file"
+                                                    accept="image/*"
+                                                    className="hidden"
+                                                    ref={fileInputRef}
+                                                    onChange={handleFileChange}
+                                                />
+
+                                                {screenshotPreview ? (
+                                                    <div className="relative group/preview w-full">
+                                                        <div className="relative w-40 h-52 mx-auto rounded-xl overflow-hidden border-2 border-primary/50 shadow-[0_0_20px_rgba(241,90,36,0.2)]">
+                                                            <Image
+                                                                src={screenshotPreview}
+                                                                alt="Payment Screenshot"
+                                                                fill
+                                                                className="object-cover"
+                                                            />
+                                                            <div className="absolute inset-0 bg-black/60 opacity-0 group-hover/preview:opacity-100 transition-opacity flex items-center justify-center">
+                                                                <button
+                                                                    type="button"
+                                                                    onClick={() => fileInputRef.current?.click()}
+                                                                    className="p-3 bg-white/20 backdrop-blur-md rounded-full text-white hover:bg-white/40 transition-all"
+                                                                >
+                                                                    <Upload className="w-5 h-5" />
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => {
+                                                                setScreenshot(null);
+                                                                setScreenshotPreview(null);
+                                                                setScreenshotBase64("");
+                                                            }}
+                                                            className="mt-3 text-[10px] text-red-500 font-bold uppercase tracking-widest hover:underline"
+                                                        >
+                                                            Remove & Re-upload
+                                                        </button>
+                                                    </div>
+                                                ) : (
+                                                    <button
+                                                        type="button"
+                                                        onClick={() => fileInputRef.current?.click()}
+                                                        className="w-full h-36 border-2 border-dashed border-white/10 rounded-2xl flex flex-col items-center justify-center gap-3 hover:border-primary/50 hover:bg-primary/5 transition-all text-white/40 hover:text-white group"
+                                                    >
+                                                        <div className="p-3 rounded-full bg-white/5 group-hover:bg-primary/20 transition-all">
+                                                            <Upload className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                                                        </div>
+                                                        <div className="space-y-1">
+                                                            <p className="text-xs font-bold uppercase tracking-tight">Upload Screenshot</p>
+                                                            <p className="text-[10px] opacity-50">PNG, JPG up to 5MB</p>
+                                                        </div>
+                                                    </button>
+                                                )}
+                                                {!screenshot && (
+                                                    <p className="text-[10px] text-red-400 font-medium flex items-center gap-1">
+                                                        <AlertCircle className="w-3 h-3" />
+                                                        Payment screenshot is mandatory
+                                                    </p>
+                                                )}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Register Button */}
+                                    <motion.button
+                                        disabled={status === "loading"}
+                                        whileHover={{ scale: 1.02 }}
+                                        whileTap={{ scale: 0.98 }}
+                                        type="submit"
+                                        className="w-full py-4 md:py-5 rounded-[2rem] bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500 text-white font-black text-xs md:text-sm uppercase tracking-widest shadow-xl hover:shadow-[0_0_40px_rgba(16,185,129,0.4)] transition-all flex items-center justify-center gap-3 disabled:opacity-50 relative overflow-hidden group/btn"
+                                    >
+                                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-150%] animate-[shimmer_4s_infinite]" />
+                                        {status === "loading" ? (
+                                            <Loader2 className="w-5 h-5 animate-spin" />
+                                        ) : (
+                                            <>
+                                                <span className="relative z-10">Register & Submit Payment</span>
+                                                <CheckCircle2 className="w-5 h-5 relative z-10 group-hover/btn:scale-110 transition-transform" />
+                                            </>
+                                        )}
+                                    </motion.button>
                                 </motion.div>
                             )}
                         </AnimatePresence>
 
-                        <div className="space-y-2 group">
-                            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 ml-2 group-focus-within:text-primary transition-colors">Transaction ID / UTR</label>
-                            <div className="relative">
-                                <CreditCard className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-primary/50 group-focus-within:text-primary transition-colors" />
-                                <input required name="transactionId" type="text" placeholder="TID / UTR Number" className="w-full pl-12 sm:pl-14 pr-4 sm:pr-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all" />
-                            </div>
-                        </div>
-
-                        {/* Team Members Section */}
-                        {maxParticipants > 1 && (
-                            <motion.div
-                                initial={{ opacity: 0, height: 0 }}
-                                animate={{ opacity: 1, height: "auto" }}
-                                className="space-y-4 p-6 rounded-3xl bg-white/5 border border-white/10"
-                            >
-                                <div className="flex items-center justify-between mb-2">
-                                    <h3 className="text-xs font-black text-white uppercase tracking-widest flex items-center gap-2">
-                                        Team Members ({1 + teamMembers.length}/{maxParticipants})
-                                    </h3>
-                                    {canAddMember && (
-                                        <button
-                                            type="button"
-                                            onClick={handleAddMember}
-                                            className="px-3 py-1.5 rounded-full bg-primary/20 text-primary text-[10px] font-bold uppercase tracking-tighter hover:bg-primary hover:text-white transition-all flex items-center gap-1"
-                                        >
-                                            <Plus className="w-3 h-3" />
-                                            Add Member
-                                        </button>
-                                    )}
-                                </div>
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                    {teamMembers.map((member, index) => (
-                                        <motion.div
-                                            initial={{ opacity: 0, scale: 0.95 }}
-                                            animate={{ opacity: 1, scale: 1 }}
-                                            key={index}
-                                            className="relative group"
-                                        >
-                                            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[10px] font-black text-white/20">{index + 2}</div>
-                                            <input
-                                                required
-                                                type="text"
-                                                value={member}
-                                                onChange={(e) => handleMemberChange(index, e.target.value)}
-                                                placeholder="Name & ID"
-                                                className="w-full pl-10 pr-10 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-xs focus:outline-none focus:border-primary/50 transition-all"
-                                            />
-                                            <button
-                                                type="button"
-                                                onClick={() => handleRemoveMember(index)}
-                                                className="absolute right-3 top-1/2 -translate-y-1/2 text-white/20 hover:text-red-500 transition-colors"
-                                            >
-                                                <Trash2 className="w-3 h-3" />
-                                            </button>
-                                        </motion.div>
-                                    ))}
-                                </div>
-                                {teamMembers.length === 0 && (
-                                    <p className="text-[10px] text-white/30 text-center italic">Registering as solo. Use &quot;Add Member&quot; for team entries.</p>
-                                )}
-                            </motion.div>
-                        )}
-
-                        {/* Payment Section */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
-                            {/* Payment QR Section */}
-                            <div className="p-6 rounded-[2rem] bg-white/5 border border-white/10 text-center space-y-4 hover:bg-white/10 transition-colors duration-500 group h-full">
-                                <h3 className="text-xs font-black text-white uppercase tracking-widest flex items-center justify-center gap-2">
-                                    <Sparkles className="w-3 h-3 text-secondary animate-pulse" />
-                                    Payment QR Code
-                                </h3>
-                                <div className="relative w-48 h-48 mx-auto bg-white rounded-2xl p-1 shadow-[0_0_30px_rgba(255,255,255,0.15)] group-hover:scale-105 transition-transform duration-500 overflow-hidden border-4 border-white">
-                                    <Image
-                                        src="/qr-code.jpeg"
-                                        alt="Payment QR Code"
-                                        fill
-                                        className="object-cover object-top"
-                                        sizes="192px"
-                                        quality={100}
-                                        priority
-                                    />
-                                </div>
-                                <div className="space-y-1">
-                                    <p className="text-[10px] text-white font-bold">Account: Geeta University</p>
-                                    <p className="text-[10px] text-white/40 italic">Scan the QR code to complete payment</p>
-                                </div>
-                            </div>
-
-                            {/* Screenshot Upload Section */}
-                            <div className="p-6 rounded-[2rem] bg-white/5 border border-white/10 text-center space-y-4 hover:bg-white/10 transition-colors duration-500 flex flex-col items-center justify-center min-h-[280px]">
-                                <h3 className="text-xs font-black text-white uppercase tracking-widest flex items-center justify-center gap-2">
-                                    <Camera className="w-3 h-3 text-primary animate-pulse" />
-                                    Payment Screenshot
-                                </h3>
-
-                                <input
-                                    type="file"
-                                    accept="image/*"
-                                    className="hidden"
-                                    ref={fileInputRef}
-                                    onChange={handleFileChange}
-                                />
-
-                                {screenshotPreview ? (
-                                    <div className="relative group/preview w-full">
-                                        <div className="relative w-40 h-52 mx-auto rounded-xl overflow-hidden border-2 border-primary/50 shadow-[0_0_20px_rgba(241,90,36,0.2)]">
-                                            <Image
-                                                src={screenshotPreview}
-                                                alt="Payment Screenshot"
-                                                fill
-                                                className="object-cover"
-                                            />
-                                            <div className="absolute inset-0 bg-black/60 opacity-0 group-hover/preview:opacity-100 transition-opacity flex items-center justify-center">
-                                                <button
-                                                    type="button"
-                                                    onClick={() => fileInputRef.current?.click()}
-                                                    className="p-3 bg-white/20 backdrop-blur-md rounded-full text-white hover:bg-white/40 transition-all"
-                                                >
-                                                    <Upload className="w-5 h-5" />
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <button
-                                            type="button"
-                                            onClick={() => {
-                                                setScreenshot(null);
-                                                setScreenshotPreview(null);
-                                                setScreenshotBase64("");
-                                            }}
-                                            className="mt-3 text-[10px] text-red-500 font-bold uppercase tracking-widest hover:underline"
-                                        >
-                                            Remove & Re-upload
-                                        </button>
-                                    </div>
-                                ) : (
-                                    <button
-                                        type="button"
-                                        onClick={() => fileInputRef.current?.click()}
-                                        className="w-full h-40 border-2 border-dashed border-white/10 rounded-2xl flex flex-col items-center justify-center gap-3 hover:border-primary/50 hover:bg-primary/5 transition-all text-white/40 hover:text-white group"
-                                    >
-                                        <div className="p-4 rounded-full bg-white/5 group-hover:bg-primary/20 transition-all">
-                                            <Upload className="w-6 h-6 group-hover:scale-110 transition-transform" />
-                                        </div>
-                                        <div className="space-y-1">
-                                            <p className="text-xs font-bold uppercase tracking-tight">Upload Screenshot</p>
-                                            <p className="text-[10px] opacity-50">PNG, JPG up to 5MB</p>
-                                        </div>
-                                    </button>
-                                )}
-                                {!screenshot && (
-                                    <p className="text-[10px] text-red-400 font-medium flex items-center gap-1">
-                                        <AlertCircle className="w-3 h-3" />
-                                        Payment screenshot is mandatory
-                                    </p>
-                                )}
-                            </div>
-                        </div>
-
-                        <motion.button
-                            disabled={status === "loading"}
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
-                            type="submit"
-                            className="w-full py-4 md:py-5 rounded-[2rem] bg-gradient-to-r from-secondary via-primary to-purple-600 text-white font-black text-xs md:text-sm uppercase tracking-widest shadow-xl hover:shadow-[0_0_40px_rgba(241,90,36,0.4)] transition-all flex items-center justify-center gap-3 disabled:opacity-50 relative overflow-hidden group/btn"
-                        >
-                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-150%] animate-[shimmer_4s_infinite]" />
-                            {status === "loading" ? (
-                                <Loader2 className="w-5 h-5 animate-spin" />
-                            ) : (
-                                <>
-                                    <span className="relative z-10">Register & Join Fest</span>
-                                    <CheckCircle2 className="w-5 h-5 relative z-10 group-hover/btn:scale-110 transition-transform" />
-                                </>
-                            )}
-                        </motion.button>
-
+                        {/* Status Messages */}
                         <AnimatePresence>
                             {status === "success" && (
                                 <motion.div initial={{ opacity: 0, scale: 0.9, y: 10 }} animate={{ opacity: 1, scale: 1, y: 0 }} transition={{ type: "spring", stiffness: 200, damping: 15 }} className="p-6 md:p-8 rounded-2xl bg-green-500/10 border border-green-500/20 text-center space-y-4 shadow-[0_0_30px_rgba(34,197,94,0.15)]">
