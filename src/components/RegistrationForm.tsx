@@ -88,12 +88,7 @@ function RegistrationFormContent() {
 
     // Parse min participants
     const getMinParticipants = () => {
-        if (!currentEvent) return 1;
-        const parts = currentEvent.participants;
-        if (parts.includes("-")) {
-            return parseInt(parts.split("-")[0]);
-        }
-        return parseInt(parts) || 1;
+        return 1; // Removed minimum criteria as requested
     };
 
     const maxParticipants = getMaxParticipants();
@@ -172,16 +167,7 @@ function RegistrationFormContent() {
             return;
         }
 
-        // Check min team members for team events
-        if (minParticipants > 1) {
-            const filledMembers = teamMembers.filter(m => m.trim() !== "").length;
-            if (filledMembers + 1 < minParticipants) {
-                setStatus("error");
-                setMessage(`This event requires at least ${minParticipants} members (including you). Please add more team members.`);
-                setTimeout(() => { setStatus("idle"); setMessage(""); }, 4000);
-                return;
-            }
-        }
+
 
         // Save Step 1 data to state before transitioning
         const teamNameInput = (form.querySelector('[name="teamName"]') as HTMLInputElement)?.value;
