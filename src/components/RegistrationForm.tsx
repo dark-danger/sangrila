@@ -201,7 +201,7 @@ function RegistrationFormContent() {
     };
 
     // REPLACE THIS URL with your Google Apps Script Web App URL after deployment
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyLfs5JtBJf4YY2LGzpfMDbfocSGK-U8Hr6PG4KfKHEpsy8TG-lN1mqCVNzseg_GRLHbw/exec";
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxFY2mvfb9fFgyVwPF3BsCzTh9HKmCt42LssqGmG8Ibq--p2wYjB_dIt4SyQ6D1Ie1lFA/exec";
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
