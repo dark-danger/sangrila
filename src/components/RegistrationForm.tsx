@@ -709,6 +709,7 @@ function RegistrationFormContent() {
                         </AnimatePresence>
 
                         {/* Status Messages */}
+
                         <AnimatePresence>
                             {status === "success" && (
                                 <motion.div initial={{ opacity: 0, scale: 0.9, y: 10 }} animate={{ opacity: 1, scale: 1, y: 0 }} transition={{ type: "spring", stiffness: 200, damping: 15 }} className="p-6 md:p-8 rounded-2xl bg-green-500/10 border border-green-500/20 text-center space-y-4 shadow-[0_0_30px_rgba(34,197,94,0.15)]">
