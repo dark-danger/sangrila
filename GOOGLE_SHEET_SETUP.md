@@ -37,7 +37,7 @@ function doPost(e) {
     if (!sheet) {
       sheet = ss.insertSheet(sheetName);
       if (isRegistration) {
-        var headers = ["Timestamp", "Name", "Phone", "Email", "College", "Roll No", "Team Name", "Event", "Transaction ID", "Screenshot Link"];
+        var headers = ["Timestamp", "Name", "Phone", "Email", "College", "Roll No", "Team Name", "Event", "Transaction ID", "Amount Paid", "Screenshot Link"];
         // Support for 15 members (Leader + 14 additional)
         for (var i = 2; i <= 15; i++) headers.push("Member " + i);
         sheet.appendRow(headers);
@@ -58,7 +58,8 @@ function doPost(e) {
         data.rollno || "", 
         data.teamName || "Solo", 
         data.event || "", 
-        data.transactionId || ""
+        data.transactionId || "",
+        data.amount || ""
       );
       
       // Handle Screenshot
