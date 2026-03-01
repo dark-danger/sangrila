@@ -44,6 +44,17 @@ function RegistrationFormContent() {
 
     const [teamMembers, setTeamMembers] = useState<string[]>([]);
 
+    // State to preserve Step 1 form data when moving to Step 2
+    const [step1Data, setStep1Data] = useState<{
+        name: string;
+        phone: string;
+        email: string;
+        college: string;
+        rollno: string;
+        event: string;
+        teamName?: string;
+    } | null>(null);
+
     // Reset team members when event changes
     const [prevSelectedEvent, setPrevSelectedEvent] = useState(selectedEvent);
     if (selectedEvent !== prevSelectedEvent) {
@@ -54,6 +65,7 @@ function RegistrationFormContent() {
         // Reset step when event changes
         if (step === 2) {
             setStep(1);
+            setStep1Data(null);
         }
     }
 
@@ -171,6 +183,18 @@ function RegistrationFormContent() {
             }
         }
 
+        // Save Step 1 data to state before transitioning
+        const teamNameInput = (form.querySelector('[name="teamName"]') as HTMLInputElement)?.value;
+        setStep1Data({
+            name: name,
+            phone: phone,
+            email: email,
+            college: college,
+            rollno: rollno,
+            event: selectedEvent,
+            teamName: teamNameInput || undefined,
+        });
+
         setStatus("idle");
         setMessage("");
         setStep(2);
@@ -212,6 +236,19 @@ function RegistrationFormContent() {
         setStatus("loading");
         const formData = new FormData(form);
 
+        // Explicitly append Step 1 data (since those fields are unmounted in Step 2)
+        if (step1Data) {
+            formData.append("name", step1Data.name);
+            formData.append("phone", step1Data.phone);
+            formData.append("email", step1Data.email);
+            formData.append("college", step1Data.college);
+            formData.append("rollno", step1Data.rollno);
+            formData.append("event", step1Data.event);
+            if (step1Data.teamName) {
+                formData.append("teamName", step1Data.teamName);
+            }
+        }
+
         // Add additional members to formData explicitly with keys member_2, member_3...
         teamMembers.forEach((member, index) => {
             formData.append(`member_${index + 2}`, member);
@@ -251,6 +288,7 @@ function RegistrationFormContent() {
             setScreenshotPreview(null);
             setScreenshotBase64("");
             setSelectedEvent("");
+            setStep1Data(null);
             setStep(1);
 
         } catch (error) {
