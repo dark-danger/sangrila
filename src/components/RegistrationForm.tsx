@@ -88,12 +88,7 @@ function RegistrationFormContent() {
 
     // Parse min participants
     const getMinParticipants = () => {
-        if (!currentEvent) return 1;
-        const parts = currentEvent.participants;
-        if (parts.includes("-")) {
-            return parseInt(parts.split("-")[0]);
-        }
-        return parseInt(parts) || 1;
+        return 1; // Removed minimum criteria as requested
     };
 
     const maxParticipants = getMaxParticipants();
@@ -172,16 +167,7 @@ function RegistrationFormContent() {
             return;
         }
 
-        // Check min team members for team events
-        if (minParticipants > 1) {
-            const filledMembers = teamMembers.filter(m => m.trim() !== "").length;
-            if (filledMembers + 1 < minParticipants) {
-                setStatus("error");
-                setMessage(`This event requires at least ${minParticipants} members (including you). Please add more team members.`);
-                setTimeout(() => { setStatus("idle"); setMessage(""); }, 4000);
-                return;
-            }
-        }
+
 
         // Save Step 1 data to state before transitioning
         const teamNameInput = (form.querySelector('[name="teamName"]') as HTMLInputElement)?.value;
@@ -201,7 +187,7 @@ function RegistrationFormContent() {
     };
 
     // REPLACE THIS URL with your Google Apps Script Web App URL after deployment
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyLfs5JtBJf4YY2LGzpfMDbfocSGK-U8Hr6PG4KfKHEpsy8TG-lN1mqCVNzseg_GRLHbw/exec";
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxFY2mvfb9fFgyVwPF3BsCzTh9HKmCt42LssqGmG8Ibq--p2wYjB_dIt4SyQ6D1Ie1lFA/exec";
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
