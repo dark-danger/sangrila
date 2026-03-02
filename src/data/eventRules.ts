@@ -114,7 +114,7 @@ export const eventCategories: EventCategory[] = [
                 name: "Group/Trio Dance",
                 registrationFee: "₹200 per participant",
                 timeLimit: "6 to 8 minutes",
-                teamSize: "3 to 15 members per team",
+                teamSize: "3 to 20 members per team",
                 codeOfConduct: commonCodeOfConduct,
                 guidelines: [
                     "Participants must bring their songs/music in a Pen Drive.",
@@ -190,7 +190,7 @@ export const eventCategories: EventCategory[] = [
                 name: "Group/Trio Singing",
                 registrationFee: "₹200 per participant",
                 timeLimit: "4 to 6 minutes",
-                teamSize: "3 to 15 members",
+                teamSize: "3 to 20 members",
                 codeOfConduct: commonCodeOfConduct,
                 guidelines: [
                     "Contestants must arrange their own Karaoke. No orchestra support will be provided by the host University.",
@@ -407,7 +407,7 @@ export const eventCategories: EventCategory[] = [
                 name: "Fashion Show",
                 registrationFee: "₹200 per participant",
                 timeLimit: "10 to 15 minutes",
-                teamSize: "8 to 15 members per team",
+                teamSize: "8 to 20 members per team",
                 codeOfConduct: commonCodeOfConduct,
                 guidelines: [
                     "The theme of the fashion show is left to the discretion of the participants, but care must be taken to avoid any harmful themes.",
@@ -554,7 +554,7 @@ export const eventCategories: EventCategory[] = [
                 name: "Nukkad Natak",
                 registrationFee: "₹200 per participant",
                 timeLimit: "10 to 15 minutes",
-                teamSize: "3 to 15 members",
+                teamSize: "3 to 20 members",
                 codeOfConduct: commonCodeOfConduct,
                 guidelines: [
                     "Teams must bring their own props, costumes, and required materials.",
