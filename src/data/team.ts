@@ -81,3 +81,26 @@ export const teamMembers: TeamMember[] = [
         objectPosition: "center 20%",
     },
 ];
+export const sponsorshipMembers: TeamMember[] = [
+    {
+        id: "s1",
+        name: "Yash Khanna",
+        role: "",
+        image: "/team/yash-khanna.jpeg",
+        objectPosition: "center 15%"
+    },
+    {
+        id: "s2",
+        name: "Aaditya Gupta",
+        role: "",
+        image: "/team/aaditya-gupta.jpg",
+        objectPosition: "center 20%"
+    },
+    {
+        id: "s3",
+        name: "Piyush",
+        role: "",
+        image: "/team/piyush.jpeg", // Placeholder or needs to be added
+        objectPosition: "center 20%"
+    }
+];
