@@ -15,7 +15,7 @@ export function AboutSection() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
-                    className="relative"
+                    className="relative motion-gpu"
                 >
                     <div className="glass rounded-[2.5rem] overflow-hidden">
                         <div className="grid md:grid-cols-2 gap-0">
@@ -27,7 +27,8 @@ export function AboutSection() {
                                     fill
                                     className="object-cover"
                                     sizes="(max-width: 768px) 100vw, 50vw"
-                                    quality={85}
+                                    quality={75}
+                                    priority
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-[#0a0b14] via-transparent to-transparent" />
                                 <div className="absolute bottom-6 left-6 z-10">
@@ -71,7 +72,7 @@ export function AboutSection() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
-                    className="relative"
+                    className="relative motion-gpu"
                 >
                     <div className="glass rounded-[2.5rem] overflow-hidden">
                         <div className="grid md:grid-cols-2 gap-0">

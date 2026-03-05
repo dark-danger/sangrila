@@ -58,7 +58,7 @@ export function ContactForm() {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="p-8 rounded-[2.5rem] bg-[#11121d]/80 backdrop-blur-2xl border border-white/5 shadow-2xl relative overflow-hidden group"
+            className="p-8 rounded-[2.5rem] bg-[#11121d]/80 backdrop-blur-2xl border border-white/5 shadow-2xl relative overflow-hidden group motion-gpu"
         >
             {/* Background Glow */}
             <div className="absolute -top-24 -right-24 w-48 h-48 bg-primary/20 rounded-full blur-[80px] group-hover:bg-primary/30 transition-all duration-500" />

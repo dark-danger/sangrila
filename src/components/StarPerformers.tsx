@@ -45,7 +45,7 @@ export function StarPerformers() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.7 }}
-                        className="relative w-full md:w-[50%] group"
+                        className="relative w-full md:w-[50%] group motion-gpu"
                     >
                         <div className="relative h-[350px] sm:h-[420px] md:h-[500px] overflow-hidden rounded-3xl bg-gradient-to-b from-orange-500/5 to-transparent">
                             {/* Glow */}
@@ -56,7 +56,7 @@ export function StarPerformers() {
                                 fill
                                 className="object-contain object-bottom scale-110 group-hover:scale-[1.15] transition-transform duration-700"
                                 sizes="(max-width: 768px) 100vw, 40vw"
-                                quality={80}
+                                quality={75}
                             />
                         </div>
                         {/* Label */}
@@ -75,7 +75,7 @@ export function StarPerformers() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.7, delay: 0.1 }}
-                            className="relative group"
+                            className="relative group motion-gpu"
                         >
                             <div className="relative h-[350px] sm:h-[420px] md:h-[500px] overflow-hidden rounded-2xl bg-gradient-to-b from-purple-500/5 to-transparent">
                                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] h-[60%] bg-purple-500/8 rounded-full blur-[40px] pointer-events-none" />
@@ -109,7 +109,7 @@ export function StarPerformers() {
                                 fill
                                 className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
                                 sizes="(max-width: 640px) 100vw, 40vw"
-                                quality={80}
+                                quality={75}
                             />
                             <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-black/70 to-transparent z-10" />
                             <div className="absolute bottom-4 left-4 z-20">
@@ -136,7 +136,7 @@ export function StarPerformers() {
                                 fill
                                 className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
                                 sizes="(max-width: 640px) 100vw, 40vw"
-                                quality={80}
+                                quality={75}
                             />
                             <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-black/70 to-transparent z-10" />
                             <div className="absolute bottom-4 left-4 z-20">

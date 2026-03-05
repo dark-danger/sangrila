@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Sparkles } from "lucide-react";
 
 const navItems = [
@@ -12,6 +12,7 @@ const navItems = [
     { name: "Events", href: "/events", emoji: "🎯" },
     { name: "Rules", href: "/rules", emoji: "📋" },
     { name: "Team", href: "/#team", emoji: "👥" },
+    { name: "Contact", href: "/#contact", emoji: "📬" },
 ];
 
 export function Navbar() {
@@ -32,7 +33,7 @@ export function Navbar() {
             <motion.nav
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className={`fixed top-0 left-0 right-0 z-50 px-4 md:px-6 lg:px-12 h-[72px] md:h-[80px] transition-all duration-300 flex items-center ${scrolled
+                className={`fixed top-0 left-0 right-0 z-50 px-4 md:px-6 lg:px-12 h-[72px] md:h-[80px] transition-all duration-300 flex items-center motion-gpu ${scrolled
                     ? "glass border-b border-white/10 shadow-2xl"
                     : "bg-transparent"
                     }`}
@@ -93,35 +94,41 @@ export function Navbar() {
             </motion.nav>
 
             {/* Mobile Menu */}
-            {isOpen && (
-                <div
-                    className="fixed inset-0 z-40 bg-background/95 backdrop-blur-2xl pt-24 px-6 md:hidden flex flex-col items-center"
-                >
-                    <div className="flex flex-col gap-6 w-full max-w-sm">
-                        {navItems.map((item) => (
-                            <Link
-                                key={item.name}
-                                href={item.href}
-                                onClick={() => setIsOpen(false)}
-                                className="flex items-center justify-between text-2xl font-black text-white hover:text-primary transition-colors p-4 border-b border-white/10"
-                            >
-                                <span>{item.name}</span>
-                                <span className="text-xl">{item.emoji}</span>
-                            </Link>
-                        ))}
-                        <motion.div whileTap={{ scale: 0.95 }}>
-                            <Link
-                                href="/register"
-                                onClick={() => setIsOpen(false)}
-                                className="mt-6 block w-full py-4 bg-gradient-to-r from-secondary via-primary to-purple-600 text-white text-center font-black rounded-full text-lg border border-primary/30 relative overflow-hidden group"
-                            >
-                                <span className="relative z-10 uppercase tracking-widest">REGISTER NOW</span>
-                                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-150%] animate-[shimmer_3s_infinite]" />
-                            </Link>
-                        </motion.div>
-                    </div>
-                </div>
-            )}
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        transition={{ duration: 0.3 }}
+                        className="fixed inset-0 z-40 bg-background/95 backdrop-blur-2xl pt-24 px-6 md:hidden flex flex-col items-center motion-gpu"
+                    >
+                        <div className="flex flex-col gap-6 w-full max-w-sm">
+                            {navItems.map((item) => (
+                                <Link
+                                    key={item.name}
+                                    href={item.href}
+                                    onClick={() => setIsOpen(false)}
+                                    className="flex items-center justify-between text-2xl font-black text-white hover:text-primary transition-colors p-4 border-b border-white/10"
+                                >
+                                    <span>{item.name}</span>
+                                    <span className="text-xl">{item.emoji}</span>
+                                </Link>
+                            ))}
+                            <motion.div whileTap={{ scale: 0.95 }}>
+                                <Link
+                                    href="/register"
+                                    onClick={() => setIsOpen(false)}
+                                    className="mt-6 block w-full py-4 bg-gradient-to-r from-secondary via-primary to-purple-600 text-white text-center font-black rounded-full text-lg border border-primary/30 relative overflow-hidden group"
+                                >
+                                    <span className="relative z-10 uppercase tracking-widest">REGISTER NOW</span>
+                                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-150%] animate-[shimmer_3s_infinite]" />
+                                </Link>
+                            </motion.div>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </>
     );
 }

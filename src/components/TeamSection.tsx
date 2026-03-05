@@ -63,7 +63,7 @@ export function TeamSection() {
                             </div>
 
                             {/* Image Container - Compact */}
-                            <div className="relative w-full aspect-[3/4.5] overflow-hidden bg-white/5">
+                            <div className={`relative w-full aspect-[3/4.5] overflow-hidden ${member.objectFit === "contain" ? "bg-[#0d0e1a]" : "bg-white/5"}`}>
                                 {/* Gradient Overlay */}
                                 <div className="absolute inset-0 bg-gradient-to-t from-[#05060f] via-transparent to-transparent z-10 opacity-70 group-hover:opacity-40 transition-opacity duration-500" />
 
@@ -72,14 +72,14 @@ export function TeamSection() {
                                     src={member.image}
                                     alt={member.name}
                                     fill
-                                    className={`object-cover transition-transform duration-1000 ease-out group-hover:scale-110 ${member.rotate ? "rotate-90 scale-[1.7] group-hover:scale-[1.85]" : ""}`}
+                                    className={`transition-transform duration-1000 ease-out group-hover:scale-105 ${member.objectFit === "contain" ? "object-contain" : "object-cover"} ${member.rotate ? "rotate-90 scale-[1.7] group-hover:scale-[1.85]" : ""}`}
                                     style={{
                                         objectPosition: member.objectPosition || "center",
                                         filter: "contrast(1.05) brightness(1.02)"
                                     }}
                                     sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 20vw"
                                     priority={member.id === "1" || member.id === "2"}
-                                    quality={75}
+                                    quality={80}
                                 />
 
                                 {/* Social Links */}
@@ -162,19 +162,19 @@ export function TeamSection() {
                             <div className="absolute inset-0 z-20 border border-white/5 rounded-2xl pointer-events-none group-hover:border-primary/20 transition-colors duration-500" />
 
                             {/* Image Container - Compact */}
-                            <div className="relative w-full aspect-[3/4.5] overflow-hidden bg-white/5">
+                            <div className={`relative w-full aspect-[3/4.5] overflow-hidden ${member.objectFit === "contain" ? "bg-[#0d0e1a]" : "bg-white/5"}`}>
                                 <div className="absolute inset-0 bg-gradient-to-t from-[#05060f] via-transparent to-transparent z-10 opacity-70 group-hover:opacity-40 transition-opacity duration-500" />
                                 <Image
                                     src={member.image}
                                     alt={member.name}
                                     fill
-                                    className="object-cover transition-transform duration-1000 ease-out group-hover:scale-110"
+                                    className={`transition-transform duration-1000 ease-out group-hover:scale-105 ${member.objectFit === "contain" ? "object-contain p-2" : "object-cover group-hover:scale-110"}`}
                                     style={{
                                         objectPosition: member.objectPosition || "center",
                                         filter: "contrast(1.05) brightness(1.02)"
                                     }}
                                     sizes="(max-width: 640px) 50vw, 20vw"
-                                    quality={75}
+                                    quality={80}
                                 />
                             </div>
 

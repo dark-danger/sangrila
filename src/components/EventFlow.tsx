@@ -78,7 +78,7 @@ export function EventFlow() {
                                     whileInView={{ opacity: 1, x: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ duration: 0.4, delay: index * 0.05 }}
-                                    className="relative flex items-start gap-4 group"
+                                    className="relative flex items-start gap-4 group motion-gpu"
                                 >
                                     {/* Dot on line */}
                                     <div className={`relative z-10 flex-shrink-0 w-10 h-10 md:w-14 md:h-14 rounded-2xl bg-gradient-to-br ${event.color} flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}>
@@ -130,7 +130,7 @@ export function EventFlow() {
                                     whileInView={{ opacity: 1, x: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ duration: 0.4, delay: index * 0.08 }}
-                                    className={`relative flex items-start gap-4 group ${event.title.includes("Star Night") ? "scale-105 origin-left" : ""}`}
+                                    className={`relative flex items-start gap-4 group motion-gpu ${event.title.includes("Star Night") ? "scale-105 origin-left" : ""}`}
                                 >
                                     {/* Dot on line */}
                                     <div className={`relative z-10 flex-shrink-0 w-10 h-10 md:w-14 md:h-14 rounded-2xl bg-gradient-to-br ${event.color} flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300 ${event.title.includes("Star Night") ? "ring-2 ring-primary/50 shadow-[0_0_20px_rgba(241,90,36,0.3)]" : ""}`}>
