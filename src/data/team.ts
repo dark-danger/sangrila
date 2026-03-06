@@ -106,7 +106,7 @@ export const sponsorshipMembers: TeamMember[] = [
     },
     {
         id: "s4",
-        name: "Mahadev",
+        name: "Madhav",
         role: "",
         image: "/team/mahadev_new.jpeg",
         objectPosition: "center 20%",
