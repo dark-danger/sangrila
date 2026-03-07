@@ -61,7 +61,7 @@ export const eventCategories: EventCategory[] = [
     {
         id: "dance",
         name: "Dance",
-        prizePool: "₹19,000 + Trophy + Certificate",
+        prizePool: "₹12,400 + Trophy + Certificate",
         color: "from-pink-500 to-rose-400",
         icon: "💃",
         events: [
@@ -80,7 +80,7 @@ export const eventCategories: EventCategory[] = [
                     "The use of obscene words in tracks or vulgar dance steps is strictly prohibited.",
                 ],
                 judgingCriteria: ["Dance Steps", "Costume", "Expressions", "Synchronization", "Music Selection"],
-                prize: "Winner: Cash Prize + Trophy + Certificate. Participation Certificate for all.",
+                prize: "Winner: ₹1500, Runner-up: ₹500 + Trophy + Certificate",
                 lastDate: "7th March 2026",
                 contacts: [
                     { name: "Aanchal", phone: "9306056918" },
@@ -102,7 +102,7 @@ export const eventCategories: EventCategory[] = [
                     "The use of obscene words in tracks or vulgar dance steps is strictly prohibited.",
                 ],
                 judgingCriteria: ["Dance Steps", "Costume", "Expressions", "Synchronization", "Music Selection"],
-                prize: "Winner: Cash Prize + Trophy + Certificate. Participation Certificate for all.",
+                prize: "Winner: ₹2100, Runner-up: ₹1100 + Trophy + Certificate",
                 lastDate: "7th March 2026",
                 contacts: [
                     { name: "Aanchal", phone: "9306056918" },
@@ -124,7 +124,7 @@ export const eventCategories: EventCategory[] = [
                     "The use of obscene words in tracks or vulgar dance steps is strictly prohibited.",
                 ],
                 judgingCriteria: ["Dance Steps", "Costume", "Expressions", "Synchronization", "Music Selection"],
-                prize: "Winner: Cash Prize + Trophy + Certificate. Participation Certificate for all.",
+                prize: "Winner: ₹5100, Runner-up: ₹2100 + Trophy + Certificate",
                 lastDate: "7th March 2026",
                 contacts: [
                     { name: "Mepham", phone: "6006557123" },
@@ -136,7 +136,7 @@ export const eventCategories: EventCategory[] = [
     {
         id: "singing",
         name: "Singing",
-        prizePool: "₹14,000 + Trophy + Certificate",
+        prizePool: "₹9,700 + Trophy + Certificate",
         color: "from-violet-500 to-purple-400",
         icon: "🎤",
         events: [
@@ -156,7 +156,7 @@ export const eventCategories: EventCategory[] = [
                     "Songs can be in any language, but they should not contain offensive, derogatory, or inappropriate content.",
                 ],
                 judgingCriteria: ["Song Selection", "Voice Quality", "Clarity", "Rhythm", "Appeal to the Audience"],
-                prize: "Winner: Cash Prize + Trophy + Certificate. Participation Certificate for all.",
+                prize: "Winner: ₹1500, Runner-up: ₹500 + Trophy + Certificate",
                 lastDate: "7th March 2026",
                 contacts: [
                     { name: "Aryan", phone: "8816923830" },
@@ -178,7 +178,7 @@ export const eventCategories: EventCategory[] = [
                     "The performance must be live; lip-syncing is strictly prohibited.",
                 ],
                 judgingCriteria: ["Song Selection", "Voice Quality", "Clarity", "Rhythm", "Appeal to the Audience"],
-                prize: "Winner: Cash Prize + Trophy + Certificate. Participation Certificate for all.",
+                prize: "Winner: ₹2100, Runner-up: ₹1000 + Trophy + Certificate",
                 lastDate: "7th March 2026",
                 contacts: [
                     { name: "Aryan", phone: "8816923830" },
@@ -200,7 +200,7 @@ export const eventCategories: EventCategory[] = [
                     "The performance must be live; lip-syncing is strictly prohibited.",
                 ],
                 judgingCriteria: ["Song Selection", "Voice Quality", "Clarity", "Rhythm", "Appeal to the Audience"],
-                prize: "Winner: Cash Prize + Trophy + Certificate. Participation Certificate for all.",
+                prize: "Winner: ₹3100, Runner-up: ₹1500 + Trophy + Certificate",
                 lastDate: "7th March 2026",
                 contacts: [
                     { name: "Shrey", phone: "9255109998" },
@@ -212,7 +212,7 @@ export const eventCategories: EventCategory[] = [
     {
         id: "fine-arts",
         name: "Fine Arts",
-        prizePool: "₹25,000 + Trophy + Certificate",
+        prizePool: "₹16,000 + Trophy + Certificate",
         color: "from-amber-500 to-orange-400",
         icon: "🎨",
         events: [
@@ -232,7 +232,7 @@ export const eventCategories: EventCategory[] = [
                     "Theme of Rangoli: Folk Art & Traditions, Abstract Patterns, Peacock & Feathers.",
                 ],
                 judgingCriteria: ["Overall Appearance and Appeal", "Creativity", "Details and Clarity in Rangoli Art", "Color Combination"],
-                prize: "Winner: Cash Prize + Trophy + Certificate. Participation Certificate for all.",
+                prize: "Winner: ₹1500, Runner-up: ₹500 + Trophy + Certificate",
                 lastDate: "7th March 2026",
                 contacts: [
                     { name: "Ayush Verma", phone: "9518631332" },
@@ -253,7 +253,7 @@ export const eventCategories: EventCategory[] = [
                     "The decision of the judges will be final and binding.",
                 ],
                 judgingCriteria: ["Creativity", "Interpretation of the Theme", "Technical Skill", "Overall Impact"],
-                prize: "Winner: Cash Prize + Trophy + Certificate. Participation Certificate for all.",
+                prize: "Winner: ₹1500, Runner-up: ₹500 + Trophy + Certificate",
                 lastDate: "7th March 2026",
                 contacts: [
                     { name: "Neha", phone: "8168543923" },
@@ -275,7 +275,7 @@ export const eventCategories: EventCategory[] = [
                     "Any plagiarism or copied designs from reference images will lead to disqualification.",
                 ],
                 judgingCriteria: ["Overall Appearance and Appeal", "Creativity", "Details and Precision in Mehandi"],
-                prize: "Winner: Cash Prize + Trophy + Certificate. Participation Certificate for all.",
+                prize: "Winner: ₹1500, Runner-up: ₹500 + Trophy + Certificate",
                 lastDate: "7th March 2026",
                 contacts: [
                     { name: "Muskan", phone: "8059092820" },
@@ -297,7 +297,7 @@ export const eventCategories: EventCategory[] = [
                     "Tattoos can be made on a theme of the participant's choice, as long as it is non-offensive to any religion, gender, caste, or community.",
                 ],
                 judgingCriteria: ["Overall Appearance and Appeal", "Creativity", "Detail and Precision"],
-                prize: "Winner: Cash Prize + Trophy + Certificate. Participation Certificate for all.",
+                prize: "Winner: ₹1500, Runner-up: ₹500 + Trophy + Certificate",
                 lastDate: "7th March 2026",
                 contacts: [
                     { name: "Shivam Singhal", phone: "7011930049" },
@@ -320,7 +320,7 @@ export const eventCategories: EventCategory[] = [
                     "Face paintings can be made on a theme of the participant's choice, as long as it is non-offensive to any religion, gender, caste, or community.",
                 ],
                 judgingCriteria: ["Overall Appearance and Appeal", "Creativity", "Detail and Precision"],
-                prize: "Winner: Cash Prize + Trophy + Certificate. Participation Certificate for all.",
+                prize: "Winner: ₹1500, Runner-up: ₹500 + Trophy + Certificate",
                 lastDate: "7th March 2026",
                 contacts: [
                     { name: "Himanshi Sinha", phone: "7015293136" },
@@ -342,7 +342,7 @@ export const eventCategories: EventCategory[] = [
                     "Contestants can work on their own nails.",
                 ],
                 judgingCriteria: ["Creativity & Originality", "Neatness & Precision", "Overall Presentation & Uniqueness"],
-                prize: "Winner: Cash Prize + Trophy + Certificate. Participation Certificate for all.",
+                prize: "Winner: ₹1500, Runner-up: ₹500 + Trophy + Certificate",
                 lastDate: "7th March 2026",
                 contacts: [
                     { name: "Karan Dutt", phone: "7700040058" },
@@ -364,7 +364,7 @@ export const eventCategories: EventCategory[] = [
                     "All sketches must adhere to the provided theme, which will be announced at the beginning of the competition.",
                 ],
                 judgingCriteria: ["Creativity & Originality", "Neatness & Detailing", "Theme Relevance", "Shading & Depth"],
-                prize: "Winner: Cash Prize + Trophy + Certificate. Participation Certificate for all.",
+                prize: "Winner: ₹1500, Runner-up: ₹500 + Trophy + Certificate",
                 lastDate: "7th March 2026",
                 contacts: [
                     { name: "Vanshika Gupta", phone: "9588798736" },
@@ -386,7 +386,7 @@ export const eventCategories: EventCategory[] = [
                     "Submit completed projects to the designated submission area within the specified time frame.",
                 ],
                 judgingCriteria: ["Creativity & Innovation", "Use of Waste Materials", "Neatness & Presentation", "Utility & Practicality"],
-                prize: "Winner: Cash Prize + Trophy + Certificate. Participation Certificate for all.",
+                prize: "Winner: ₹1500, Runner-up: ₹500 + Trophy + Certificate",
                 lastDate: "7th March 2026",
                 contacts: [
                     { name: "Navkaran Singh", phone: "8708853166" },
@@ -398,7 +398,7 @@ export const eventCategories: EventCategory[] = [
     {
         id: "fashion",
         name: "Fashion",
-        prizePool: "₹13,000 + Trophy + Certificate",
+        prizePool: "₹7,200 + Trophy + Certificate",
         color: "from-fuchsia-500 to-pink-400",
         icon: "👗",
         events: [
@@ -420,7 +420,7 @@ export const eventCategories: EventCategory[] = [
                     "A pen drive with the track must also be brought on the event day.",
                 ],
                 judgingCriteria: ["Theme Representation & Creativity", "Costume Design & Innovation", "Confidence & Stage Presence", "Choreography & Coordination", "Overall Impact & Presentation"],
-                prize: "Winner: Cash Prize + Trophy + Certificate. Participation Certificate for all.",
+                prize: "Winner: ₹5100, Runner-up: ₹2100 + Trophy + Certificate",
                 lastDate: "7th March 2026",
                 contacts: [
                     { name: "Palak", phone: "9991759030" },
@@ -456,7 +456,7 @@ export const eventCategories: EventCategory[] = [
     {
         id: "life-skills",
         name: "Life Skills",
-        prizePool: "₹9,000 + Trophy + Certificate",
+        prizePool: "₹6,000 + Trophy + Certificate",
         color: "from-cyan-500 to-blue-400",
         icon: "📸",
         events: [
@@ -480,7 +480,7 @@ export const eventCategories: EventCategory[] = [
                     "Reels must be submitted via Google Drive, WhatsApp, or email (as instructed by organizers).",
                 ],
                 judgingCriteria: ["Creativity", "Technical Quality (Lighting, Framing)", "Music Synchronization", "Visual Appeal and Impact"],
-                prize: "Winner: Cash Prize + Trophy + Certificate. Participation Certificate for all.",
+                prize: "Winner: ₹1500, Runner-up: ₹500 + Trophy + Certificate",
                 lastDate: "7th March 2026",
                 contacts: [
                     { name: "Mansi", phone: "8059327146" },
@@ -506,7 +506,7 @@ export const eventCategories: EventCategory[] = [
                     "Submission via Google Drive, WhatsApp, or email (as instructed by organizers).",
                 ],
                 judgingCriteria: ["Creativity & Composition", "Relevance to Theme", "Technical Aspects (Focus, Exposure, Sharpness)", "Emotional & Visual Impact", "Overall Presentation"],
-                prize: "Winner: Cash Prize + Trophy + Certificate. Participation Certificate for all.",
+                prize: "Winner: ₹1500, Runner-up: ₹500 + Trophy + Certificate",
                 lastDate: "7th March 2026",
                 contacts: [
                     { name: "Sanjana", phone: "8950192636" },
@@ -533,7 +533,7 @@ export const eventCategories: EventCategory[] = [
                     "Rename the file as 'Name_College_FilmTitle.mp4'.",
                 ],
                 judgingCriteria: ["Creativity and Originality", "Relevance to Theme", "Storytelling and Direction", "Technical Aspects (Cinematography, Sound, Editing)", "Acting and Expression"],
-                prize: "Winner: Cash Prize + Trophy + Certificate.",
+                prize: "Winner: ₹1500, Runner-up: ₹500 + Trophy + Certificate",
                 lastDate: "7th March 2026",
                 contacts: [
                     { name: "Sidarth", phone: "7703809349" },
@@ -545,7 +545,7 @@ export const eventCategories: EventCategory[] = [
     {
         id: "theatre",
         name: "Theatre",
-        prizePool: "₹17,000 + Trophy + Certificate",
+        prizePool: "₹10,000 + Trophy + Certificate",
         color: "from-emerald-500 to-teal-400",
         icon: "🎭",
         events: [
@@ -565,7 +565,7 @@ export const eventCategories: EventCategory[] = [
                     "Teams must respect public decorum and ensure that the performance does not hurt any sentiments.",
                 ],
                 judgingCriteria: ["Concept & Theme Representation", "Acting & Expressions", "Audience Engagement & Impact", "Creativity & Script", "Overall Performance & Message Clarity"],
-                prize: "Winner: Cash Prize + Trophy + Certificate. Participation Certificate for all.",
+                prize: "Winner: ₹2100, Runner-up: ₹1100 + Trophy + Certificate",
                 lastDate: "7th March 2026",
                 contacts: [
                     { name: "Nuran", phone: "8295699538" },
@@ -587,7 +587,7 @@ export const eventCategories: EventCategory[] = [
                     "The story must be respectful and should not hurt any community or individual's sentiments.",
                 ],
                 judgingCriteria: ["Creativity of the Story", "Narration Style and Voice Modulation", "Clarity of Speech and Expression", "Engagement with the Audience", "Impact and Message of the Story"],
-                prize: "Winner: Cash Prize + Trophy + Certificate. Participation Certificate for all.",
+                prize: "Winner: ₹1100, Runner-up: ₹500 + Trophy + Certificate",
                 lastDate: "7th March 2026",
                 contacts: [
                     { name: "Labdhi Jain", phone: "7206517901" },
@@ -610,7 +610,7 @@ export const eventCategories: EventCategory[] = [
                     "Offensive, vulgar, or disrespectful content is strictly prohibited.",
                 ],
                 judgingCriteria: ["Expression & Emotions", "Voice Modulation & Dialogue Delivery", "Body Language & Stage Presence", "Overall Impact & Engagement"],
-                prize: "Winner: Cash Prize + Trophy + Certificate. Participation Certificate for all.",
+                prize: "Winner: ₹1100, Runner-up: ₹500 + Trophy + Certificate",
                 lastDate: "7th March 2026",
                 contacts: [
                     { name: "Harshil Chugh", phone: "9485656482" },
@@ -631,7 +631,7 @@ export const eventCategories: EventCategory[] = [
                     "Use of mobile phones or reading from any digital device is strictly prohibited. Participants can read from paper.",
                 ],
                 judgingCriteria: ["Creativity & Originality", "Depth of Emotions & Message", "Rhythm & Flow of Poetry", "Pronunciation & Voice Modulation", "Overall Impact & Delivery"],
-                prize: "Winner: Cash Prize + Trophy + Certificate. Participation Certificate for all.",
+                prize: "Winner: ₹1100, Runner-up: ₹500 + Trophy + Certificate",
                 lastDate: "7th March 2026",
                 contacts: [
                     { name: "Bhavishya", phone: "9215413400" },
@@ -653,7 +653,7 @@ export const eventCategories: EventCategory[] = [
                     "Only verbal performance is permitted (No pre-recorded background music or video clips).",
                 ],
                 judgingCriteria: ["Originality & Content Quality", "Delivery & Stage Presence", "Timing & Audience Engagement", "Humor & Overall Impact"],
-                prize: "Winner: Cash Prize + Trophy + Certificate. Participation Certificate for all.",
+                prize: "Winner: ₹1100, Runner-up: ₹500 + Trophy + Certificate",
                 lastDate: "7th March 2026",
                 contacts: [
                     { name: "Kashish", phone: "8053026499" },
@@ -665,7 +665,7 @@ export const eventCategories: EventCategory[] = [
     {
         id: "health-wellness",
         name: "Health & Wellness",
-        prizePool: "₹3,000 + Trophy + Certificate",
+        prizePool: "₹2,000 + Trophy + Certificate",
         color: "from-lime-500 to-green-400",
         icon: "🍳",
         events: [
@@ -685,11 +685,41 @@ export const eventCategories: EventCategory[] = [
                     "No packaged or ready-to-eat foods allowed as the main dish.",
                 ],
                 judgingCriteria: ["Taste", "Nutritional Value", "Hygiene & Cleanliness", "Presentation & Creativity", "Unique Name of the Dish"],
-                prize: "Winner: Cash Prize + Trophy + Certificate. Participation Certificate for all.",
+                prize: "Winner: ₹1500, Runner-up: ₹500 + Trophy + Certificate",
                 lastDate: "7th March 2026",
                 contacts: [
                     { name: "Sandhya", phone: "8929968176" },
                     { name: "Diksha", phone: "8295340379" },
+                ],
+            },
+        ],
+    },
+    {
+        id: "music",
+        name: "Music / Battle of the Bands",
+        prizePool: "₹7,200 + Trophy + Certificate",
+        color: "from-blue-600 to-indigo-500",
+        icon: "🎸",
+        events: [
+            {
+                id: "battle-of-bands",
+                name: "Battle of the Bands",
+                registrationFee: "₹300 per participant",
+                timeLimit: "8 to 12 minutes",
+                teamSize: "3 to 20 members",
+                codeOfConduct: commonCodeOfConduct,
+                guidelines: [
+                    "Bands must bring their own instruments (guitar, keyboard, drums, etc.). Basic sound setup will be provided.",
+                    "At least one song must be performed live (no lip-sync allowed).",
+                    "Original compositions are encouraged. Cover songs are also permitted.",
+                    "Obscene or inappropriate lyrics are strictly prohibited.",
+                    "Bands must submit their track list and technical requirements 5 days in advance.",
+                ],
+                judgingCriteria: ["Musical Coordination & Synchronization", "Vocal & Instrumental Quality", "Stage Presence & Energy", "Creativity & Originality", "Audience Engagement"],
+                prize: "Winner: ₹5100, Runner-up: ₹2100 + Trophy + Certificate",
+                lastDate: "7th March 2026",
+                contacts: [
+                    { name: "Sagar", phone: "9812345678" }, // Placeholder for contact if not in image
                 ],
             },
         ],

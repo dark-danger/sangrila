@@ -1,8 +1,6 @@
 "use client";
 
 import { events } from "@/data/events";
-import { Navbar } from "@/components/Navbar";
-import { BackgroundEffects } from "@/components/BackgroundEffects";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -15,7 +13,8 @@ import {
     CheckCircle2,
     Download,
     Calendar,
-    MapPin
+    MapPin,
+    Trophy
 } from "lucide-react";
 
 export default function EventDetailClient({ id }: { id: string }) {
@@ -24,7 +23,6 @@ export default function EventDetailClient({ id }: { id: string }) {
     if (!event) {
         return (
             <main className="min-h-screen flex flex-col items-center justify-center bg-[#020205] text-white p-6">
-                <BackgroundEffects />
                 <h1 className="text-4xl font-black mb-4">Event Not Found</h1>
                 <Link href="/events" className="text-primary hover:underline flex items-center gap-2">
                     <ChevronLeft size={20} /> Back to All Events
@@ -35,9 +33,6 @@ export default function EventDetailClient({ id }: { id: string }) {
 
     return (
         <main className="min-h-screen relative overflow-hidden bg-[#020205] text-white">
-            <BackgroundEffects />
-            <Navbar />
-
             <div className="relative z-10 pt-32 pb-24 px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto">
                 {/* Back Button */}
                 <motion.div
@@ -112,7 +107,7 @@ export default function EventDetailClient({ id }: { id: string }) {
                     >
                         <div className="space-y-4">
                             <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none">
-                                {event.name.split(' ').map((word, i, arr) => (
+                                {event.name.split(' ').map((word: string, i: number, arr: string[]) => (
                                     <span key={i} className={i === arr.length - 1 ? "text-primary italic" : ""}>
                                         {word}{' '}
                                     </span>
@@ -129,7 +124,7 @@ export default function EventDetailClient({ id }: { id: string }) {
                                 Guidelines & Rules
                             </h3>
                             <div className="space-y-4">
-                                {event.rules?.map((rule, index) => (
+                                {event.rules?.map((rule: string, index: number) => (
                                     <motion.div
                                         key={index}
                                         initial={{ opacity: 0, x: 20 }}
@@ -150,6 +145,28 @@ export default function EventDetailClient({ id }: { id: string }) {
                                 )}
                             </div>
                         </div>
+
+                        {event.prize && (
+                            <div className="space-y-6">
+                                <h3 className="text-xs font-black uppercase tracking-[0.4em] text-primary flex items-center gap-3">
+                                    <span className="w-8 h-[2px] bg-primary"></span>
+                                    Prizes
+                                </h3>
+                                <div className="p-6 rounded-3xl bg-primary/5 border border-primary/20 backdrop-blur-sm flex items-center gap-4 group hover:bg-primary/10 transition-colors">
+                                    <div className="w-12 h-12 rounded-2xl bg-primary/20 flex items-center justify-center text-primary group-hover:scale-110 transition-transform flex-shrink-0">
+                                        <Trophy className="w-6 h-6" />
+                                    </div>
+                                    <div>
+                                        <p className="text-white font-black text-lg sm:text-xl tracking-tight uppercase">
+                                            {event.prize}
+                                        </p>
+                                        <p className="text-white/40 text-[10px] font-bold uppercase tracking-widest mt-1">
+                                            Winner & Runner-up Cash Prize + Trophy + Certificate
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
 
                         <div className="pt-8 flex flex-wrap gap-4">
                             <Link

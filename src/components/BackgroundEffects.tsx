@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import { memo } from "react";
 
-export function BackgroundEffects() {
+export const BackgroundEffects = memo(function BackgroundEffects() {
     return (
         <div className="fixed inset-0 z-[-1] overflow-hidden bg-[#020410] pointer-events-none">
             {/* Base Dark Stage Background with deep blue/purple hues */}
@@ -64,4 +65,4 @@ export function BackgroundEffects() {
             <div className="absolute bottom-[-10%] left-0 right-0 h-[20vh] bg-blue-500/5 blur-3xl fog-animation" />
         </div>
     );
-}
+});
