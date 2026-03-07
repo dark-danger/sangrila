@@ -61,7 +61,7 @@ export default function EventDetailClient({ id }: { id: string }) {
                         animate={{ opacity: 1, y: 0 }}
                         className="space-y-8"
                     >
-                        <div className="relative aspect-video rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl group">
+                        <div className="relative aspect-video rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl group motion-gpu">
                             {event.image ? (
                                 <Image
                                     src={event.image}
@@ -69,7 +69,7 @@ export default function EventDetailClient({ id }: { id: string }) {
                                     fill
                                     className="object-cover transition-transform duration-1000 group-hover:scale-105"
                                     priority
-                                    quality={90}
+                                    quality={75}
                                 />
                             ) : (
                                 <div className="w-full h-full bg-gradient-to-br from-primary/20 to-purple-600/20 flex items-center justify-center">

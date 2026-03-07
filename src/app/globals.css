@@ -304,26 +304,38 @@ html {
 }
 
 .spotlight-left {
+  will-change: transform, opacity;
+  transform: translateZ(0);
   animation: spotlightSwayLeft 12s ease-in-out infinite;
 }
 
 .spotlight-right {
+  will-change: transform, opacity;
+  transform: translateZ(0);
   animation: spotlightSwayRight 15s ease-in-out infinite;
 }
 
 .laser-left {
+  will-change: transform, opacity;
+  transform: translateZ(0);
   animation: laserSweepLeft 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 .laser-right {
+  will-change: transform, opacity;
+  transform: translateZ(0);
   animation: laserSweepRight 5s cubic-bezier(0.4, 0, 0.2, 1) infinite 0.5s;
 }
 
 .fog-animation {
+  will-change: transform, opacity;
+  transform: translateZ(0);
   animation: fogMove 20s ease-in-out infinite;
 }
 
 .beam-rotate {
+  will-change: transform;
+  transform: translateZ(0);
   animation: beamRotate 20s linear infinite;
 }
 
@@ -373,4 +385,20 @@ html {
   100% {
     transform: translateX(150%);
   }
+}
+
+/* Marquee scroll animation for Food Stalls */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 15s linear infinite;
+  width: max-content;
 }

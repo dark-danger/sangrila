@@ -7,7 +7,7 @@ import { ContactForm } from "./ContactForm";
 
 export function ContactSection() {
     return (
-        <footer id="contact" className="py-24 px-6 relative z-10 bg-[#0a0b14] mx-4 rounded-[3rem] mt-24 border border-white/5">
+        <footer id="contact" className="py-24 px-6 relative z-10 bg-[#0a0b14] mx-4 rounded-[3rem] mt-24 border border-white/5 motion-gpu">
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
 
                 {/* Contact Info */}

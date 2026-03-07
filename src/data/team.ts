@@ -7,6 +7,7 @@ export type TeamMember = {
     linkedin?: string;
     rotate?: boolean; // For fixing sideways photos
     objectPosition?: string; // For centering faces
+    objectFit?: "cover" | "contain"; // For full-body shots that need contain
 };
 
 export const teamMembers: TeamMember[] = [
@@ -42,7 +43,7 @@ export const teamMembers: TeamMember[] = [
         id: "8",
         name: "Preeti Verma",
         role: "Cultural Head",
-        image: "/team/preeti.jpeg",
+        image: "/team/Preeti.jpeg",
         objectPosition: "center 20%",
     },
     {
@@ -56,7 +57,7 @@ export const teamMembers: TeamMember[] = [
         id: "4",
         name: "Gurpreet",
         role: "Creative Head",
-        image: "/team/gurpreet.jpg",
+        image: "/team/Gurpreet.jpg",
         objectPosition: "center 15%",
     },
     {
@@ -80,4 +81,34 @@ export const teamMembers: TeamMember[] = [
         image: "/team/sneha.jpeg",
         objectPosition: "center 20%",
     },
+];
+export const sponsorshipMembers: TeamMember[] = [
+    {
+        id: "s1",
+        name: "Yash Khanna",
+        role: "",
+        image: "/team/yash-khanna.jpeg",
+        objectPosition: "center 15%"
+    },
+    {
+        id: "s2",
+        name: "Aaditya Gupta",
+        role: "",
+        image: "/team/aaditya-gupta.jpg",
+        objectPosition: "center 20%"
+    },
+    {
+        id: "s3",
+        name: "Piyush",
+        role: "",
+        image: "/team/piyush_new.jpeg",
+        objectPosition: "center 20%",
+    },
+    {
+        id: "s4",
+        name: "Madhav",
+        role: "",
+        image: "/team/mahadev_new.jpeg",
+        objectPosition: "center 20%",
+    }
 ];

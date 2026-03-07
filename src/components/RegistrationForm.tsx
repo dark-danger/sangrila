@@ -3,7 +3,7 @@
 import { useState, Suspense, useRef, useMemo } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { User, School, Hash, Trophy, CreditCard, Send, CheckCircle2, AlertCircle, Loader2, Sparkles, Plus, Trash2, Camera, Upload, Phone, Users, ArrowRight, ArrowLeft, IndianRupee, QrCode } from "lucide-react";
+import { User, School, Hash, Trophy, CreditCard, Send, CheckCircle2, AlertCircle, Loader2, Plus, Trash2, Camera, Upload, Phone, Users, ArrowRight, ArrowLeft, IndianRupee, QrCode } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 import { QRCodeSVG } from "qrcode.react";
 
@@ -86,13 +86,8 @@ function RegistrationFormContent() {
         return parseInt(parts) || 1;
     };
 
-    // Parse min participants
-    const getMinParticipants = () => {
-        return 1; // Removed minimum criteria as requested
-    };
 
     const maxParticipants = getMaxParticipants();
-    const minParticipants = getMinParticipants();
     const canAddMember = teamMembers.length < maxParticipants - 1;
 
     // Calculate total amount
@@ -290,7 +285,7 @@ function RegistrationFormContent() {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="max-w-4xl mx-auto p-5 sm:p-8 md:p-12 rounded-[2rem] md:rounded-[3rem] bg-[#11121d] border border-white/5 shadow-2xl relative overflow-hidden"
+                className="max-w-4xl mx-auto p-5 sm:p-8 md:p-12 rounded-[2rem] md:rounded-[3rem] bg-[#11121d] border border-white/5 shadow-2xl relative overflow-hidden motion-gpu"
             >
                 {/* Decorative Elements */}
                 <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-[80px] -mr-32 -mt-32" />

@@ -7,6 +7,15 @@ import { BackgroundEffects } from "@/components/BackgroundEffects";
 const AboutSection = dynamic(() => import("@/components/AboutSection").then(mod => mod.AboutSection), {
   loading: () => <div className="min-h-[400px]" />,
 });
+const SponsorsSection = dynamic(() => import("@/components/SponsorsSection").then(mod => mod.SponsorsSection), {
+  loading: () => <div className="min-h-[300px]" />,
+});
+const FoodStallsSection = dynamic(() => import("@/components/FoodStallsSection").then(mod => mod.FoodStallsSection), {
+  loading: () => <div className="min-h-[200px]" />,
+});
+const EventsSection = dynamic(() => import("@/components/EventsSection").then(mod => mod.EventsSection), {
+  loading: () => <div className="min-h-[400px]" />,
+});
 const StarPerformers = dynamic(() => import("@/components/StarPerformers").then(mod => mod.StarPerformers), {
   loading: () => <div className="min-h-[400px]" />,
 });
@@ -15,6 +24,9 @@ const TeamSection = dynamic(() => import("@/components/TeamSection").then(mod =>
 });
 const RegistrationForm = dynamic(() => import("@/components/RegistrationForm").then(mod => mod.RegistrationForm), {
   loading: () => <div className="min-h-[600px]" />,
+});
+const ContactSection = dynamic(() => import("@/components/ContactSection").then(mod => mod.ContactSection), {
+  loading: () => <div className="min-h-[400px]" />,
 });
 const WhatsAppButton = dynamic(() => import("@/components/WhatsAppButton").then(mod => mod.WhatsAppButton));
 
@@ -26,9 +38,13 @@ export default function Home() {
       <Navbar />
       <Hero />
       <AboutSection />
+      <SponsorsSection />
+      <FoodStallsSection />
+      <EventsSection limit={8} />
       <StarPerformers />
       <RegistrationForm />
       <TeamSection />
+      <ContactSection />
       <WhatsAppButton />
     </main>
   );
