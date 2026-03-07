@@ -7,6 +7,12 @@ import { BackgroundEffects } from "@/components/BackgroundEffects";
 const AboutSection = dynamic(() => import("@/components/AboutSection").then(mod => mod.AboutSection), {
   loading: () => <div className="min-h-[400px]" />,
 });
+const SponsorsSection = dynamic(() => import("@/components/SponsorsSection").then(mod => mod.SponsorsSection), {
+  loading: () => <div className="min-h-[300px]" />,
+});
+const FoodStallsSection = dynamic(() => import("@/components/FoodStallsSection").then(mod => mod.FoodStallsSection), {
+  loading: () => <div className="min-h-[200px]" />,
+});
 const EventsSection = dynamic(() => import("@/components/EventsSection").then(mod => mod.EventsSection), {
   loading: () => <div className="min-h-[400px]" />,
 });
@@ -32,6 +38,8 @@ export default function Home() {
       <Navbar />
       <Hero />
       <AboutSection />
+      <SponsorsSection />
+      <FoodStallsSection />
       <EventsSection limit={8} />
       <StarPerformers />
       <RegistrationForm />
