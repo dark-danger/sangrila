@@ -51,7 +51,7 @@ export function StarPerformers() {
                             {/* Glow */}
                             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] h-[60%] bg-orange-500/10 rounded-full blur-[60px] pointer-events-none" />
                             <Image
-                                src="/stars/star-1.png"
+                                src="/stars/star-1.jpg"
                                 alt="Star Performer"
                                 fill
                                 className="object-contain object-bottom scale-110 group-hover:scale-[1.15] transition-transform duration-700"
@@ -80,7 +80,7 @@ export function StarPerformers() {
                             <div className="relative h-[350px] sm:h-[420px] md:h-[500px] overflow-hidden rounded-2xl bg-gradient-to-b from-purple-500/5 to-transparent">
                                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] h-[60%] bg-purple-500/8 rounded-full blur-[40px] pointer-events-none" />
                                 <Image
-                                    src="/stars/star-2.png"
+                                    src="/stars/star-2.jpg"
                                     alt="Star Performer"
                                     fill
                                     className="object-contain object-bottom scale-110 group-hover:scale-[1.15] transition-transform duration-700"

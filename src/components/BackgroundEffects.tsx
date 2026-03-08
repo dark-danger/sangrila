@@ -12,7 +12,7 @@ export const BackgroundEffects = memo(function BackgroundEffects() {
             {/* Concert Crowd Background Image - High Impact Layer */}
             <div className="absolute inset-0 z-0">
                 <Image
-                    src="/concert-crowd.png"
+                    src="/concert-crowd.jpg"
                     alt="Concert Background"
                     fill
                     className="object-cover object-bottom opacity-60 mix-blend-lighten scale-105"
