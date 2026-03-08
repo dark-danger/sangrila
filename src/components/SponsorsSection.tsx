@@ -6,7 +6,7 @@ import { Award, Sparkles, Building2 } from "lucide-react";
 
 const bronzeSponsors = [
     { name: "Mehfil by Yum Fuel", logo: "/sponsors/mehfil-yumfuel.jpg" },
-    { name: "Hotel Urban Veins", logo: "/sponsors/hotel-urban-veins.png" },
+    { name: "Hotel Urban Veins", logo: "/sponsors/hotel-urban-veins.jpg" },
 ];
 
 export function SponsorsSection() {
@@ -90,7 +90,7 @@ export function SponsorsSection() {
                                     <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-blue-400/10 rounded-3xl" />
                                 </div>
                                 <Image
-                                    src="/sponsors/geeta-sarovar-portico.png"
+                                    src="/sponsors/geeta-sarovar-portico.jpg"
                                     alt="Geeta Sarovar Portico - Hospitality Partner"
                                     width={350}
                                     height={180}

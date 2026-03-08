@@ -47,6 +47,13 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#020410",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -54,10 +61,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark scroll-smooth">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      </head>
       <body className={`${outfit.variable} antialiased bg-background text-foreground selection:bg-purple-500/30 selection:text-purple-200`}>
         <script
           type="application/ld+json"

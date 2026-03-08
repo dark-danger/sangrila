@@ -15,11 +15,13 @@ const path = require('path');
 
 const directories = [
     path.join(__dirname, '../public/team'),
-    path.join(__dirname, '../public/images')
+    path.join(__dirname, '../public/images'),
+    path.join(__dirname, '../public/sponsors'),
+    path.join(__dirname, '../public/stars')
 ];
-const maxWidth = 1200;
-const maxHeight = 1200;
-const quality = 85;
+const maxWidth = 1920;
+const maxHeight = 1080;
+const quality = 80;
 
 console.log('🎨 Starting image optimization...\n');
 
@@ -36,17 +38,30 @@ async function optimizeImage(inputDir, file) {
         const sizeBefore = statsBefore.size;
         totalSizeBefore += sizeBefore;
 
-        // Optimize the image
-        await sharp(inputPath)
+        const ext = path.extname(file).toLowerCase();
+        const isPng = ext === '.png';
+
+        // Optimize based on original format to prevent corruption
+        let pipeline = sharp(inputPath)
             .resize(maxWidth, maxHeight, {
                 fit: 'inside',
                 withoutEnlargement: true
-            })
-            .jpeg({
+            });
+
+        if (isPng) {
+            pipeline = pipeline.png({
+                quality: quality,
+                compressionLevel: 9,
+                palette: true
+            });
+        } else {
+            pipeline = pipeline.jpeg({
                 quality: quality,
                 mozjpeg: true
-            })
-            .toFile(tempPath);
+            });
+        }
+
+        await pipeline.toFile(tempPath);
 
         // Replace original with optimized
         fs.renameSync(tempPath, inputPath);
