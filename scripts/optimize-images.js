@@ -15,11 +15,13 @@ const path = require('path');
 
 const directories = [
     path.join(__dirname, '../public/team'),
-    path.join(__dirname, '../public/images')
+    path.join(__dirname, '../public/images'),
+    path.join(__dirname, '../public/sponsors'),
+    path.join(__dirname, '../public/stars')
 ];
-const maxWidth = 1200;
-const maxHeight = 1200;
-const quality = 85;
+const maxWidth = 1920;
+const maxHeight = 1080;
+const quality = 80;
 
 console.log('🎨 Starting image optimization...\n');
 

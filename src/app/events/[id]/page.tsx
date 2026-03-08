@@ -2,6 +2,12 @@ import { events } from "@/data/events";
 import EventDetailClient from "@/components/event-details/EventDetailClient";
 import type { Metadata } from "next";
 
+export async function generateStaticParams() {
+    return events.map((event) => ({
+        id: event.id,
+    }));
+}
+
 type Props = {
     params: Promise<{ id: string }>;
 };
