@@ -2,8 +2,6 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Navbar } from "@/components/Navbar";
-import { BackgroundEffects } from "@/components/BackgroundEffects";
 import {
     BookOpen,
     AlertTriangle,
@@ -106,6 +104,16 @@ function EventCard({ event, catColor }: { event: EventRule; catColor: string }) 
                                     ))}
                                 </div>
                             </div>
+                            {/* Prize */}
+                            <div>
+                                <h5 className="flex items-center gap-2 text-white font-bold text-sm uppercase tracking-wider mb-2">
+                                    <Trophy className="w-4 h-4 text-primary" />
+                                    Prize
+                                </h5>
+                                <p className="text-muted-foreground text-sm pl-1">
+                                    {event.prize}
+                                </p>
+                            </div>
 
 
 
@@ -203,9 +211,6 @@ export default function RulesPage() {
 
     return (
         <main className="min-h-screen relative overflow-hidden">
-            <BackgroundEffects />
-            <Navbar />
-
             <section className="pt-32 pb-24 px-4 sm:px-6 relative z-10">
                 <div className="max-w-5xl mx-auto">
                     {/* ─── Header ─── */}

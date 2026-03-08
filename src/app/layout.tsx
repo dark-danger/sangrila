@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
+import { Navbar } from "@/components/Navbar";
+import { BackgroundEffects } from "@/components/BackgroundEffects";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -51,6 +54,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark scroll-smooth">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      </head>
       <body className={`${outfit.variable} antialiased bg-background text-foreground selection:bg-purple-500/30 selection:text-purple-200`}>
         <script
           type="application/ld+json"
@@ -88,6 +95,9 @@ export default function RootLayout({
           }}
         />
         {children}
+        <BackgroundEffects />
+        <Navbar />
+        <WhatsAppButton />
       </body>
     </html>
   );

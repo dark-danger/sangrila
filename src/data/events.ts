@@ -8,6 +8,7 @@ export type Event = {
     description: string;
     image?: string;
     rules?: string[];
+    prize?: string;
 };
 
 export const categories = [
@@ -38,7 +39,8 @@ export const events: Event[] = [
             "Bring your track in a pendrive (MP3 format).",
             "Costumes should be decent and appropriate.",
             "Decision of judges will be final and binding."
-        ]
+        ],
+        prize: "Winner: ₹1500, Runner-up: ₹500"
     },
     {
         id: "duet-dance",
@@ -55,7 +57,8 @@ export const events: Event[] = [
             "Audio track must be submitted 30 mins before the event.",
             "No props that can damage the stage (water, fire, glass).",
             "In case of technical failure, the team may get a restart at judges' discretion."
-        ]
+        ],
+        prize: "Winner: ₹2100, Runner-up: ₹1100"
     },
     {
         id: "group-dance",
@@ -72,7 +75,8 @@ export const events: Event[] = [
             "Themes are encouraged (Storytelling, Social Message).",
             "Marks for uniformity, costumes, and expressions.",
             "Participants should carry their own makeup and props."
-        ]
+        ],
+        prize: "Winner: ₹5100, Runner-up: ₹2100"
     },
 
     // Singing (3)
@@ -91,7 +95,8 @@ export const events: Event[] = [
             "Instruments/Karaoke allowed (only one backing track).",
             "Lyrics should not contain explicit language.",
             "Judged on pitch, rhythm, and stage presence."
-        ]
+        ],
+        prize: "Winner: ₹1500, Runner-up: ₹500"
     },
     {
         id: "duet-singing",
@@ -108,7 +113,8 @@ export const events: Event[] = [
             "Only one instrument or one karaoke track allowed.",
             "Songs can be in Hindi, English, or Punjabi.",
             "Avoid shouting or excessive volume levels."
-        ]
+        ],
+        prize: "Winner: ₹2100, Runner-up: ₹1000"
     },
     {
         id: "group-singing",
@@ -125,7 +131,8 @@ export const events: Event[] = [
             "Acoustic instruments preferred; karaoke allowed.",
             "Synchronization and arrangement are vital.",
             "Strictly no lip-syncing allowed."
-        ]
+        ],
+        prize: "Winner: ₹3100, Runner-up: ₹1500"
     },
 
     // Fine Arts (9)
@@ -144,7 +151,8 @@ export const events: Event[] = [
             "Participants must bring their own colors and materials.",
             "Stencils or pre-made patterns are not allowed.",
             "The theme should be traditional or cultural."
-        ]
+        ],
+        prize: "Winner: ₹1500, Runner-up: ₹500"
     },
     {
         id: "poster",
@@ -161,7 +169,8 @@ export const events: Event[] = [
             "A3 size sheet will be provided by the organizers.",
             "Bring your own colors (crayons, sketches, paints).",
             "Digital references or pre-drawn sketches not allowed."
-        ]
+        ],
+        prize: "Winner: ₹1500, Runner-up: ₹500"
     },
     {
         id: "mehendi",
@@ -178,7 +187,8 @@ export const events: Event[] = [
             "Must be applied on a person's hand (palm to forearm).",
             "Intricacy and clarity of design are key scoring criteria.",
             "Reference books or mobile phones are prohibited during the event."
-        ]
+        ],
+        prize: "Winner: ₹1500, Runner-up: ₹500"
     },
     {
         id: "tattoo",
@@ -195,7 +205,8 @@ export const events: Event[] = [
             "Bring your own skin-safe colors/markers.",
             "Can be done on your own or a friend's hand/arm.",
             "Offensive symbols or language will lead to disqualification."
-        ]
+        ],
+        prize: "Winner: ₹1500, Runner-up: ₹500"
     },
     {
         id: "face-painting",
@@ -212,7 +223,8 @@ export const events: Event[] = [
             "Use only skin-friendly paints/materials.",
             "Participants must explain their theme to the judges.",
             "Partial face or full face painting is allowed."
-        ]
+        ],
+        prize: "Winner: ₹1500, Runner-up: ₹500"
     },
     {
         id: "nail-art",
@@ -229,7 +241,8 @@ export const events: Event[] = [
             "Artificial nails are allowed if prepared on the spot.",
             "Theme: Glitter & Glamour.",
             "Neatness and creativity will be judged."
-        ]
+        ],
+        prize: "Winner: ₹1500, Runner-up: ₹500"
     },
     {
         id: "sketching",
@@ -246,7 +259,8 @@ export const events: Event[] = [
             "Organizers will provide the sheet.",
             "Only pencils (graphite/charcoal) are allowed.",
             "Erasers and sharpeners should be your own."
-        ]
+        ],
+        prize: "Winner: ₹1500, Runner-up: ₹500"
     },
     {
         id: "best-out-of-waste",
@@ -263,7 +277,8 @@ export const events: Event[] = [
             "Bring your own materials, glue, and scissors.",
             "The item should be decorative or functional.",
             "Pre-assembled parts are not allowed."
-        ]
+        ],
+        prize: "Winner: ₹1500, Runner-up: ₹500"
     },
 
 
@@ -283,7 +298,8 @@ export const events: Event[] = [
             "Theme should be clearly visible in choice of music and attire.",
             "Walking style, poise, and confidence are main parameters.",
             "Negative marking for excessive exposure or indecency."
-        ]
+        ],
+        prize: "Winner: ₹5100, Runner-up: ₹2100"
     },
     {
         id: "mr-ms-sangrila",
@@ -319,7 +335,8 @@ export const events: Event[] = [
             "Submissions via Google Form or WhatsApp.",
             "Quality, editing, and creativity are judged.",
             "Must be original content (no copyright strikes)."
-        ]
+        ],
+        prize: "Winner: ₹1500, Runner-up: ₹500"
     },
     {
         id: "photography",
@@ -336,7 +353,8 @@ export const events: Event[] = [
             "Editing (brightness/contrast) allowed; manipulation (AI) is NOT.",
             "Photos must be from the campus within event dates.",
             "EXIF data must be preserved for verification."
-        ]
+        ],
+        prize: "Winner: ₹1500, Runner-up: ₹500"
     },
     {
         id: "one-min-film",
@@ -353,7 +371,8 @@ export const events: Event[] = [
             "High definition (HD) recording preferred.",
             "Language: Hindi/English (use subtitles if needed).",
             "Judged on plot, cinematography, and direction."
-        ]
+        ],
+        prize: "Winner: ₹1500, Runner-up: ₹500"
     },
 
     // Theatre (5)
@@ -372,7 +391,8 @@ export const events: Event[] = [
             "Topics must address social issues.",
             "No microphones allowed (loud voice projection needed).",
             "Props should be minimal and portable."
-        ]
+        ],
+        prize: "Winner: ₹2100, Runner-up: ₹1100"
     },
     {
         id: "story-telling",
@@ -389,7 +409,8 @@ export const events: Event[] = [
             "Language: Hindi or English.",
             "Voice modulation and expressions are key.",
             "Strictly no use of scripts during performance."
-        ]
+        ],
+        prize: "Winner: ₹1100, Runner-up: ₹500"
     },
     {
         id: "monologue",
@@ -406,7 +427,8 @@ export const events: Event[] = [
             "Bring your own costume/minimal props.",
             "Judged on emotional depth and characterisation.",
             "Introduction of character (30 sec) is excluded from time limit."
-        ]
+        ],
+        prize: "Winner: ₹1100, Runner-up: ₹500"
     },
     {
         id: "poetry",
@@ -423,7 +445,8 @@ export const events: Event[] = [
             "Time: 4 mins per poet.",
             "Language: Hindi, English, Urdu, or Punjabi.",
             "Recitation style and metaphors will be judged."
-        ]
+        ],
+        prize: "Winner: ₹1100, Runner-up: ₹500"
     },
     {
         id: "standup",
@@ -440,7 +463,8 @@ export const events: Event[] = [
             "Observational or narrative comedy allowed.",
             "Audience engagement and punchlines are vital.",
             "No pre-recorded laugh tracks allowed."
-        ]
+        ],
+        prize: "Winner: ₹1100, Runner-up: ₹500"
     },
 
     // Health (1)
@@ -459,7 +483,8 @@ export const events: Event[] = [
             "Bring all ingredients (can be pre-cut but not pre-cooked).",
             "Scores for hygiene, taste, and presentation.",
             "Provide a brief nutrient list of the dish."
-        ]
+        ],
+        prize: "Winner: ₹1500, Runner-up: ₹500"
     },
 
     // Music (1)
@@ -490,7 +515,8 @@ export const events: Event[] = [
             "The decision of judges will be final and binding.",
             "Judging Criteria: Musical Coordination & Synchronization, Vocal & Instrumental Quality, Stage Presence & Energy, Creativity & Originality, Audience Engagement.",
             "Registration Fee: ₹300 per band member."
-        ]
+        ],
+        prize: "Winner: ₹5100, Runner-up: ₹2100"
     },
 ];
 

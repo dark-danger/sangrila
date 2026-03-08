@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Award, Sparkles } from "lucide-react";
+import { Award, Sparkles, Building2 } from "lucide-react";
 
 const bronzeSponsors = [
     { name: "Mehfil by Yum Fuel", logo: "/sponsors/mehfil-yumfuel.jpg" },
@@ -53,6 +53,59 @@ export function SponsorsSection() {
                         Proudly supported by our amazing sponsors
                     </motion.p>
                 </div>
+
+                {/* ═══ HOSPITALITY PARTNER ═══ */}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.7 }}
+                    className="mb-16"
+                >
+                    {/* Hospitality tier label */}
+                    <div className="flex items-center justify-center gap-3 mb-6">
+                        <div className="h-px flex-1 max-w-[150px] bg-gradient-to-r from-transparent to-blue-400/30" />
+                        <span className="text-blue-400 text-xs md:text-sm font-black uppercase tracking-[0.3em] flex items-center gap-2">
+                            <Building2 className="w-4 h-4 text-blue-400" />
+                            Hospitality Partner
+                        </span>
+                        <div className="h-px flex-1 max-w-[150px] bg-gradient-to-l from-transparent to-blue-400/30" />
+                    </div>
+
+                    {/* Geeta Sarovar Portico */}
+                    <div className="flex justify-center">
+                        <motion.div
+                            whileHover={{ scale: 1.05 }}
+                            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                            className="relative group"
+                        >
+                            <div
+                                className="relative w-[280px] h-[160px] md:w-[400px] md:h-[200px] rounded-3xl overflow-hidden glass-card p-4 flex items-center justify-center cursor-pointer bg-white/5"
+                                style={{
+                                    border: "1px solid rgba(59, 130, 246, 0.2)",
+                                    background: "linear-gradient(135deg, rgba(255,255,255,0.05), rgba(59, 130, 246, 0.05))"
+                                }}
+                            >
+                                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-blue-400/10 rounded-3xl" />
+                                </div>
+                                <Image
+                                    src="/sponsors/geeta-sarovar-portico.png"
+                                    alt="Geeta Sarovar Portico - Hospitality Partner"
+                                    width={350}
+                                    height={180}
+                                    className="object-contain relative z-10 drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]"
+                                />
+                            </div>
+                            <p className="text-center mt-4 text-white/90 text-lg md:text-xl font-bold tracking-wide">
+                                Geeta Sarovar Portico
+                            </p>
+                            <p className="text-center text-blue-400/70 text-xs font-bold uppercase tracking-widest mt-1">
+                                Official Hospitality Partner
+                            </p>
+                        </motion.div>
+                    </div>
+                </motion.div>
 
                 {/* ═══ SILVER SPONSOR ═══ */}
                 <motion.div
