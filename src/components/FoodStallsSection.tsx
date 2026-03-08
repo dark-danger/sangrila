@@ -5,8 +5,10 @@ import Image from "next/image";
 import { Utensils } from "lucide-react";
 
 const foodPartners = [
-    { name: "Rahmat Fast Food", logo: "/sponsors/rahmat-fast-food.png" },
+    { name: "Chaska Chaap Corner", logo: "/sponsors/rahmat-fast-food.png" },
     { name: "Om Jee Sweets", logo: "/sponsors/om-jee-sweets.png" },
+    { name: "Hotel Urban Veins", logo: "/sponsors/hotel-urban-veins.png" },
+    { name: "Mehfil by Yum", logo: "/sponsors/mehfil-yumfuel.jpg" },
 ];
 
 export function FoodStallsSection() {

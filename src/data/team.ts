@@ -81,34 +81,18 @@ export const teamMembers: TeamMember[] = [
         image: "/team/sneha.jpeg",
         objectPosition: "center 20%",
     },
-];
-export const sponsorshipMembers: TeamMember[] = [
     {
-        id: "s1",
-        name: "Yash Khanna",
-        role: "",
-        image: "/team/yash-khanna.jpeg",
-        objectPosition: "center 15%"
-    },
-    {
-        id: "s2",
-        name: "Aaditya Gupta",
-        role: "",
-        image: "/team/aaditya-gupta.jpg",
-        objectPosition: "center 20%"
-    },
-    {
-        id: "s3",
-        name: "Piyush",
-        role: "",
+        id: "11",
+        name: "Piyush Goel",
+        role: "Sponsorship Committee Member",
         image: "/team/piyush_new.jpeg",
         objectPosition: "center 20%",
     },
     {
-        id: "s4",
+        id: "12",
         name: "Madhav",
-        role: "",
+        role: "Sponsorship Committee Member",
         image: "/team/mahadev_new.jpeg",
         objectPosition: "center 20%",
-    }
+    },
 ];
