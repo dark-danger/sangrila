@@ -74,16 +74,12 @@ function RegistrationFormContent() {
     const [screenshotBase64, setScreenshotBase64] = useState<string>("");
 
     const currentEvent = events.find(e => e.name === selectedEvent);
-    const isTeamEvent = currentEvent && (parseInt(currentEvent.participants) > 1 || currentEvent.participants.includes("-"));
+    const isTeamEvent = !!currentEvent;
 
-    // Parse max participants
+    // Allow up to 15 members for all events
     const getMaxParticipants = () => {
         if (!currentEvent) return 1;
-        const parts = currentEvent.participants;
-        if (parts.includes("-")) {
-            return parseInt(parts.split("-")[1]);
-        }
-        return parseInt(parts) || 1;
+        return 15;
     };
 
 
@@ -420,7 +416,7 @@ function RegistrationFormContent() {
                                     </AnimatePresence>
 
                                     {/* Team Members Section */}
-                                    {maxParticipants > 1 && (
+                                    {currentEvent && (
                                         <motion.div
                                             initial={{ opacity: 0, height: 0 }}
                                             animate={{ opacity: 1, height: "auto" }}
