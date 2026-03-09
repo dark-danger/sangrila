@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
             allow: '/',
             disallow: '/private/',
         },
-        sitemap: 'https://sangrila.vercel.app/sitemap.xml',
+        sitemap: 'https://sangrila2k26.netlify.app/sitemap.xml',
     };
 }

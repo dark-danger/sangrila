@@ -4,7 +4,7 @@ import { events } from '@/data/events';
 export const dynamic = 'force-static';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://sangrila.vercel.app';
+    const baseUrl = 'https://sangrila2k26.netlify.app';
 
     // Static routes
     const staticRoutes = [
