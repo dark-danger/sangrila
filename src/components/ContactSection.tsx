@@ -1,9 +1,52 @@
 "use client";
 
+import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Mail, Phone, MapPin, Instagram, Linkedin, Globe } from "lucide-react";
 import { ContactForm } from "./ContactForm";
+
+// Lazy-loaded Google Maps iframe
+function LazyMap() {
+    const [isVisible, setIsVisible] = useState(false);
+    const mapRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                    observer.disconnect();
+                }
+            },
+            { rootMargin: '200px' }
+        );
+
+        if (mapRef.current) observer.observe(mapRef.current);
+        return () => observer.disconnect();
+    }, []);
+
+    return (
+        <div ref={mapRef} className="h-[400px] w-full bg-white rounded-[3rem] overflow-hidden border border-white/5 relative group shadow-2xl">
+            {isVisible ? (
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3478.490740523293!2d76.938814775437!3d29.311910975298836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390dd0f1a0000001%3A0xe677553b47833668!2sGeeta%20University!5e0!3m2!1sen!2sin!4v1707641234567!5m2!1sen!2sin"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg) brightness(0.8) contrast(1.2)' }}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    allowFullScreen
+                    className="group-hover:filter-none transition-all duration-1000"
+                />
+            ) : (
+                <div className="w-full h-full flex items-center justify-center bg-[#0a0b14]">
+                    <MapPin className="w-8 h-8 text-white/20 animate-pulse" />
+                </div>
+            )}
+        </div>
+    );
+}
 
 export function ContactSection() {
     return (
@@ -108,24 +151,14 @@ export function ContactSection() {
                 <ContactForm />
             </div>
 
-            {/* Map Section - Moved below for better UX */}
+            {/* Map Section - Lazy loaded for performance */}
             <div className="max-w-7xl mx-auto mt-24">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="h-[400px] w-full bg-white rounded-[3rem] overflow-hidden border border-white/5 relative group shadow-2xl"
                 >
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3478.490740523293!2d76.938814775437!3d29.311910975298836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390dd0f1a0000001%3A0xe677553b47833668!2sGeeta%20University!5e0!3m2!1sen!2sin!4v1707641234567!5m2!1sen!2sin"
-                        width="100%"
-                        height="100%"
-                        style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg) brightness(0.8) contrast(1.2)' }}
-                        loading="lazy"
-                        referrerPolicy="no-referrer-when-downgrade"
-                        allowFullScreen
-                        className="group-hover:filter-none transition-all duration-1000"
-                    ></iframe>
+                    <LazyMap />
                 </motion.div>
             </div>
 

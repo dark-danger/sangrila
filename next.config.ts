@@ -12,9 +12,10 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
     ],
-    deviceSizes: [640, 750, 828, 1080], // Reduced device sizes to save processing time
+    deviceSizes: [640, 750, 828, 1080],
     imageSizes: [16, 32, 48, 64, 96, 128, 256],
-    minimumCacheTTL: 3600,
+    minimumCacheTTL: 31536000, // 1 year cache for images
+    qualities: [70, 75, 80],
     dangerouslyAllowSVG: true,
     contentDispositionType: 'inline',
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox; img-src 'self' data: https://images.unsplash.com;",
@@ -22,6 +23,9 @@ const nextConfig: NextConfig = {
   },
   compress: true,
   poweredByHeader: false,
+  reactStrictMode: true,
+  // Empty turbopack config to acknowledge Turbopack (Next.js 16 default)
+  turbopack: {},
 };
 
 export default nextConfig;

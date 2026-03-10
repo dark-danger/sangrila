@@ -1,5 +1,6 @@
 "use client";
 
+import { memo } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Users, Sparkles, ChevronRight, IndianRupee, Clock } from "lucide-react";
@@ -17,7 +18,7 @@ const categoryColors: Record<string, { from: string; to: string; emoji: string; 
     "Music": { from: "from-[#6366f1]", to: "to-[#4338ca]", emoji: "🎸", text: "text-[#818cf8]", bg: "bg-[#6366f1]/10", glow: "shadow-[#6366f1]/20" },
 };
 
-export function EventCard({ event }: { event: Event }) {
+export const EventCard = memo(function EventCard({ event }: { event: Event }) {
     const colors = categoryColors[event.category] || { from: "from-[#f15a24]", to: "to-[#c2410c]", emoji: "✨", text: "text-[#f15a24]", bg: "bg-[#f15a24]/10", glow: "shadow-[#f15a24]/20" };
 
     return (
@@ -40,6 +41,7 @@ export function EventCard({ event }: { event: Event }) {
                         className="object-cover transition-transform duration-700 group-hover:scale-110"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         quality={70}
+                        loading="lazy"
                     />
                 ) : (
                     <div className={`w-full h-full bg-gradient-to-br ${colors.from} ${colors.to} opacity-20 flex items-center justify-center`}>
@@ -110,4 +112,4 @@ export function EventCard({ event }: { event: Event }) {
             <div className={`absolute -bottom-10 -right-10 w-24 h-24 rounded-full blur-[50px] opacity-0 group-hover:opacity-20 transition-opacity duration-500 bg-gradient-to-br from-[#f15a24] to-[#fdb813]`} />
         </motion.div>
     );
-}
+});

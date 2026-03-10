@@ -9,6 +9,7 @@ const outfit = Outfit({
   subsets: ["latin"],
   variable: "--font-outfit",
   display: "swap",
+  preload: true,
 });
 
 export const metadata: Metadata = {
@@ -20,11 +21,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Sangrila Festival 2026 | Official Student Fest",
     description: "Experience the ultimate celebration of talent, culture, and creativity at Sangrila 2026.",
-    url: "https://sangrila.vercel.app", // Placeholder, update if needed
+    url: "https://sangrila.vercel.app",
     siteName: "Sangrila 2k26",
     images: [
       {
-        url: "/logo.png", // Use logo as OG image for now
+        url: "/logo.png",
         width: 800,
         height: 600,
       },
@@ -61,6 +62,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark scroll-smooth">
+      <head>
+        {/* DNS Prefetch & Preconnect for external resources */}
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+        <link rel="dns-prefetch" href="https://www.google.com" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      </head>
       <body className={`${outfit.variable} antialiased bg-background text-foreground selection:bg-purple-500/30 selection:text-purple-200`}>
         <script
           type="application/ld+json"

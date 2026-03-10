@@ -105,8 +105,19 @@
 
 /* Performance Optimization */
 .motion-gpu {
-  will-change: transform, opacity;
   transform: translateZ(0);
+}
+
+/* content-visibility for sections below the fold - skip rendering until near viewport */
+section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
+}
+
+/* Isolate paint for glass elements */
+.glass,
+.glass-card {
+  contain: layout style;
 }
 
 /* Reduced Animations - Removed Pulsing and Rotating */

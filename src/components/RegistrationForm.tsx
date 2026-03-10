@@ -76,10 +76,10 @@ function RegistrationFormContent() {
     const currentEvent = events.find(e => e.name === selectedEvent);
     const isTeamEvent = !!currentEvent;
 
-    // Allow up to 15 members for all events
+    // Allow up to 25 members for all events
     const getMaxParticipants = () => {
         if (!currentEvent) return 1;
-        return 15;
+        return 25;
     };
 
 
