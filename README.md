@@ -1,8 +1,9 @@
 ## when i update code i use this to push chnages 
+# Repository: https://github.com/dark-danger/sangrila
 git pull origin main
 git add .
 git commit -m "update"
-git push
+git push origin main
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
