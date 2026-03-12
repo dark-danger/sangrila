@@ -4,7 +4,9 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Sparkles } from "lucide-react";
+import { Menu, X, Sparkles, AlertCircle } from "lucide-react";
+import { IS_REGISTRATION_CLOSED } from "@/data/registration-status";
+
 
 const navItems = [
     { name: "Home", href: "/", emoji: "🏠" },
@@ -78,18 +80,26 @@ export function Navbar() {
                         ))}
 
                         <motion.div
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
+                            whileHover={IS_REGISTRATION_CLOSED ? {} : { scale: 1.05 }}
+                            whileTap={IS_REGISTRATION_CLOSED ? {} : { scale: 0.95 }}
                         >
-                            <Link
-                                href="/register"
-                                className="px-4 lg:px-6 py-2 lg:py-2.5 bg-gradient-to-r from-secondary via-primary to-purple-600 text-white font-black rounded-full text-[10px] lg:text-xs uppercase tracking-wider lg:tracking-widest shadow-xl hover:shadow-[0_0_20px_rgba(241,90,36,0.3)] transition-all border border-white/20 flex items-center justify-center whitespace-nowrap relative overflow-hidden group"
-                            >
-                                <Sparkles className="w-3 h-3 mr-2 group-hover:animate-spin" />
-                                <span className="relative z-10">Register Now</span>
-                                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-1000" />
-                            </Link>
+                            {IS_REGISTRATION_CLOSED ? (
+                                <div className="px-4 lg:px-6 py-2 lg:py-2.5 bg-white/5 text-white/40 font-black rounded-full text-[10px] lg:text-xs uppercase tracking-wider lg:tracking-widest border border-white/10 flex items-center justify-center whitespace-nowrap cursor-not-allowed">
+                                    <AlertCircle className="w-3 h-3 mr-2" />
+                                    <span>Registrations Closed</span>
+                                </div>
+                            ) : (
+                                <Link
+                                    href="/register"
+                                    className="px-4 lg:px-6 py-2 lg:py-2.5 bg-gradient-to-r from-secondary via-primary to-purple-600 text-white font-black rounded-full text-[10px] lg:text-xs uppercase tracking-wider lg:tracking-widest shadow-xl hover:shadow-[0_0_20px_rgba(241,90,36,0.3)] transition-all border border-white/20 flex items-center justify-center whitespace-nowrap relative overflow-hidden group"
+                                >
+                                    <Sparkles className="w-3 h-3 mr-2 group-hover:animate-spin" />
+                                    <span className="relative z-10">Register Now</span>
+                                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-1000" />
+                                </Link>
+                            )}
                         </motion.div>
+
                     </div>
 
                     {/* Mobile Menu Button */}
@@ -125,16 +135,23 @@ export function Navbar() {
                                     <span className="text-xl">{item.emoji}</span>
                                 </Link>
                             ))}
-                            <motion.div whileTap={{ scale: 0.95 }}>
-                                <Link
-                                    href="/register"
-                                    onClick={() => setIsOpen(false)}
-                                    className="mt-6 block w-full py-4 bg-gradient-to-r from-secondary via-primary to-purple-600 text-white text-center font-black rounded-full text-lg border border-primary/30 relative overflow-hidden group"
-                                >
-                                    <span className="relative z-10 uppercase tracking-widest">REGISTER NOW</span>
-                                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-150%] animate-[shimmer_3s_infinite]" />
-                                </Link>
+                            <motion.div whileTap={IS_REGISTRATION_CLOSED ? {} : { scale: 0.95 }}>
+                                {IS_REGISTRATION_CLOSED ? (
+                                    <div className="mt-6 block w-full py-4 bg-white/5 text-white/40 text-center font-black rounded-full text-lg border border-white/10 uppercase tracking-widest cursor-not-allowed">
+                                        Registrations Closed
+                                    </div>
+                                ) : (
+                                    <Link
+                                        href="/register"
+                                        onClick={() => setIsOpen(false)}
+                                        className="mt-6 block w-full py-4 bg-gradient-to-r from-secondary via-primary to-purple-600 text-white text-center font-black rounded-full text-lg border border-primary/30 relative overflow-hidden group"
+                                    >
+                                        <span className="relative z-10 uppercase tracking-widest">REGISTER NOW</span>
+                                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-150%] animate-[shimmer_3s_infinite]" />
+                                    </Link>
+                                )}
                             </motion.div>
+
                         </div>
                     </motion.div>
                 )}

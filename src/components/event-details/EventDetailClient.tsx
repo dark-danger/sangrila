@@ -1,7 +1,9 @@
 "use client";
 
 import { events } from "@/data/events";
+import { IS_REGISTRATION_CLOSED } from "@/data/registration-status";
 import { motion } from "framer-motion";
+
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -14,7 +16,8 @@ import {
     Download,
     Calendar,
     MapPin,
-    Trophy
+    Trophy,
+    AlertCircle
 } from "lucide-react";
 
 export default function EventDetailClient({ id }: { id: string }) {
@@ -167,16 +170,22 @@ export default function EventDetailClient({ id }: { id: string }) {
                                 </div>
                             </div>
                         )}
-
                         <div className="pt-8 flex flex-wrap gap-4">
-                            <Link
-                                href={`/register?event=${encodeURIComponent(event.name)}`}
-                                className="px-10 py-5 bg-gradient-to-r from-secondary via-primary to-purple-600 text-white font-black rounded-full shadow-[0_10px_40px_rgba(241,90,36,0.3)] hover:shadow-[0_15px_50px_rgba(241,90,36,0.5)] transition-all hover:-translate-y-1 flex items-center gap-3 uppercase tracking-widest text-sm relative overflow-hidden group"
-                            >
-                                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-1000" />
-                                <span className="relative z-10">Register Now</span>
-                                <CheckCircle2 className="w-5 h-5 relative z-10" />
-                            </Link>
+                            {IS_REGISTRATION_CLOSED ? (
+                                <div className="px-10 py-5 bg-white/5 border border-white/10 text-white/40 font-black rounded-full flex items-center gap-3 uppercase tracking-widest text-sm cursor-not-allowed">
+                                    <AlertCircle className="w-5 h-5" />
+                                    <span>Registrations Closed</span>
+                                </div>
+                            ) : (
+                                <Link
+                                    href={`/register?event=${encodeURIComponent(event.name)}`}
+                                    className="px-10 py-5 bg-gradient-to-r from-secondary via-primary to-purple-600 text-white font-black rounded-full shadow-[0_10px_40px_rgba(241,90,36,0.3)] hover:shadow-[0_15px_50px_rgba(241,90,36,0.5)] transition-all hover:-translate-y-1 flex items-center gap-3 uppercase tracking-widest text-sm relative overflow-hidden group"
+                                >
+                                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-1000" />
+                                    <span className="relative z-10">Register Now</span>
+                                    <CheckCircle2 className="w-5 h-5 relative z-10" />
+                                </Link>
+                            )}
 
                             <a
                                 href="/SANGRILA_2026_RuleBook.pdf"
@@ -207,7 +216,7 @@ export default function EventDetailClient({ id }: { id: string }) {
                         </div>
                     </motion.div>
                 </div>
-            </div>
-        </main>
+            </div >
+        </main >
     );
 }

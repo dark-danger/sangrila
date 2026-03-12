@@ -1,8 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Sparkles, ArrowRight } from "lucide-react";
+import { Sparkles, ArrowRight, AlertCircle } from "lucide-react";
 import Link from "next/link";
+import { IS_REGISTRATION_CLOSED } from "@/data/registration-status";
 
 export function Hero() {
     return (
@@ -144,14 +145,21 @@ export function Hero() {
                                     scale: { duration: 3, repeat: Infinity, ease: "easeInOut" }
                                 }}
                             >
-                                <Link
-                                    href="/register"
-                                    className="px-8 sm:px-10 py-4 sm:py-5 bg-gradient-to-r from-secondary via-primary to-purple-600 text-white font-black rounded-full shadow-[0_10px_40px_rgba(241,90,36,0.4)] hover:shadow-[0_15px_50px_rgba(241,90,36,0.6)] transition-all text-base sm:text-xl border border-white/20 flex items-center justify-center gap-2 relative overflow-hidden group"
-                                >
-                                    <Sparkles className="w-5 h-5 group-hover:animate-bounce" />
-                                    <span className="relative z-10 uppercase tracking-widest">Register Now</span>
-                                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-1000" />
-                                </Link>
+                                {IS_REGISTRATION_CLOSED ? (
+                                    <div className="px-8 sm:px-10 py-4 sm:py-5 bg-white/5 text-white/40 font-black rounded-full border border-white/10 text-base sm:text-lg backdrop-blur-md flex items-center justify-center gap-2 cursor-not-allowed">
+                                        <AlertCircle className="w-5 h-5" />
+                                        <span className="uppercase tracking-widest">Registrations Closed</span>
+                                    </div>
+                                ) : (
+                                    <Link
+                                        href="/register"
+                                        className="px-8 sm:px-10 py-4 sm:py-5 bg-gradient-to-r from-secondary via-primary to-purple-600 text-white font-black rounded-full shadow-[0_10px_40px_rgba(241,90,36,0.4)] hover:shadow-[0_15px_50px_rgba(241,90,36,0.6)] transition-all text-base sm:text-xl border border-white/20 flex items-center justify-center gap-2 relative overflow-hidden group"
+                                    >
+                                        <Sparkles className="w-5 h-5 group-hover:animate-bounce" />
+                                        <span className="relative z-10 uppercase tracking-widest">Register Now</span>
+                                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-1000" />
+                                    </Link>
+                                )}
                             </motion.div>
 
                             <motion.div

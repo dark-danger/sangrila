@@ -8,6 +8,9 @@ import { useSearchParams } from "next/navigation";
 import { QRCodeSVG } from "qrcode.react";
 
 import { events } from "@/data/events";
+import { IS_REGISTRATION_CLOSED } from "@/data/registration-status";
+import Link from "next/link";
+
 
 // UPI Config
 const UPI_ID = "geetauniversity.62417837@hdfcbank";
@@ -285,7 +288,65 @@ function RegistrationFormContent() {
         }
     };
 
+    if (IS_REGISTRATION_CLOSED) {
+        return (
+            <section className="py-12 md:py-24 px-4 md:px-6 relative z-10 transition-all duration-500">
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="max-w-4xl mx-auto p-5 sm:p-8 md:p-12 rounded-[2rem] md:rounded-[3rem] bg-[#11121d] border border-white/5 shadow-2xl relative overflow-hidden motion-gpu"
+                >
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-[80px] -mr-32 -mt-32" />
+                    <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/5 rounded-full blur-[80px] -ml-32 -mb-32" />
+
+                    <div className="relative z-10 text-center py-10 md:py-20">
+                        <motion.div
+                            initial={{ scale: 0 }}
+                            animate={{ scale: 1 }}
+                            transition={{ type: "spring", stiffness: 200, damping: 15 }}
+                            className="w-20 h-20 mx-auto rounded-full bg-red-500/10 flex items-center justify-center mb-8 border border-red-500/20"
+                        >
+                            <AlertCircle className="w-10 h-10 text-red-500" />
+                        </motion.div>
+                        <motion.h2
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="text-3xl md:text-5xl font-black text-white tracking-tighter uppercase mb-6"
+                        >
+                            Registrations <span className="text-primary italic">Closed</span>
+                        </motion.h2>
+                        <motion.p
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.1 }}
+                            className="text-lg md:text-xl text-white/60 font-medium max-w-2xl mx-auto leading-relaxed"
+                        >
+                            Thank you for the overwhelming response! Online registrations for <span className="text-white font-bold">Sangrila 2K26</span> are now officially closed. No more entries will be accepted on the website.
+                        </motion.p>
+
+                        <motion.div
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.2 }}
+                            className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4"
+                        >
+                            <Link href="/events" className="px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/10 text-white font-black rounded-full transition-all uppercase tracking-widest text-xs">
+                                Explore Events
+                            </Link>
+                            <a href="https://wa.me/918168906211" target="_blank" rel="noopener noreferrer" className="px-8 py-4 bg-primary text-white font-black rounded-full shadow-lg hover:shadow-primary/20 transition-all uppercase tracking-widest text-xs flex items-center gap-2">
+                                <Phone className="w-4 h-4" />
+                                Contact Support
+                            </a>
+                        </motion.div>
+                    </div>
+                </motion.div>
+            </section>
+        );
+    }
+
     return (
+
         <section className="py-12 md:py-24 px-4 md:px-6 relative z-10 transition-all duration-500">
             <motion.div
                 initial={{ opacity: 0, y: 30 }}

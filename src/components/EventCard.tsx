@@ -6,6 +6,9 @@ import { motion } from "framer-motion";
 import { Users, Sparkles, ChevronRight, IndianRupee, Clock } from "lucide-react";
 import type { Event } from "@/data/events";
 import Link from "next/link";
+import { IS_REGISTRATION_CLOSED } from "@/data/registration-status";
+import { AlertCircle } from "lucide-react";
+
 
 const categoryColors: Record<string, { from: string; to: string; emoji: string; text: string; bg: string; glow: string }> = {
     "Dance": { from: "from-[#f15a24]", to: "to-[#c2410c]", emoji: "💃", text: "text-[#f15a24]", bg: "bg-[#f15a24]/10", glow: "shadow-[#f15a24]/20" },
@@ -96,14 +99,22 @@ export const EventCard = memo(function EventCard({ event }: { event: Event }) {
                         </div>
                     </div>
 
-                    <Link
-                        href={`/register?event=${encodeURIComponent(event.name)}`}
-                        className="w-full py-3.5 bg-gradient-to-r from-secondary via-primary to-purple-600 text-white rounded-2xl text-center text-[10px] font-black uppercase tracking-[0.2em] transition-all shadow-[0_10px_30px_rgba(241,90,36,0.3)] hover:shadow-[0_15px_40px_rgba(241,90,36,0.5)] flex items-center justify-center gap-2 group/reg relative overflow-hidden active:scale-95"
-                    >
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-150%] group-hover/reg:animate-[shimmer_2s_infinite]" />
-                        <Sparkles className="w-3 h-3 group-hover/reg:animate-pulse" />
-                        <span>Register Now</span>
-                    </Link>
+                    {IS_REGISTRATION_CLOSED ? (
+                        <div className="w-full py-3.5 bg-white/5 border border-white/10 text-white/40 rounded-2xl text-center text-[10px] font-black uppercase tracking-[0.2em] flex items-center justify-center gap-2 cursor-not-allowed">
+                            <AlertCircle className="w-3 h-3" />
+                            <span>Registrations Closed</span>
+                        </div>
+                    ) : (
+                        <Link
+                            href={`/register?event=${encodeURIComponent(event.name)}`}
+                            className="w-full py-3.5 bg-gradient-to-r from-secondary via-primary to-purple-600 text-white rounded-2xl text-center text-[10px] font-black uppercase tracking-[0.2em] transition-all shadow-[0_10px_30px_rgba(241,90,36,0.3)] hover:shadow-[0_15px_40px_rgba(241,90,36,0.5)] flex items-center justify-center gap-2 group/reg relative overflow-hidden active:scale-95"
+                        >
+                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-150%] group-hover/reg:animate-[shimmer_2s_infinite]" />
+                            <Sparkles className="w-3 h-3 group-hover/reg:animate-pulse" />
+                            <span>Register Now</span>
+                        </Link>
+                    )}
+
                 </div>
 
             </div>
